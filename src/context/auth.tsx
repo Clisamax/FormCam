@@ -1,6 +1,7 @@
 import { IAuthProvider, IContext, Iuser } from '@/@types/authContextTypes';
 import { api } from '@/services/api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
 import { createContext, useEffect, useState } from 'react';
 
 export const AuthContext = createContext<IContext>({} as IContext);
@@ -75,6 +76,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 				'@auth:timestamp',
 			]);
 			setUser(null);
+			router.push('/login');
 		} catch (error) {
 			console.error('Erro ao fazer logout:', error);
 		}
