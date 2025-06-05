@@ -5,11 +5,11 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#fff', 
+		backgroundColor: '#fff',
 	},
 	image: {
-		width: 200, 
-		height: 200, 
+		width: 400,
+		height: 450,
 		resizeMode: 'contain',
 	},
 });

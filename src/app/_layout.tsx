@@ -63,31 +63,12 @@ export default function loginLayout() {
 						}}
 					>
 						<Image
-							style={{ width: '30%', height: '70%' }}
+							style={{ width: '80%', height: '200%' }}
 							alt="MaxCam Logo"
 							resizeMode="contain"
-							source={require('@/assets/MaxCam.png')}
+							source={require('@/assets/ChatGPT Image 5 de jun. de 2025, 01_25_57.png')}
 						/>
-						<View style={{ flexDirection: 'row', marginTop: -20 }}>
-							<Text
-								style={{
-									fontSize: 42,
-									fontFamily: FONTES.FONTS.defaultBold,
-									color: COLORS.gray[500],
-								}}
-							>
-								Form
-							</Text>
-							<Text
-								style={{
-									fontSize: 42,
-									fontFamily: FONTES.FONTS.default,
-									color: COLORS.red_04[400],
-								}}
-							>
-								Cam
-							</Text>
-						</View>
+				
 					</View>
 					<View
 						style={{

@@ -11,14 +11,14 @@ const LoadingScreen = () => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			navigation.push('/(auth)/home'); 
-		}, 2000);
+		}, 5000);
 
 		return () => clearTimeout(timer);
 	}, [navigation]);
 
 	return (
 		<View style={styles.container}>
-			<Image source={require('@/assets/MaxCam.png')} style={styles.image} />
+			<Image  source={require('@/assets/ChatGPT Image 5 de jun. de 2025, 01_32_08.png')} style={styles.image} />
 		</View>
 	);
 };
