@@ -81,5 +81,7 @@
     <string>Automatic</string>
     <key>UIViewControllerBasedStatusBarAppearance</key>
     <false/>
+    <key>NSCameraUsageDescription</key>
+    <string>Este aplicativo precisa acessar a câmera para tirar fotos.</string>
   </dict>
 </plist>

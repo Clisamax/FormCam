@@ -11,7 +11,7 @@ import { Alert, Button, Text, View } from 'react-native';
 const Camera: React.FC = () => {
 	const cameraViewRef = React.useRef<CameraView>(null);
 	const [permission, requestPermission] = useCameraPermissions();
-	const [flash, setFhash] = useState('off');
+	const [flash, setFlash] = useState<CameraViewProps['flash']>('off');
 
 	if (!permission) {
 		// Camera permissions are still loading.
@@ -66,12 +66,10 @@ const Camera: React.FC = () => {
 
 	return (
 		<View style={{ flex: 1 }}>
-			<CameraView
-				style={{ flex: 1 }}
-				ref={cameraViewRef}
-				flash={flash as CameraViewProps['flash']}
-			/>
-			<View style={{ position: 'absolute' }}>{''}</View>
+			<CameraView style={{ flex: 1 }} ref={cameraViewRef} flash={flash} />
+			<View style={{ position: 'absolute', bottom: 40, alignSelf: 'center' }}>
+				<Button title="Tirar Foto" onPress={takePhoto} />
+			</View>
 		</View>
 	);
 };
