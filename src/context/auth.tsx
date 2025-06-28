@@ -61,9 +61,24 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 			await AsyncStorage.setItem('@auth:timestamp', now.toString());
 
 			setUser(response.data.user);
-		} catch (error) {
+		} catch (error: any) {
 			console.error('Erro no login:', error);
-			throw error; // Propaga o erro para ser tratado no componente Login
+
+			// Tratamento específico de erros de rede
+			if (error.message?.includes('Sem conexão')) {
+				throw new Error('Sem conexão com a internet. Verifique sua rede.');
+			}
+
+			if (error.message?.includes('Tempo limite')) {
+				throw new Error('Tempo limite excedido. Verifique sua conexão.');
+			}
+
+			if (error.message?.includes('Erro de conexão')) {
+				throw new Error('Erro de conexão. Verifique sua internet.');
+			}
+
+			// Outros erros
+			throw error;
 		}
 	}
 

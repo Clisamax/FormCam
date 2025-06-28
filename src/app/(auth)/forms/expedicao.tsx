@@ -103,7 +103,7 @@ const Expedicao: React.FC<homeFormData> = (data) => {
 					label="Selecione uma opção"
 					rules={{ required: 'Este campo é obrigatório' }}
 					onPress={() => {
-						router.push('/(auth)/responsavel');
+						router.push('/(auth)/forms/responsavel');
 						console.log('options_3:', getValues('options_3'));
 					}}
 				/>

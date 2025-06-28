@@ -1,12 +1,13 @@
-import { useContext } from 'react';
-
-import Home from '@/app/(auth)/home';
-import Login from '@/app/(login)/login';
 import { AuthContext } from '@/context/auth';
-import Camera from '@/app/(auth)/camera';
+import { Redirect } from 'expo-router';
+import { useContext } from 'react';
 
 export default function App() {
 	const { signed } = useContext(AuthContext);
-	//signed ? <Home /> : <Login />;
-	return <Camera/>
+
+	return signed ? (
+		<Redirect href="/(auth)/forms" />
+	) : (
+		<Redirect href="/(login)" />
+	);
 }

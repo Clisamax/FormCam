@@ -29,10 +29,11 @@ export const styles = StyleSheet.create({
 		fontFamily: FONTES.FONTS.defaultBold,
 	},
 	containerBotton: {
+		flexDirection: "row",
 		justifyContent: 'center',
 		alignItems: 'center',
 		marginBottom: 18,
-		height: 100,
+		height: 80,
 	},
 	containerInput: {
 		flex: 1,

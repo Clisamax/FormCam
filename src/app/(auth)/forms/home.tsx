@@ -1,13 +1,13 @@
 import { router } from 'expo-router';
 import { useContext, useState } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Text, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 
 import { homeFormData } from '@/@types/formsData';
-import { styles } from '@/styles/auth/stylesHome';
 import Button from '@/components/button/button';
 import Input from '@/components/input/input';
 import RadioField from '@/components/inputRadio/radioField';
+import { styles } from '@/styles/auth/stylesHome';
 
 import { AuthContext } from '@/context/auth';
 import { COLORS } from '@/styles/global/color';
@@ -26,11 +26,11 @@ const Home = (data: homeFormData) => {
 
 	function uuid(data: homeFormData) {
 		if (data.options_2 === 'Expedição') {
-			router.push('/(auth)/expedicao');
+			router.push('/(auth)/forms/expedicao');
 		} else if (data.options_2 === 'Recepção') {
-			router.push('/(auth)/recepcao');
+			router.push('/(auth)/forms/recepcao');
 		} else if (data.options_2 === 'Mov. Interna') {
-			router.push('/(auth)/movInterna');
+			router.push('/(auth)/forms/movInterna');
 		}
 		console.log('uuid:', getValues('uuid'));
 		console.log('origem:', getValues('options_1'));
@@ -125,6 +125,15 @@ const Home = (data: homeFormData) => {
 						size={22}
 						styles={{ height: 55, width: 130 }}
 					/>
+					<Button
+						title="Câmera"
+						onPress={() => router.push('/(auth)/camera')}
+						disabled={loading}
+						iconName="camera"
+						size={22}
+						styles={{ height: 55, width: 130, marginTop: 10 }}
+					/>
+				
 				</View>
 			</View>
 		</View>

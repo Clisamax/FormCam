@@ -42,7 +42,7 @@ const Revisao: React.FC<homeFormData> = (data) => {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
 					{
 						text: 'OK',
-						onPress: () => router.push('/(auth)/camera'),
+						onPress: () => router.push('/(auth)/camera/camera'),
 					},
 				]);
 			}

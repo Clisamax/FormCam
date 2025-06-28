@@ -10,7 +10,7 @@ const LoadingScreen = () => {
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			navigation.push('/(auth)/home'); 
+			navigation.push('/(auth)/forms/home'); 
 		}, 2000);
 
 		return () => clearTimeout(timer);

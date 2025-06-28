@@ -1,15 +1,15 @@
 import { router } from 'expo-router';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Text, View } from 'react-native';
-
-import Button from '@/components/button/button';
-import Progress from '@/components/progress/progress';
-import { AuthContext } from '@/context/auth';
+import { ScrollView, Text, View } from 'react-native';
 
 import { homeFormData } from '@/@types/formsData';
-import { styles } from '@/styles/auth/stylesRecepcao';
+import Button from '@/components/button/button';
+import Progress from '@/components/progress/progress';
 import RadioTaskButton from '@/components/radioTaskButton/radioTaskButton';
+import { AuthContext } from '@/context/auth';
+
+import { styles } from '@/styles/auth/stylesMovInterna';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fontes';
 
@@ -17,7 +17,7 @@ export function retorn() {
 	router.back();
 }
 
-const Recepcao: React.FC<homeFormData> = (data) => {
+const MovInterna: React.FC<homeFormData> = (data) => {
 	const { Logout, user } = useContext(AuthContext);
 	const { control, handleSubmit, getValues } = useFormContext<homeFormData>();
 	const uuid = getValues('uuid');
@@ -81,32 +81,40 @@ const Recepcao: React.FC<homeFormData> = (data) => {
 					</Text>
 				</View>
 			</View>
-
-			<View style={styles.containerFoot}>
+			<ScrollView style={styles.containerFoot}>
 				<RadioTaskButton
 					name="options_3"
 					control={control as unknown as Control}
 					options={[
-						{ label: 'Durante a descarga', value: 'Durante a descarga' },
+						{ label: 'Durante o picking', value: 'Durante o picking' },
 						{
-							label: 'Avaria detectada no ato da descarga',
-							value: 'Avaria detectada no ato da descarga',
+							label: 'Durante a ressuprimento',
+							value: 'Durante a ressuprimento',
 						},
 						{
-							label: 'Movimentaçåo do produto do caminhao para a ilha',
-							value: 'Movimentaçåo do produto do caminhao para a ilha',
+							label: 'Durante o armazenamento',
+							value: 'Durante o armazenamento',
+						},
+						{
+							label: 'Durante o repanejamento',
+							value: 'Durante o repanejamento',
+						},
+						{
+							label: 'Avaria detectada na posiçåo',
+							value: 'Avaria detectada na posiçåo',
 						},
 					]}
 					label="Selecione uma opção"
 					rules={{ required: 'Este campo é obrigatório' }}
 					onPress={() => {
-						router.push('/(auth)/responsavel');
+						router.push('/(auth)/forms/responsavel');
 						console.log('options_3:', getValues('options_3'));
 					}}
 				/>
+
 				<View style={styles.containerFootButton}>{''}</View>
-			</View>
+			</ScrollView>
 		</View>
 	);
 };
-export default Recepcao;
+export default MovInterna;
