@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
 	},
 	containerBotton: {
 		flexDirection: "row",
+		gap: 10,
 		justifyContent: 'center',
 		alignItems: 'center',
 		marginBottom: 18,

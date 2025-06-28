@@ -9,10 +9,10 @@ import { AuthContext } from '@/context/auth';
 
 import { homeFormData } from '@/@types/formsData';
 import { styles } from '@/styles/auth/stylesRevisao';
-import { api } from '@/services/api';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fontes';
 import { AxiosError } from 'axios';
+import { api } from '@/services/api';
 
 const Revisao: React.FC<homeFormData> = (data) => {
 	const { Logout, user } = useContext(AuthContext);

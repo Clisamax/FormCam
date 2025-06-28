@@ -24,6 +24,27 @@
 					"NSExceptionDomains": {
 						"localhost": {
 							"NSExceptionAllowsInsecureHTTPLoads": true
+						},
+						"192.168.0.16": {
+							"NSExceptionAllowsInsecureHTTPLoads": true
+						},
+						"192.168.1.100": {
+							"NSExceptionAllowsInsecureHTTPLoads": true
+						},
+						"192.168.1.101": {
+							"NSExceptionAllowsInsecureHTTPLoads": true
+						},
+						"192.168.0.100": {
+							"NSExceptionAllowsInsecureHTTPLoads": true
+						},
+						"192.168.0.101": {
+							"NSExceptionAllowsInsecureHTTPLoads": true
+						},
+						"10.0.0.100": {
+							"NSExceptionAllowsInsecureHTTPLoads": true
+						},
+						"10.0.0.101": {
+							"NSExceptionAllowsInsecureHTTPLoads": true
 						}
 					}
 				}

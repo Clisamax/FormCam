@@ -8,7 +8,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import Button from '@/components/button/button';
 import InputSenha from '@/components/inputSenha/inputSenha';
 import Progress from '@/components/progress/progress';
-import { api } from '@/services/api';
+import { api } from '../../services/api';
 
 import { CadastroFormData } from '@/@types/loginTypes';
 import { stylesCadastroFinal } from '@/styles/login/stylesCadastro';

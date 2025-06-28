@@ -131,7 +131,7 @@ const Home = (data: homeFormData) => {
 						disabled={loading}
 						iconName="camera"
 						size={22}
-						styles={{ height: 55, width: 130, marginTop: 10 }}
+						styles={{ height: 55, width: 130}}
 					/>
 				
 				</View>

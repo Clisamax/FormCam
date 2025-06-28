@@ -1,5 +1,5 @@
-import { api } from '@/services/api';
 import NetInfo from '@react-native-community/netinfo';
+import { api } from '../services/api';
 
 export interface NetworkTestResult {
 	isConnected: boolean;
@@ -7,7 +7,58 @@ export interface NetworkTestResult {
 	serverReachable: boolean;
 	responseTime?: number;
 	error?: string;
+	deviceIP?: string;
+	serverURL?: string;
 }
+
+/**
+ * Descobre o IP da máquina na rede local
+ */
+export const discoverLocalIP = async (): Promise<string[]> => {
+	const ips: string[] = [];
+
+	try {
+		// Tentar obter IP via NetInfo
+		const netInfo = await NetInfo.fetch();
+		if (netInfo.details && typeof netInfo.details === 'object' && 'ipAddress' in netInfo.details) {
+			const details = netInfo.details as { ipAddress?: string };
+			if (details.ipAddress) {
+				ips.push(details.ipAddress);
+			}
+		}
+
+		// IPs comuns para testar
+		const commonIPs = [
+			'192.168.1.100',
+			'192.168.1.101',
+			'192.168.0.100',
+			'192.168.0.101',
+			'10.0.0.100',
+			'10.0.0.101',
+		];
+
+		// Testar cada IP para ver qual responde
+		for (const ip of commonIPs) {
+			try {
+				const testUrl = `http://${ip}:3338`;
+				const response = await fetch(testUrl, {
+					method: 'GET',
+					timeout: 3000
+				});
+				if (response.ok) {
+					ips.push(ip);
+				}
+			} catch (error) {
+				// IP não responde, continuar para o próximo
+			}
+		}
+
+	} catch (error) {
+		console.error('Erro ao descobrir IP:', error);
+	}
+
+	return ips;
+};
 
 /**
  * Testa a conectividade completa da rede
@@ -35,7 +86,11 @@ export const testNetworkConnectivity = async (): Promise<NetworkTestResult> => {
 			return result;
 		}
 
-		// 2. Testar conectividade com o servidor
+		// 2. Descobrir IPs disponíveis
+		const availableIPs = await discoverLocalIP();
+		result.deviceIP = availableIPs[0];
+
+		// 3. Testar conectividade com o servidor
 		const startTime = Date.now();
 		try {
 			await api.get('/health'); // Endpoint de health check (se existir)
