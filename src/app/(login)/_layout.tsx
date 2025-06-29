@@ -1,47 +1,25 @@
+import { COLORS } from '@/styles/global/color';
 import { Slot } from 'expo-router';
 import { Image, Text, View } from 'react-native';
-import { COLORS } from '@/styles/global/color';
-import { FONTES } from '@/styles/global/fontes';
 
 export default function LoginLayout() {
 	return (
 		<View style={{ flex: 1 }}>
 			<View
 				style={{
-					flex: 0.2,
+					flex: 0.3,
 					justifyContent: 'center',
 					alignItems: 'center',
-					paddingTop: '14%',
-					paddingBottom: '2.5%',
+					marginTop: '8%',
 					backgroundColor: COLORS.gray[200],
 				}}
 			>
 				<Image
-					style={{ width: '30%', height: '70%' }}
+					style={{ width: '100%', height: '100%' }}
 					alt="MaxCam Logo"
-					resizeMode="contain"
-					source={require('@/assets/MaxCam.png')}
+					resizeMode="cover"
+					source={require('@/assets/ChatGPT Image 5 de jun. de 2025, 18_08_20.png')}
 				/>
-				<View style={{ flexDirection: 'row', marginTop: -20 }}>
-					<Text
-						style={{
-							fontSize: 42,
-							fontFamily: FONTES.FONTS.defaultBold,
-							color: COLORS.gray[500],
-						}}
-					>
-						Form
-					</Text>
-					<Text
-						style={{
-							fontSize: 42,
-							fontFamily: FONTES.FONTS.default,
-							color: COLORS.red_04[400],
-						}}
-					>
-						Cam
-					</Text>
-				</View>
 			</View>
 			<View
 				style={{
@@ -78,4 +56,4 @@ export default function LoginLayout() {
 			</View>
 		</View>
 	);
-} 
+}
