@@ -8,6 +8,7 @@ export interface Iuser {
 export interface IContext {
 	user: Iuser | null;
 	signed: boolean;
+	loading: boolean;
 	Authenticate: (sap: string, password: string) => Promise<void>;
 	Logout: () => Promise<void>;
 }

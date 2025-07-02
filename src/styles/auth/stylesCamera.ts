@@ -66,4 +66,9 @@ export const styles = StyleSheet.create({
 		marginBottom: 20,
 		paddingHorizontal: 20,
 	},
+	flatbutton:{
+		alignItems: 'flex-end',
+		marginBottom: 40,
+		marginRight: 15,
+	}
 });

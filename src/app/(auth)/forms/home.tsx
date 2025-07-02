@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { useContext, useState } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Alert, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { homeFormData } from '@/@types/formsData';
 import Button from '@/components/button/button';
@@ -125,15 +125,7 @@ const Home = (data: homeFormData) => {
 						size={22}
 						styles={{ height: 55, width: 130 }}
 					/>
-					<Button
-						title="Câmera"
-						onPress={() => router.push('/(auth)/camera')}
-						disabled={loading}
-						iconName="camera"
-						size={22}
-						styles={{ height: 55, width: 130}}
-					/>
-				
+			
 				</View>
 			</View>
 		</View>

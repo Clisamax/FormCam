@@ -23,6 +23,7 @@ const EXPIRATION_TIME = 60 * 60 * 1000; // 1 hora em milissegundos
 
 export const AuthProvider = ({ children }: IAuthProvider) => {
 	const [user, setUser] = useState<Iuser | null>(null);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const LoadStorageData = async () => {
@@ -51,6 +52,8 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 				}
 			} catch (error) {
 				console.error('Erro ao carregar dados:', error);
+			} finally {
+				setLoading(false);
 			}
 		};
 		LoadStorageData();
@@ -121,7 +124,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 
 	return (
 		<AuthContext.Provider
-			value={{ user, Logout, Authenticate: Authenticate, signed: !!user }}
+			value={{ user, Logout, Authenticate: Authenticate, signed: !!user, loading }}
 		>
 			{children}
 		</AuthContext.Provider>

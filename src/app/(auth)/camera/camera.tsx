@@ -18,6 +18,7 @@ import {
 	TouchableOpacity,
 	View,
 } from 'react-native';
+import FlatButtonAnimated from '@/components/flatButtonAnimated';
 
 const Camera: React.FC = () => {
 	const cameraViewRef = React.useRef<CameraView>(null);
@@ -110,6 +111,9 @@ const Camera: React.FC = () => {
 					<Text style={styles.overlayText}>Inicializando câmera...</Text>
 				</View>
 			)}
+			<View style={styles.flatbutton}>
+				<FlatButtonAnimated />
+			</View>
 		</View>
 	);
 };
