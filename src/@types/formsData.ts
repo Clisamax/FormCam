@@ -1,3 +1,21 @@
+export interface Iuser {
+	token: string;
+	sap: string;
+	name: string;
+	userId: string
+}
+
+export interface IContext {
+	user: Iuser | null;
+	signed: boolean;
+	loading: boolean;
+	Authenticate: (sap: string, password: string) => Promise<void>;
+	Logout: () => Promise<void>;
+}
+
+export interface IAuthProvider {
+	children: React.ReactNode;
+}
 
 export interface homeFormData {
 	uuid: string;
@@ -9,4 +27,24 @@ export interface homeFormData {
 	anotacao: string;
 
 }
+export interface LoginFormData {
+	sap: string;
+	password: string;
+}
+
+export interface CadastroFormData {
+	name: string;
+	sap: string;
+	password: string;
+	passwordConfirm: string;
+	confirmPassword: string
+}
+
+export interface produtosFormData {
+	uuid: string;
+	nome: string;
+	
+
+}
+
 

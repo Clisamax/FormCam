@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Text, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 
 import Button from '@/components/button/button';
 import Progress from '@/components/progress/progress';
@@ -29,6 +29,7 @@ const Ocorrencia: React.FC<homeFormData> = (data) => {
 	const responsavel = getValues('options_4');
 	const ocorrencia = getValues('options_5');
 	const anotacao = getValues('anotacao');
+	const sapRef = useRef<TextInput>(null);
 
 	return (
 		<View style={styles.container}>
@@ -105,7 +106,10 @@ const Ocorrencia: React.FC<homeFormData> = (data) => {
 						control: control as unknown as Control,
 						rules: undefined,
 					}}
-					inputProps={{ placeholder: 'detalhes da ocorrencia' }}
+					inputProps={{
+						placeholder: 'detalhes da ocorrencia',
+						onSubmitEditing: () => sapRef.current?.focus(),
+					}}
 				/>
 				<Button
 					title={'enviar'}

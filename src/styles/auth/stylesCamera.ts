@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
 	fullScreenContainer: {
 		flex: 1,
 		backgroundColor: '#000',
-		position: 'relative',
+		position: 'relative',	
 	},
 	camera: {
 		flex: 1,
@@ -16,8 +16,10 @@ export const styles = StyleSheet.create({
 	buttonContainer: {
 		position: 'absolute',
 		bottom: 40,
-		alignSelf: 'center',
+		alignSelf: 'flex-end',
 		zIndex: 10,
+		flexDirection: 'row',
+		gap: 90,
 	},
 	button: {
 		backgroundColor: COLORS.red[700],
@@ -26,6 +28,7 @@ export const styles = StyleSheet.create({
 		width: 80,
 		alignSelf: 'center',
 		alignItems: 'center',
+		
 	},
 	buttonDisabled: {
 		backgroundColor: COLORS.gray[400],
@@ -66,9 +69,5 @@ export const styles = StyleSheet.create({
 		marginBottom: 20,
 		paddingHorizontal: 20,
 	},
-	flatbutton:{
-		alignItems: 'flex-end',
-		marginBottom: 40,
-		marginRight: 15,
-	}
+
 });

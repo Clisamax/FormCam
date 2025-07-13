@@ -125,6 +125,7 @@ const Home = (data: homeFormData) => {
 						size={22}
 						styles={{ height: 55, width: 130 }}
 					/>
+					<Button title='produto' onPress={() => router.push('/(auth)/forms/produto')} />
 			
 				</View>
 			</View>

@@ -18,7 +18,7 @@ import {
 	TouchableOpacity,
 	View,
 } from 'react-native';
-import FlatButtonAnimated from '@/components/flatButtonAnimated';
+import FlatButtonAnimated from '@/components/flatButton';
 
 const Camera: React.FC = () => {
 	const cameraViewRef = React.useRef<CameraView>(null);
@@ -97,6 +97,7 @@ const Camera: React.FC = () => {
 				onCameraReady={handleCameraReady}
 			/>
 			<View style={styles.buttonContainer}>
+				
 				<TouchableOpacity
 					style={[styles.button, !isCameraReady && styles.buttonDisabled]}
 					onPress={takePhoto}
@@ -105,15 +106,13 @@ const Camera: React.FC = () => {
 				>
 					<Text style={styles.text}>Click</Text>
 				</TouchableOpacity>
+				<FlatButtonAnimated />
 			</View>
 			{!isCameraReady && (
 				<View style={styles.overlay}>
 					<Text style={styles.overlayText}>Inicializando câmera...</Text>
 				</View>
 			)}
-			<View style={styles.flatbutton}>
-				<FlatButtonAnimated />
-			</View>
 		</View>
 	);
 };

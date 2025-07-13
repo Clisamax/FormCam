@@ -10,7 +10,7 @@ import InputSenha from '@/components/inputSenha/inputSenha';
 import Progress from '@/components/progress/progress';
 import { api } from '../../services/api';
 
-import { CadastroFormData } from '@/@types/loginTypes';
+import { CadastroFormData } from '@/@types/formsData';
 import { stylesCadastroFinal } from '@/styles/login/stylesCadastro';
 
 const CadastroFinal = () => {

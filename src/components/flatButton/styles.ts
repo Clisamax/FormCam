@@ -3,9 +3,9 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
+    alignItems: 'flex-end',
+		marginBottom: 40,
+		marginRight: 10,
   },
   button: {
     width: 60,

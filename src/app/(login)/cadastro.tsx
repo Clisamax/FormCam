@@ -9,7 +9,7 @@ import Input from '@/components/input/input';
 import NavLink from '@/components/navLink/navLink';
 import Progress from '@/components/progress/progress';
 
-import { CadastroFormData } from '@/@types/loginTypes';
+import { CadastroFormData } from '@/@types/formsData';
 import { COLORS } from '@/styles/global/color';
 import { stylesCadastro } from '@/styles/login/stylesCadastro';
 
