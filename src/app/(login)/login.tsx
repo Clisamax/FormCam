@@ -10,7 +10,7 @@ import InputSenha from '@/components/inputSenha/inputSenha';
 import NavLink from '@/components/navLink/navLink';
 import { AuthContext } from '@/context/auth';
 
-import { LoginFormData } from '@/@types/formsData';
+import { LoginFormData } from '@/@types/types';
 import { COLORS } from '@/styles/global/color';
 import { styles } from '@/styles/login/stylesLogin';
 

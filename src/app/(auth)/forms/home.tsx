@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
 import { Text, View } from 'react-native';
 
-import { homeFormData } from '@/@types/formsData';
+import { homeFormData } from '@/@types/types';
 import Button from '@/components/button/button';
 import Input from '@/components/input/input';
 import RadioField from '@/components/inputRadio/radioField';
@@ -125,8 +125,10 @@ const Home = (data: homeFormData) => {
 						size={22}
 						styles={{ height: 55, width: 130 }}
 					/>
-					<Button title='produto' onPress={() => router.push('/(auth)/forms/produto')} />
-			
+					<Button
+						title="produto"
+						onPress={() => router.push('/(auth)/forms/produto')}
+					/>
 				</View>
 			</View>
 		</View>

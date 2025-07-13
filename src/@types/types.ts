@@ -37,13 +37,13 @@ export interface CadastroFormData {
 	sap: string;
 	password: string;
 	passwordConfirm: string;
-	confirmPassword: string
+	//confirmPassword: string
 }
 
 export interface produtosFormData {
 	uuid: string;
-	nome: string;
-	
+	name: string;
+	produto: string;
 
 }
 

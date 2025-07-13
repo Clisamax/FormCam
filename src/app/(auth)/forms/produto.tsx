@@ -1,23 +1,24 @@
-import {produtosFormData} from '@/@types/formsData';
+import { produtosFormData } from '@/@types/types';
 import Input from '@/components/input/input';
-import { Control, useForm } from 'react-hook-form';
+import { Control, useFormContext } from 'react-hook-form';
 import { TextInput, View } from 'react-native';
 
 import { styles } from '@/styles/auth/stylesProduto';
 import { useRef } from 'react';
 
-const Produto: React.FC<produtosFormData> = (data: produtosFormData) => {
+const Produto: React.FC = () => {
 	const {
+		handleSubmit,
 		control,
 		formState: { errors },
-	} = useForm();
+	} = useFormContext<produtosFormData>();
 	const ndpRef = useRef<TextInput>(null);
 
 	return (
 		<View style={styles.container}>
 			<Input
 				icon={'user'}
-				error={(errors.name?.message || '')}
+				error={errors.name?.message || ''}
 				formProps={{
 					name: 'name',
 					control: control as unknown as Control,
@@ -41,29 +42,30 @@ const Produto: React.FC<produtosFormData> = (data: produtosFormData) => {
 				inputProps={{
 					placeholder: 'Nome Completo',
 					placeholderTextColor: 'white',
-					onSubmitEditing: () => {},
+					onSubmitEditing: () => ndpRef.current?.focus(),
 					returnKeyType: 'next',
 				}}
 			/>
 			<Input
-				icon={'users'}
-				error={errors.sap?.message || ''}
-				ref={sapRef}
+				style={{width: '60%'}}
+				icon={'box'}
+				error={errors.produto?.message || ''}
+				ref={ndpRef}
 				formProps={{
-					name: 'sap',
+					name: 'produto',
 					control: control as unknown as Control,
 					rules: {
-						required: 'SAP é obrigatório',
+						required: 'Produto é obrigatório',
 						pattern: {
 							value: /^[0-9]{8}$/,
-							message: 'SAP inválido',
+							message: 'Produto inválido',
 						},
 					},
 				}}
 				inputProps={{
-					placeholder: 'SAP',
+					placeholder: 'Produto',
 					placeholderTextColor: 'white',
-					onSubmitEditing: handleSubmit(()=> {}),
+					onSubmitEditing: handleSubmit(() => {}),
 					returnKeyType: 'next',
 				}}
 			/>

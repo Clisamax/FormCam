@@ -10,7 +10,7 @@ import InputSenha from '@/components/inputSenha/inputSenha';
 import Progress from '@/components/progress/progress';
 import { api } from '../../services/api';
 
-import { CadastroFormData } from '@/@types/formsData';
+import { CadastroFormData } from '@/@types/types';
 import { stylesCadastroFinal } from '@/styles/login/stylesCadastro';
 
 const CadastroFinal = () => {
@@ -102,9 +102,9 @@ const CadastroFinal = () => {
 				<InputSenha
 					icon="eye"
 					ref={confirmRef}
-					error={errors.confirmPassword?.message || ''}
+					error={errors.passwordConfirm?.message || ''}
 					formProps={{
-						name: 'confirmPassword',
+						name: 'passwordConfirm',
 						control: control as unknown as Control,
 						rules: {
 							required: 'Confirmação de senha é obrigatória',

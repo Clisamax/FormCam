@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
 		backgroundColor: COLORS.gray[200],
 		alignItems: 'center',
 		overflow: 'hidden',
-		margin: 10,
+		marginTop: 10,
 	},
 	icon: {
 		width: 46,

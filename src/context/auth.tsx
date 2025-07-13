@@ -1,4 +1,4 @@
-import { IAuthProvider, IContext, Iuser } from '@/@types/authContextTypes';
+import { IAuthProvider, IContext, Iuser } from '@/@types/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import { createContext, useEffect, useState } from 'react';
@@ -124,7 +124,13 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 
 	return (
 		<AuthContext.Provider
-			value={{ user, Logout, Authenticate: Authenticate, signed: !!user, loading }}
+			value={{
+				user,
+				Logout,
+				Authenticate: Authenticate,
+				signed: !!user,
+				loading,
+			}}
 		>
 			{children}
 		</AuthContext.Provider>

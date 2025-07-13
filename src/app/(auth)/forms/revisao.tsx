@@ -7,12 +7,12 @@ import Button from '@/components/button/button';
 import Progress from '@/components/progress/progress';
 import { AuthContext } from '@/context/auth';
 
-import { homeFormData } from '@/@types/formsData';
+import { homeFormData } from '@/@types/types';
+import { api } from '@/services/api';
 import { styles } from '@/styles/auth/stylesRevisao';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fontes';
 import { AxiosError } from 'axios';
-import { api } from '@/services/api';
 
 const Revisao: React.FC<homeFormData> = (data) => {
 	const { Logout, user } = useContext(AuthContext);

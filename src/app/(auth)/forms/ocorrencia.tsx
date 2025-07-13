@@ -7,11 +7,11 @@ import Button from '@/components/button/button';
 import Progress from '@/components/progress/progress';
 import { AuthContext } from '@/context/auth';
 
-import { homeFormData } from '@/@types/formsData';
+import { homeFormData } from '@/@types/types';
 
-import { styles } from '@/styles/auth/stylesOcorrencia';
 import Input from '@/components/inputAnotacao/inputAnotacao';
 import RadioField from '@/components/inputRadio/radioField';
+import { styles } from '@/styles/auth/stylesOcorrencia';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fontes';
 
