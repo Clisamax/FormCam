@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, TextInputProps } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, TextInputProps, Platform } from 'react-native';
 import {
 	Control,
 	Controller,
@@ -7,7 +7,7 @@ import {
 	Path,
 	RegisterOptions,
 } from 'react-hook-form';
-import DatePicker from 'react-native-datepicker';
+import DatePicker from 'react-native-date-picker';
 import { styles } from './styles';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -24,7 +24,14 @@ interface InputDatePickerProps<T extends FieldValues> {
 	error?: string;
 }
 
+const parseDateString = (dateString: string): Date => {
+	const [day, month, year] = dateString.split('/').map(Number);
+	return new Date(year, month - 1, day);
+};
+
 export function InputDatePicker<T extends FieldValues>({ formProps, inputProps, error }: InputDatePickerProps<T>) {
+	const [open, setOpen] = useState(false);
+
 	return (
 		<View style={styles.container}>
 			<Controller
@@ -32,45 +39,29 @@ export function InputDatePicker<T extends FieldValues>({ formProps, inputProps, 
 				name={formProps.name}
 				rules={formProps.rules}
 				render={({ field: { onChange, value } }) => (
-					<DatePicker
-						style={styles.inputContainer}
-						date={value || ''}
-						mode="date"
-						placeholder={inputProps?.placeholder || "Selecione a data"}
-						format="DD/MM/YYYY"
-						minDate="01-01-2000"
-						maxDate="01-01-2030"
-						confirmBtnText="Confirmar"
-						cancelBtnText="Cancelar"
-						customStyles={{
-							dateIcon: {
-								position: 'absolute',
-								left: 0,
-								top: 4,
-								marginLeft: 0,
-							},
-							dateInput: {
-								marginLeft: 36,
-								borderWidth: 0,
-								alignItems: 'flex-start',
-							},
-							dateText: {
-								color: 'black',
-								fontSize: 14,
-							},
-							placeholderText: {
-								color: '#ccc',
-								fontSize: 14,
-							},
-						}}
-					onDateChange={(date: string) => {
-						onChange(date);
-					}}
-					iconComponent={
-						<FontAwesome name="calendar" size={20} color="#ccc" style={styles.icon} />
-					}
-					{...inputProps}
-					/>
+					<>
+						<TouchableOpacity onPress={() => setOpen(true)}>
+							<View style={styles.inputContainer}>
+								<FontAwesome name="calendar" size={20} color="#ccc" style={styles.icon} />
+								<Text style={styles.input}>{value || inputProps?.placeholder}</Text>
+							</View>
+						</TouchableOpacity>
+						<DatePicker
+							modal
+							open={open}
+							date={value ? parseDateString(value) : new Date()}
+							onConfirm={(date) => {
+								setOpen(false);
+								onChange(date.toLocaleDateString('pt-BR'));
+							}}
+							onCancel={() => {
+								setOpen(false);
+							}}
+							mode="date"
+							minimumDate={new Date(2000, 0, 1)}
+							maximumDate={new Date(2030, 0, 1)}
+						/>
+					</>
 				)}
 			/>
 			{error && <Text style={styles.error}>{error}</Text>}
