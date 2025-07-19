@@ -24,9 +24,13 @@ interface InputDatePickerProps<T extends FieldValues> {
 	error?: string;
 }
 
-const parseDateString = (dateString: string): Date => {
-	const [day, month, year] = dateString.split('/').map(Number);
-	return new Date(year, month - 1, day);
+const parseDateTimeString = (dateTimeString: string): Date => {
+	// Assuming dateTimeString is in a format like "DD/MM/YYYY, HH:MM:SS"
+	// This parsing is basic and might need to be more robust depending on exact locale output
+	const [datePart, timePart] = dateTimeString.split(', ');
+	const [day, month, year] = datePart.split('/').map(Number);
+	const [hours, minutes, seconds] = timePart.split(':').map(Number);
+	return new Date(year, month - 1, day, hours, minutes, seconds || 0);
 };
 
 export function InputDatePicker<T extends FieldValues>({ formProps, inputProps, error }: InputDatePickerProps<T>) {
@@ -49,15 +53,15 @@ export function InputDatePicker<T extends FieldValues>({ formProps, inputProps, 
 						<DatePicker
 							modal
 							open={open}
-							date={value ? parseDateString(value) : new Date()}
+							date={value ? parseDateTimeString(value) : new Date()}
 							onConfirm={(date) => {
 								setOpen(false);
-								onChange(date.toLocaleDateString('pt-BR'));
+								onChange(date.toLocaleString('pt-BR')); // Format as datetime string
 							}}
 							onCancel={() => {
 								setOpen(false);
 							}}
-							mode="date"
+							mode="datetime" // Changed to datetime
 							minimumDate={new Date(2000, 0, 1)}
 							maximumDate={new Date(2030, 0, 1)}
 						/>

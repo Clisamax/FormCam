@@ -17,6 +17,22 @@ const Produto: React.FC = () => {
 
 	return (
 		<View style={styles.container}>
+			<InputDatePicker<produtosFormData>
+				error={errors.dataOcorrencia?.message || ''}
+				formProps={{
+					name: 'dataOcorrencia',
+					control: control,
+					rules: {
+						required: 'Data de ocorrência é obrigatória',
+					},
+				}}
+				inputProps={{
+					placeholder: 'Data de Ocorrência',
+					placeholderTextColor: 'white',
+					returnKeyType: 'next',
+				}}
+
+			/>
 			<Input
 				icon={'user'}
 				error={errors.name?.message || ''}
@@ -98,20 +114,6 @@ const Produto: React.FC = () => {
 					}}
 				/>
 			</View>
-			<InputDatePicker<produtosFormData>
-				error={errors.dataOcorrencia?.message || ''}
-				formProps={{
-					name: 'dataOcorrencia',
-					control: control,
-					rules: {
-						required: 'Data de ocorrência é obrigatória',
-					},
-				}}
-				inputProps={{
-					placeholder: 'Data de Ocorrência',
-					placeholderTextColor: 'white',
-				}}
-			/>
 		</View>
 	);
 };

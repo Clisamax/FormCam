@@ -1,4 +1,5 @@
-import { TextInput } from "react-native";
+import { FieldValues, Path, Control, RegisterOptions } from "react-hook-form";
+import { TextInput, TextInputProps } from "react-native";
 
 export interface Iuser {
 	token: string;
@@ -47,6 +48,19 @@ export interface produtosFormData {
 	produto: string;
 	quantidade: string;
 	dataOcorrencia: string;
+}
+
+export interface InputDatePickerProps<T extends FieldValues> {
+	formProps: {
+		name: Path<T>;
+		control: Control<T>;
+		rules?: Omit<
+			RegisterOptions<T, Path<T>>,
+			'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'
+		>;
+	};
+	inputProps?: TextInputProps;
+	error?: string;
 }
 
 
