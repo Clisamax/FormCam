@@ -8,30 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		2773C9F54EBD45378C4BCD6B /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AC217F6E149E8AD91E2F9 /* noop-file.swift */; };
+		2092F71FA59318EEF1F7C8D0 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F94D29F73F22B625634A0C /* ExpoModulesProvider.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		6F355CB7C199A59D2CF72701 /* libPods-FormCam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5977090D4BD9A7A53354071B /* libPods-FormCam.a */; };
-		82C5D54A989A9D17D42329E4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F22C8004B1FF05B89D393339 /* PrivacyInfo.xcprivacy */; };
+		549DDF6B583BBB1A49D3D526 /* libPods-FormCam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A18316D3A448373749B12EBC /* libPods-FormCam.a */; };
+		60B7E8BEB0484E0CB7669F8E /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658B86336A504A098816712C /* noop-file.swift */; };
+		B6F2250C3598CDC7149F39C8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 7078A8F67234AC771A62BC7C /* PrivacyInfo.xcprivacy */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		C039B3A47F50316214B7E011 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39BD47513DE2E9E462942F0 /* ExpoModulesProvider.swift */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01DDFFF8816407934326CD4E /* Pods-FormCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormCam.debug.xcconfig"; path = "Target Support Files/Pods-FormCam/Pods-FormCam.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* FormCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FormCam/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FormCam/Info.plist; sourceTree = "<group>"; };
-		3E9AC217F6E149E8AD91E2F9 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "FormCam/noop-file.swift"; sourceTree = "<group>"; };
-		5977090D4BD9A7A53354071B /* libPods-FormCam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FormCam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9ACA7B539A82AE2C0C8DF279 /* Pods-FormCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormCam.release.xcconfig"; path = "Target Support Files/Pods-FormCam/Pods-FormCam.release.xcconfig"; sourceTree = "<group>"; };
-		A2F725A5621BB27FE89A8894 /* Pods-FormCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormCam.debug.xcconfig"; path = "Target Support Files/Pods-FormCam/Pods-FormCam.debug.xcconfig"; sourceTree = "<group>"; };
+		3755977AA72CFBFE496F1641 /* Pods-FormCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormCam.release.xcconfig"; path = "Target Support Files/Pods-FormCam/Pods-FormCam.release.xcconfig"; sourceTree = "<group>"; };
+		658B86336A504A098816712C /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "FormCam/noop-file.swift"; sourceTree = "<group>"; };
+		7078A8F67234AC771A62BC7C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = FormCam/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		85F94D29F73F22B625634A0C /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-FormCam/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		A18316D3A448373749B12EBC /* libPods-FormCam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FormCam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = FormCam/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		E39BD47513DE2E9E462942F0 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-FormCam/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FormCam/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* FormCam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FormCam-Bridging-Header.h"; path = "FormCam/FormCam-Bridging-Header.h"; sourceTree = "<group>"; };
-		F22C8004B1FF05B89D393339 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = FormCam/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,21 +39,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F355CB7C199A59D2CF72701 /* libPods-FormCam.a in Frameworks */,
+				549DDF6B583BBB1A49D3D526 /* libPods-FormCam.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0064E7CDE32CE3AFC2536E91 /* ExpoModulesProviders */ = {
-			isa = PBXGroup;
-			children = (
-				60516A0484F740E0CE2076C3 /* FormCam */,
-			);
-			name = ExpoModulesProviders;
-			sourceTree = "<group>";
-		};
 		13B07FAE1A68108700A75B9A /* FormCam */ = {
 			isa = PBXGroup;
 			children = (
@@ -63,37 +55,27 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				3E9AC217F6E149E8AD91E2F9 /* noop-file.swift */,
-				F22C8004B1FF05B89D393339 /* PrivacyInfo.xcprivacy */,
+				658B86336A504A098816712C /* noop-file.swift */,
+				7078A8F67234AC771A62BC7C /* PrivacyInfo.xcprivacy */,
 			);
 			name = FormCam;
-			sourceTree = "<group>";
-		};
-		1AA2B3FF8AC00540A9B4F8E0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A2F725A5621BB27FE89A8894 /* Pods-FormCam.debug.xcconfig */,
-				9ACA7B539A82AE2C0C8DF279 /* Pods-FormCam.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5977090D4BD9A7A53354071B /* libPods-FormCam.a */,
+				A18316D3A448373749B12EBC /* libPods-FormCam.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		60516A0484F740E0CE2076C3 /* FormCam */ = {
+		736F71D023D21257FC56E1CC /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				E39BD47513DE2E9E462942F0 /* ExpoModulesProvider.swift */,
+				DEF749BE03AA3CF7F4D7E3BE /* FormCam */,
 			);
-			name = FormCam;
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -110,8 +92,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				1AA2B3FF8AC00540A9B4F8E0 /* Pods */,
-				0064E7CDE32CE3AFC2536E91 /* ExpoModulesProviders */,
+				E4B9CB6B1F5DDAB186D423B4 /* Pods */,
+				736F71D023D21257FC56E1CC /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -135,6 +117,23 @@
 			path = FormCam/Supporting;
 			sourceTree = "<group>";
 		};
+		DEF749BE03AA3CF7F4D7E3BE /* FormCam */ = {
+			isa = PBXGroup;
+			children = (
+				85F94D29F73F22B625634A0C /* ExpoModulesProvider.swift */,
+			);
+			name = FormCam;
+			sourceTree = "<group>";
+		};
+		E4B9CB6B1F5DDAB186D423B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01DDFFF8816407934326CD4E /* Pods-FormCam.debug.xcconfig */,
+				3755977AA72CFBFE496F1641 /* Pods-FormCam.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,13 +142,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FormCam" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				60D5CB68C3091DC456F890DA /* [Expo] Configure project */,
+				ECD5054A71D5ADFB196770EF /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				276AFF455E13A741F79A51C1 /* [CP] Embed Pods Frameworks */,
+				50B9514BEF44FDC92176F8DA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,7 +198,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				82C5D54A989A9D17D42329E4 /* PrivacyInfo.xcprivacy in Resources */,
+				B6F2250C3598CDC7149F39C8 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +242,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		276AFF455E13A741F79A51C1 /* [CP] Embed Pods Frameworks */ = {
+		50B9514BEF44FDC92176F8DA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -260,25 +259,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FormCam/Pods-FormCam-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		60D5CB68C3091DC456F890DA /* [Expo] Configure project */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-FormCam/expo-configure-project.sh\"\n";
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -324,6 +304,25 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FormCam/Pods-FormCam-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		ECD5054A71D5ADFB196770EF /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-FormCam/expo-configure-project.sh\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -332,8 +331,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				2773C9F54EBD45378C4BCD6B /* noop-file.swift in Sources */,
-				C039B3A47F50316214B7E011 /* ExpoModulesProvider.swift in Sources */,
+				60B7E8BEB0484E0CB7669F8E /* noop-file.swift in Sources */,
+				2092F71FA59318EEF1F7C8D0 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,11 +341,12 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2F725A5621BB27FE89A8894 /* Pods-FormCam.debug.xcconfig */;
+			baseConfigurationReference = 01DDFFF8816407934326CD4E /* Pods-FormCam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VW658NV936;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -377,11 +377,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9ACA7B539A82AE2C0C8DF279 /* Pods-FormCam.release.xcconfig */;
+			baseConfigurationReference = 3755977AA72CFBFE496F1641 /* Pods-FormCam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VW658NV936;
 				INFOPLIST_FILE = FormCam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -459,10 +460,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -517,10 +515,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
