@@ -1,3 +1,5 @@
+import { TextInput } from "react-native";
+
 export interface Iuser {
 	token: string;
 	sap: string;
@@ -37,14 +39,15 @@ export interface CadastroFormData {
 	sap: string;
 	password: string;
 	passwordConfirm: string;
-	//confirmPassword: string
 }
 
 export interface produtosFormData {
 	uuid: string;
 	name: string;
 	produto: string;
-
+	quantidade: string;
+	dataOcorrencia: string;
 }
+
 
 

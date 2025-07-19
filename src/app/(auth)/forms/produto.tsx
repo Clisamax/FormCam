@@ -3,13 +3,14 @@ import Input from '@/components/input/input';
 import { Control, useFormContext } from 'react-hook-form';
 import { TextInput, View } from 'react-native';
 
+import { InputDatePicker } from '@/components/inputDatePicker';
 import { styles } from '@/styles/auth/stylesProduto';
 import { useRef } from 'react';
-
 const Produto: React.FC = () => {
 	const {
-		handleSubmit,
 		control,
+		handleSubmit,
+		register,
 		formState: { errors },
 	} = useFormContext<produtosFormData>();
 	const ndpRef = useRef<TextInput>(null);
@@ -46,27 +47,69 @@ const Produto: React.FC = () => {
 					returnKeyType: 'next',
 				}}
 			/>
-			<Input
-				style={{width: '60%'}}
-				icon={'box'}
-				error={errors.produto?.message || ''}
-				ref={ndpRef}
-				formProps={{
-					name: 'produto',
-					control: control as unknown as Control,
-					rules: {
-						required: 'Produto é obrigatório',
-						pattern: {
-							value: /^[0-9]{8}$/,
-							message: 'Produto inválido',
+			<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+				<Input
+					style={{ width: '60%' }}
+					icon={'box'}
+					error={errors.produto?.message || ''}
+					ref={ndpRef}
+					formProps={{
+						name: 'produto',
+						control: control as unknown as Control,
+						rules: {
+							required: 'Produto é obrigatório',
+							pattern: {
+								value: /^[0-9]{8}$/,
+								message: 'Produto inválido',
+							},
 						},
+					}}
+					inputProps={{
+						placeholder: 'Produto',
+						placeholderTextColor: 'white',
+						onSubmitEditing: handleSubmit(() => {}),
+						returnKeyType: 'next',
+					}}
+				/>
+				<Input
+					style={{ width: '35%' }}
+					icon={'plus-circle'}
+					error={errors.quantidade?.message || ''}
+					formProps={{
+						name: 'quantidade',
+						control: control as unknown as Control,
+						rules: {
+							required: 'Quantidade é obrigatório',
+							pattern: {
+								value: /^[0-9]+$/,
+								message: 'Quantidade inválida',
+							},
+							min: {
+								value: 1,
+								message: 'Quantidade deve ser maior que zero',
+							},
+						},
+					}}
+					inputProps={{
+						placeholder: 'Quantidade',
+						placeholderTextColor: 'white',
+						keyboardType: 'numeric',
+						returnKeyType: 'done',
+					}}
+				/>
+			</View>
+			<InputDatePicker<produtosFormData>
+				error={errors.dataOcorrencia?.message || ''}
+				formProps={{
+					name: 'dataOcorrencia',
+					control: control,
+					rules: {
+						required: 'Data de ocorrência é obrigatória',
 					},
 				}}
 				inputProps={{
-					placeholder: 'Produto',
+					placeholder: 'Data de Ocorrência',
 					placeholderTextColor: 'white',
-					onSubmitEditing: handleSubmit(() => {}),
-					returnKeyType: 'next',
 				}}
 			/>
 		</View>
