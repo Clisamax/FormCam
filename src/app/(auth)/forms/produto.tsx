@@ -31,7 +31,6 @@ const Produto: React.FC = () => {
 					placeholderTextColor: 'white',
 					returnKeyType: 'next',
 				}}
-
 			/>
 			<Input
 				icon={'user'}
