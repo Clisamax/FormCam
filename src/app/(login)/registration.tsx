@@ -14,7 +14,7 @@ import { COLORS } from '@/styles/global/color';
 import { stylesCadastro } from '@/styles/login/stylesCadastro';
 
 const HandleNext = () => {
-	router.push('/(login)/cadastroFinal');
+	router.push('/(login)/fineRegistration');
 };
 
 const Cadastro: React.FC = () => {

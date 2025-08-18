@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
 	container: {
 		width: '100%',
+
 	},
 	group: {
 		flexDirection: 'row',
@@ -12,6 +13,7 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		overflow: 'hidden',
 		marginTop: 10,
+		borderRadius: 8
 	},
 	icon: {
 		width: 46,

@@ -1,5 +1,5 @@
-import { FieldValues, Path, Control, RegisterOptions } from "react-hook-form";
-import { TextInput, TextInputProps } from "react-native";
+import { Control, FieldValues, Path, RegisterOptions } from "react-hook-form";
+import { TextInputProps } from "react-native";
 
 export interface Iuser {
 	token: string;
@@ -27,8 +27,7 @@ export interface homeFormData {
 	options_3: string;
 	options_4: string;
 	options_5: string;
-	anotacao: string;
-
+	annotation: string;
 }
 export interface LoginFormData {
 	sap: string;
@@ -46,8 +45,10 @@ export interface produtosFormData {
 	uuid: string;
 	name: string;
 	produto: string;
-	quantidade: string;
-	dataOcorrencia: string;
+	serie: string;
+	quantity: string;
+	occurrenceDate: string;
+	annotation: string;
 }
 
 export interface InputDatePickerProps<T extends FieldValues> {

@@ -1,15 +1,15 @@
 import { router } from 'expo-router';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Text, View } from 'react-native';
-
-import Button from '@/components/button/button';
-import Progress from '@/components/progress/progress';
-import { AuthContext } from '@/context/auth';
+import { ScrollView, Text, View } from 'react-native';
 
 import { homeFormData } from '@/@types/types';
+import Button from '@/components/button/button';
+import Progress from '@/components/progress/progress';
 import RadioTaskButton from '@/components/radioTaskButton/radioTaskButton';
-import { styles } from '@/styles/auth/stylesRecepcao';
+import { AuthContext } from '@/context/auth';
+
+import { styles } from '@/styles/auth/stylesInternalMovement';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fontes';
 
@@ -17,13 +17,13 @@ export function retorn() {
 	router.back();
 }
 
-const Recepcao: React.FC<homeFormData> = (data) => {
+const InternalMovement: React.FC<homeFormData> = (data) => {
 	const { Logout, user } = useContext(AuthContext);
 	const { control, handleSubmit, getValues } = useFormContext<homeFormData>();
 	const uuid = getValues('uuid');
-	const origem = getValues('options_1');
-	const processo = getValues('options_2');
-	const procedimento = getValues('options_3');
+	const origin = getValues('options_1');
+	const process = getValues('options_2');
+	const procedure = getValues('options_3');
 
 	return (
 		<View style={styles.container}>
@@ -69,10 +69,20 @@ const Recepcao: React.FC<homeFormData> = (data) => {
 							{ textAlign: 'center', color: COLORS.red[500] },
 						]}
 					>
-						{`${origem}`}
+						<Text style={[styles.text, { fontWeight: 'bold' }]}>
+							Qual o departamento de origem?
+						</Text>
+						<Text
+							style={[styles.text, { color: COLORS.red[500] }]}
+						>{`=> ${origin}`}</Text>
 					</Text>
 					<Text style={[styles.text, { textAlign: 'center' }]}>
-						{`${processo}`}
+						<Text style={[styles.text, { fontWeight: 'bold' }]}>
+							Qual o procedimento?
+						</Text>
+						<Text
+							style={[styles.text, { color: COLORS.red[500] }]}
+						>{`=> ${procedure}`}</Text>
 					</Text>
 				</View>
 				<View style={styles.containerMidRight}>
@@ -81,32 +91,40 @@ const Recepcao: React.FC<homeFormData> = (data) => {
 					</Text>
 				</View>
 			</View>
-
-			<View style={styles.containerFoot}>
+			<ScrollView style={styles.containerFoot}>
 				<RadioTaskButton
 					name="options_3"
 					control={control as unknown as Control}
 					options={[
-						{ label: 'Durante a descarga', value: 'Durante a descarga' },
+						{ label: 'Durante o picking', value: 'Durante o picking' },
 						{
-							label: 'Avaria detectada no ato da descarga',
-							value: 'Avaria detectada no ato da descarga',
+							label: 'Durante a ressuprimento',
+							value: 'Durante a ressuprimento',
 						},
 						{
-							label: 'Movimentaçåo do produto do caminhao para a ilha',
-							value: 'Movimentaçåo do produto do caminhao para a ilha',
+							label: 'Durante o armazenamento',
+							value: 'Durante o armazenamento',
+						},
+						{
+							label: 'Durante o repanejamento',
+							value: 'Durante o repanejamento',
+						},
+						{
+							label: 'Avaria detectada na posiçåo',
+							value: 'Avaria detectada na posiçåo',
 						},
 					]}
 					label="Selecione uma opção"
 					rules={{ required: 'Este campo é obrigatório' }}
 					onPress={() => {
-						router.push('/(auth)/forms/responsavel');
+						router.push('/(auth)/forms/responsible');
 						console.log('options_3:', getValues('options_3'));
 					}}
 				/>
+
 				<View style={styles.containerFootButton}>{''}</View>
-			</View>
+			</ScrollView>
 		</View>
 	);
 };
-export default Recepcao;
+export default InternalMovement;

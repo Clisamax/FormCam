@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { Controller, UseControllerProps } from 'react-hook-form';
 import { Text, TextInput, TextInputProps, View } from 'react-native';
 
-import { styles } from '@/components/inputAnotacao/styles';
+import { styles } from '@/components/inputAnnotation/styles';
 
 type Props = {
 	error: string;

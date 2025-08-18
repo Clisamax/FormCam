@@ -1,16 +1,15 @@
 import { router } from 'expo-router';
 import { useContext } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { ScrollView, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import Button from '@/components/button/button';
 import Progress from '@/components/progress/progress';
 import { AuthContext } from '@/context/auth';
 
 import { homeFormData } from '@/@types/types';
-
 import RadioTaskButton from '@/components/radioTaskButton/radioTaskButton';
-import { styles } from '@/styles/auth/stylesResponsavel';
+import { styles } from '@/styles/auth/stylesDispatch';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fontes';
 
@@ -18,14 +17,13 @@ export function retorn() {
 	router.back();
 }
 
-const Responsavel: React.FC<homeFormData> = (data) => {
+const Dispatch: React.FC<homeFormData> = (data) => {
 	const { Logout, user } = useContext(AuthContext);
 	const { control, handleSubmit, getValues } = useFormContext<homeFormData>();
 	const uuid = getValues('uuid');
-	const origem = getValues('options_1');
-	const processo = getValues('options_2');
-	const procedimento = getValues('options_3');
-	const responsavel = getValues('options_4');
+	const options_1 = getValues('options_1');
+	const options_2 = getValues('options_2');
+	const options_3 = getValues('options_3');
 
 	return (
 		<View style={styles.container}>
@@ -48,7 +46,7 @@ const Responsavel: React.FC<homeFormData> = (data) => {
 							<Text style={{ color: COLORS.gray[400] }}> {`${user?.sap}`}</Text>
 						</Text>
 					</Text>
-					<Progress progress={66} />
+					<Progress progress={33} />
 					<Text style={[styles.textSpace, { color: COLORS.red[500] }]}>
 						<Text
 							style={{
@@ -71,10 +69,10 @@ const Responsavel: React.FC<homeFormData> = (data) => {
 							{ textAlign: 'center', color: COLORS.red[500] },
 						]}
 					>
-						{`${origem}`}
+						{`${options_1}`}
 					</Text>
 					<Text style={[styles.text, { textAlign: 'center' }]}>
-						{`${processo}`}
+						{`${options_2}`}
 					</Text>
 				</View>
 				<View style={styles.containerMidRight}>
@@ -84,69 +82,35 @@ const Responsavel: React.FC<homeFormData> = (data) => {
 				</View>
 			</View>
 
-			<ScrollView style={styles.containerFoot}>
+			<View style={styles.containerFoot}>
 				<RadioTaskButton
-					name="options_4"
+					name="options_3"
 					control={control as unknown as Control}
 					options={[
 						{
-							label: 'Carregamento frabrica',
-							value: 'Carregamento frabrica',
+							label: 'Avaria detectada na posiçåo',
+							value: 'Avaria detectada na posiçåo',
 						},
 						{
-							label: 'Conduçåo de veiculo',
-							value: 'Conduçåo de veiculo',
-						},
-
-						{
-							label: 'Vicio de embalagem',
-							value: 'Vicio de embalagem',
+							label: 'Durante o carregamento',
+							value: 'Durante o carregamento',
 						},
 						{
-							label: 'Operador de descarga',
-							value: 'Operador de descarga',
-						},
-						{
-							label: 'Operador de armazenamento',
-							value: 'Operador de armazenamento',
-						},
-						{
-							label: 'Operador de ressuprimento',
-							value: 'Operador de ressuprimento',
-						},
-						{
-							label: 'Operador de remanejamento',
-							value: 'Operador de remanejamento',
-						},
-						{
-							label: 'Operador de expediçåo',
-							value: 'Operador de expediçåo',
-						},
-						{
-							label: 'Auxiliar de picking',
-							value: 'Auxiliar de picking',
-						},
-						{
-							label: 'Auxiliar de jet',
-							value: 'Auxiliar de jet',
-						},
-						{
-							label: 'Outros',
-							value: 'Outros',
+							label: 'Movimentaçåo do produto da posiçåo para plataforma',
+							value: 'Movimentaçåo do produto da posiçåo para plataforma',
 						},
 					]}
 					label="Selecione uma opção"
 					rules={{ required: 'Este campo é obrigatório' }}
 					onPress={() => {
-						router.push('/(auth)/forms/ocorrencia');
+						router.push('/(auth)/forms/responsible');
 						console.log('options_3:', getValues('options_3'));
-						console.log('options_4:', getValues('options_4'));
 					}}
 				/>
 
 				<View style={styles.containerFootButton}>{''}</View>
-			</ScrollView>
+			</View>
 		</View>
 	);
 };
-export default Responsavel;
+export default Dispatch;

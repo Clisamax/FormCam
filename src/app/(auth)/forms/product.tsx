@@ -3,10 +3,10 @@ import Input from '@/components/input/input';
 import { Control, useFormContext } from 'react-hook-form';
 import { TextInput, View } from 'react-native';
 
-import { InputDatePicker } from '@/components/inputDatePicker';
-import { styles } from '@/styles/auth/stylesProduto';
+import { DateInput } from '@/components/inputDatePicker';
+import { styles } from '@/styles/auth/stylesProduct';
 import { useRef } from 'react';
-const Produto: React.FC = () => {
+const Product: React.FC = () => {
 	const {
 		control,
 		handleSubmit,
@@ -17,20 +17,13 @@ const Produto: React.FC = () => {
 
 	return (
 		<View style={styles.container}>
-			<InputDatePicker<produtosFormData>
-				error={errors.dataOcorrencia?.message || ''}
-				formProps={{
-					name: 'dataOcorrencia',
-					control: control,
-					rules: {
-						required: 'Data de ocorrência é obrigatória',
-					},
-				}}
-				inputProps={{
-					placeholder: 'Data de Ocorrência',
-					placeholderTextColor: 'white',
-					returnKeyType: 'next',
-				}}
+			<DateInput
+				control={control as unknown as Control}
+				name="occurrenceDate"
+				label="Occurrence Date"
+				icon="calendar"
+				oes
+				s
 			/>
 			<Input
 				icon={'user'}
@@ -89,24 +82,24 @@ const Produto: React.FC = () => {
 				<Input
 					style={{ width: '35%' }}
 					icon={'plus-circle'}
-					error={errors.quantidade?.message || ''}
+					error={errors.quantity?.message || ''}
 					formProps={{
-						name: 'quantidade',
+						name: 'quantity',
 						control: control as unknown as Control,
 						rules: {
-							required: 'Quantidade é obrigatório',
+							required: 'Quantity is required',
 							pattern: {
 								value: /^[0-9]+$/,
-								message: 'Quantidade inválida',
+								message: 'Invalid Quantity',
 							},
 							min: {
 								value: 1,
-								message: 'Quantidade deve ser maior que zero',
+								message: 'Quantity must be greater than zero',
 							},
 						},
 					}}
 					inputProps={{
-						placeholder: 'Quantidade',
+						placeholder: 'Quantity',
 						placeholderTextColor: 'white',
 						keyboardType: 'numeric',
 						returnKeyType: 'done',
@@ -116,4 +109,4 @@ const Produto: React.FC = () => {
 		</View>
 	);
 };
-export default Produto;
+export default Product;

@@ -26,15 +26,15 @@ const Home = (data: homeFormData) => {
 
 	function uuid(data: homeFormData) {
 		if (data.options_2 === 'Expedição') {
-			router.push('/(auth)/forms/expedicao');
+			router.push('/(auth)/forms/dispatch');
 		} else if (data.options_2 === 'Recepção') {
-			router.push('/(auth)/forms/recepcao');
+			router.push('/(auth)/forms/reception');
 		} else if (data.options_2 === 'Mov. Interna') {
-			router.push('/(auth)/forms/movInterna');
+			router.push('/(auth)/forms/internalMovement');
 		}
 		console.log('uuid:', getValues('uuid'));
-		console.log('origem:', getValues('options_1'));
-		console.log('processo:', getValues('options_2'));
+		console.log('origin:', getValues('options_1'));
+		console.log('process:', getValues('options_2'));
 		console.log(data);
 	}
 	return (
@@ -127,7 +127,7 @@ const Home = (data: homeFormData) => {
 					/>
 					<Button
 						title="produto"
-						onPress={() => router.push('/(auth)/forms/produto')}
+						onPress={() => router.push('/(auth)/forms/product')}
 					/>
 				</View>
 			</View>

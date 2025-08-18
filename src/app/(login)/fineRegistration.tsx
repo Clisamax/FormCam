@@ -6,7 +6,7 @@ import { Alert, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Button from '@/components/button/button';
-import InputSenha from '@/components/inputSenha/inputSenha';
+import InputSenha from '@/components/inputPassword/inputPassword'
 import Progress from '@/components/progress/progress';
 import { api } from '../../services/api';
 

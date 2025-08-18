@@ -1,15 +1,16 @@
 import { router } from 'expo-router';
 import { useContext } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 
 import Button from '@/components/button/button';
 import Progress from '@/components/progress/progress';
 import { AuthContext } from '@/context/auth';
 
 import { homeFormData } from '@/@types/types';
+
 import RadioTaskButton from '@/components/radioTaskButton/radioTaskButton';
-import { styles } from '@/styles/auth/stylesExpedicao';
+import { styles } from '@/styles/auth/stylesResponsible';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fontes';
 
@@ -17,13 +18,14 @@ export function retorn() {
 	router.back();
 }
 
-const Expedicao: React.FC<homeFormData> = (data) => {
+const Responsible: React.FC<homeFormData> = (data) => {
 	const { Logout, user } = useContext(AuthContext);
 	const { control, handleSubmit, getValues } = useFormContext<homeFormData>();
 	const uuid = getValues('uuid');
-	const options_1 = getValues('options_1');
-	const options_2 = getValues('options_2');
-	const options_3 = getValues('options_3');
+	const origin = getValues('options_1');
+	const process = getValues('options_2');
+	const procedure = getValues('options_3');
+	const responsible = getValues('options_4');
 
 	return (
 		<View style={styles.container}>
@@ -46,7 +48,7 @@ const Expedicao: React.FC<homeFormData> = (data) => {
 							<Text style={{ color: COLORS.gray[400] }}> {`${user?.sap}`}</Text>
 						</Text>
 					</Text>
-					<Progress progress={33} />
+					<Progress progress={66} />
 					<Text style={[styles.textSpace, { color: COLORS.red[500] }]}>
 						<Text
 							style={{
@@ -69,10 +71,20 @@ const Expedicao: React.FC<homeFormData> = (data) => {
 							{ textAlign: 'center', color: COLORS.red[500] },
 						]}
 					>
-						{`${options_1}`}
+						<Text style={[styles.text, { fontWeight: 'bold' }]}>
+							Qual o departamento de origem?
+						</Text>
+						<Text
+							style={[styles.text, { color: COLORS.red[500] }]}
+						>{`=> ${origin}`}</Text>
 					</Text>
 					<Text style={[styles.text, { textAlign: 'center' }]}>
-						{`${options_2}`}
+						<Text style={[styles.text, { fontWeight: 'bold' }]}>
+							Qual o procedimento?
+						</Text>
+						<Text
+							style={[styles.text, { color: COLORS.red[500] }]}
+						>{`=> ${procedure}`}</Text>
 					</Text>
 				</View>
 				<View style={styles.containerMidRight}>
@@ -82,35 +94,69 @@ const Expedicao: React.FC<homeFormData> = (data) => {
 				</View>
 			</View>
 
-			<View style={styles.containerFoot}>
+			<ScrollView style={styles.containerFoot}>
 				<RadioTaskButton
-					name="options_3"
+					name="options_4"
 					control={control as unknown as Control}
 					options={[
 						{
-							label: 'Avaria detectada na posiçåo',
-							value: 'Avaria detectada na posiçåo',
+							label: 'Carregamento frabrica',
+							value: 'Carregamento frabrica',
 						},
 						{
-							label: 'Durante o carregamento',
-							value: 'Durante o carregamento',
+							label: 'Conduçåo de veiculo',
+							value: 'Conduçåo de veiculo',
+						},
+
+						{
+							label: 'Vicio de embalagem',
+							value: 'Vicio de embalagem',
 						},
 						{
-							label: 'Movimentaçåo do produto da posiçåo para plataforma',
-							value: 'Movimentaçåo do produto da posiçåo para plataforma',
+							label: 'Operador de descarga',
+							value: 'Operador de descarga',
+						},
+						{
+							label: 'Operador de armazenamento',
+							value: 'Operador de armazenamento',
+						},
+						{
+							label: 'Operador de ressuprimento',
+							value: 'Operador de ressuprimento',
+						},
+						{
+							label: 'Operador de remanejamento',
+							value: 'Operador de remanejamento',
+						},
+						{
+							label: 'Operador de expediçåo',
+							value: 'Operador de expediçåo',
+						},
+						{
+							label: 'Auxiliar de picking',
+							value: 'Auxiliar de picking',
+						},
+						{
+							label: 'Auxiliar de jet',
+							value: 'Auxiliar de jet',
+						},
+						{
+							label: 'Outros',
+							value: 'Outros',
 						},
 					]}
 					label="Selecione uma opção"
 					rules={{ required: 'Este campo é obrigatório' }}
 					onPress={() => {
-						router.push('/(auth)/forms/responsavel');
+						router.push('/(auth)/forms/occurrence');
 						console.log('options_3:', getValues('options_3'));
+						console.log('options_4:', getValues('options_4'));
 					}}
 				/>
 
 				<View style={styles.containerFootButton}>{''}</View>
-			</View>
+			</ScrollView>
 		</View>
 	);
 };
-export default Expedicao;
+export default Responsible;

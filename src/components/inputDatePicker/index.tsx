@@ -1,74 +1,117 @@
+import { styles } from '@/components/inputDatePicker/styles';
+import DateTimePicker, {
+	DateTimePickerEvent,
+} from '@react-native-community/datetimepicker';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TextInputProps, Platform } from 'react-native';
+import { Control, Controller, FieldValues } from 'react-hook-form';
 import {
-	Control,
-	Controller,
-	FieldValues,
-	Path,
-	RegisterOptions,
-} from 'react-hook-form';
-import DatePicker from 'react-native-date-picker';
-import { styles } from './styles';
-import { FontAwesome } from '@expo/vector-icons';
+	Modal,
+	Platform,
+	Pressable,
+	Text,
+	TouchableOpacity,
+	View,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
-interface InputDatePickerProps<T extends FieldValues> {
-	formProps: {
-		name: Path<T>;
-		control: Control<T>;
-		rules?: Omit<
-			RegisterOptions<T, Path<T>>,
-			'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'
-		>;
-	};
-	inputProps?: TextInputProps;
-	error?: string;
-}
-
-const parseDateTimeString = (dateTimeString: string): Date => {
-	// Assuming dateTimeString is in a format like "DD/MM/YYYY, HH:MM:SS"
-	// This parsing is basic and might need to be more robust depending on exact locale output
-	const [datePart, timePart] = dateTimeString.split(', ');
-	const [day, month, year] = datePart.split('/').map(Number);
-	const [hours, minutes, seconds] = timePart.split(':').map(Number);
-	return new Date(year, month - 1, day, hours, minutes, seconds || 0);
+const isSameDay = (date1: Date, date2: Date) => {
+	return (
+		date1.getFullYear() === date2.getFullYear() &&
+		date1.getMonth() === date2.getMonth() &&
+		date1.getDate() === date2.getDate()
+	);
 };
 
-export function InputDatePicker<T extends FieldValues>({ formProps, inputProps, error }: InputDatePickerProps<T>) {
-	const [open, setOpen] = useState(false);
+interface DateInputProps {
+	control: Control<FieldValues>;
+	name: string;
+	label?: string;
+	icon: string;
+}
+
+export function DateInput({ control, name, label, icon }: DateInputProps) {
+	const [show, setShow] = useState(false);
 
 	return (
-		<View style={styles.container}>
-			<Controller
-				control={formProps.control}
-				name={formProps.name}
-				rules={formProps.rules}
-				render={({ field: { onChange, value } }) => (
-					<>
-						<TouchableOpacity onPress={() => setOpen(true)}>
-							<View style={styles.inputContainer}>
-								<FontAwesome name="calendar" size={20} color="#ccc" style={styles.icon} />
-								<Text style={styles.input}>{value || inputProps?.placeholder}</Text>
-							</View>
+		<Controller
+			control={control}
+			name={name}
+			defaultValue={new Date()}
+			render={({ field: { onChange, value }, fieldState: { error } }) => (
+				<View style={styles.container}>
+					{label && <Text style={styles.label}>{label}</Text>}
+					<View style={styles.inputArea}>
+						<View style={styles.iconContainer}>
+							<Icon name={icon} size={20} color={error ? '#ff4d4f' : '#666'} />
+						</View>
+						<TouchableOpacity
+							style={[
+								styles.inputContainer,
+								error && { borderColor: '#ff4d4f' },
+							]}
+							onPress={() => setShow(true)}
+						>
+							<Text style={[styles.inputText, !value && { color: '#999' }]}>
+								{value === 'data de hoje'
+									? 'Data de hoje'
+									: value
+										? new Date(value).toLocaleDateString()
+										: 'Selecionar data'}
+							</Text>
 						</TouchableOpacity>
-						<DatePicker
-							modal
-							open={open}
-							date={value ? parseDateTimeString(value) : new Date()}
-							onConfirm={(date) => {
-								setOpen(false);
-								onChange(date.toLocaleString('pt-BR')); // Format as datetime string
-							}}
-							onCancel={() => {
-								setOpen(false);
-							}}
-							mode="datetime" // Changed to datetime
-							minimumDate={new Date(2000, 0, 1)}
-							maximumDate={new Date(2030, 0, 1)}
-						/>
-					</>
-				)}
-			/>
-			{error && <Text style={styles.error}>{error}</Text>}
-		</View>
+					</View>
+
+					{error && <Text style={styles.errorText}>{error.message}</Text>}
+
+					<Modal
+						transparent={true}
+						animationType="fade"
+						visible={show}
+						onRequestClose={() => setShow(false)}
+					>
+						<Pressable
+							style={styles.centeredView}
+							onPress={() => setShow(false)} // Fecha o modal ao clicar fora
+						>
+							<Pressable
+								style={styles.datePickerModalView}
+								onPress={(e) => e.stopPropagation()}
+							>
+								<DateTimePicker
+									value={value || new Date()}
+									mode="date"
+									display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+									onChange={(
+										event: DateTimePickerEvent,
+										selectedDate?: Date,
+									) => {
+										setShow(Platform.OS === 'ios'); // Mantém o modal aberto no iOS, fecha no Android
+										if (event.type === 'set' && selectedDate) {
+											const today = new Date();
+											if (isSameDay(selectedDate, today)) {
+												onChange('data de hoje'); // Envia a string "data de hoje"
+											} else {
+												onChange(selectedDate); // Envia a data selecionada
+											}
+										}
+										if (Platform.OS === 'android') {
+											setShow(false); // Fecha o picker no Android após seleção
+										}
+									}}
+								/>
+								{Platform.OS === 'ios' && (
+									<Pressable
+										style={styles.closeButton}
+										onPress={() => setShow(false)}
+									>
+										<Text style={styles.closeButtonText}>Confirmar</Text>
+									</Pressable>
+								)}
+							</Pressable>
+						</Pressable>
+					</Modal>
+				</View>
+			)}
+		/>
 	);
 }

@@ -6,7 +6,7 @@ import { TextInput } from 'react-native-gesture-handler';
 
 import Button from '@/components/button/button';
 import Input from '@/components/input/input';
-import InputSenha from '@/components/inputSenha/inputSenha';
+import InputSenha from '@/components/inputPassword/inputPassword';
 import NavLink from '@/components/navLink/navLink';
 import { AuthContext } from '@/context/auth';
 
@@ -108,7 +108,7 @@ const Login: React.FC = () => {
 					<Text style={styles.registerText}>
 						Não tem uma conta?
 						<NavLink
-							href="/(login)/cadastro"
+							href="/(login)/registration"
 							style={{ color: COLORS.red[500] }}
 						>
 							{' '}

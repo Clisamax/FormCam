@@ -1,15 +1,17 @@
 import { router } from 'expo-router';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { ScrollView, Text, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 
-import { homeFormData } from '@/@types/types';
 import Button from '@/components/button/button';
 import Progress from '@/components/progress/progress';
-import RadioTaskButton from '@/components/radioTaskButton/radioTaskButton';
 import { AuthContext } from '@/context/auth';
 
-import { styles } from '@/styles/auth/stylesMovInterna';
+import { homeFormData } from '@/@types/types';
+
+import Input from '@/components/inputAnnotation/inputAnnotation';
+import RadioField from '@/components/inputRadio/radioField';
+import { styles } from '@/styles/auth/stylesOccurrence';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fontes';
 
@@ -17,17 +19,21 @@ export function retorn() {
 	router.back();
 }
 
-const MovInterna: React.FC<homeFormData> = (data) => {
+const Occurrence: React.FC<homeFormData> = (data) => {
 	const { Logout, user } = useContext(AuthContext);
 	const { control, handleSubmit, getValues } = useFormContext<homeFormData>();
 	const uuid = getValues('uuid');
-	const origem = getValues('options_1');
-	const processo = getValues('options_2');
-	const procedimento = getValues('options_3');
+	const origin = getValues('options_1');
+	const process = getValues('options_2');
+	const procedure = getValues('options_3');
+	const responsavel = getValues('options_4');
+	const occurrence = getValues('options_5');
+	const annotation = getValues('annotation');
+	const sapRef = useRef<TextInput>(null);
 
 	return (
 		<View style={styles.container}>
-			<View style={styles.containerTop}>
+			<View style={[styles.containerTop]}>
 				<View style={[styles.containerTopLefth, { padding: 10 }]}>
 					<Button
 						iconName="back"
@@ -46,7 +52,7 @@ const MovInterna: React.FC<homeFormData> = (data) => {
 							<Text style={{ color: COLORS.gray[400] }}> {`${user?.sap}`}</Text>
 						</Text>
 					</Text>
-					<Progress progress={33} />
+					<Progress progress={100} />
 					<Text style={[styles.textSpace, { color: COLORS.red[500] }]}>
 						<Text
 							style={{
@@ -61,7 +67,7 @@ const MovInterna: React.FC<homeFormData> = (data) => {
 				</View>
 			</View>
 
-			<View style={styles.containerMid}>
+			<View style={[styles.containerMid]}>
 				<View style={styles.containerMidLeft}>
 					<Text
 						style={[
@@ -69,10 +75,20 @@ const MovInterna: React.FC<homeFormData> = (data) => {
 							{ textAlign: 'center', color: COLORS.red[500] },
 						]}
 					>
-						{`${origem}`}
+						<Text style={[styles.text, { fontWeight: 'bold' }]}>
+							Qual o departamento de origem?
+						</Text>
+						<Text
+							style={[styles.text, { color: COLORS.red[500] }]}
+						>{`=> ${origin}`}</Text>
 					</Text>
 					<Text style={[styles.text, { textAlign: 'center' }]}>
-						{`${processo}`}
+						<Text style={[styles.text, { fontWeight: 'bold' }]}>
+							Qual o processo?
+						</Text>
+						<Text
+							style={[styles.text, { color: COLORS.red[500] }]}
+						>{`=> ${process}`}</Text>
 					</Text>
 				</View>
 				<View style={styles.containerMidRight}>
@@ -81,40 +97,41 @@ const MovInterna: React.FC<homeFormData> = (data) => {
 					</Text>
 				</View>
 			</View>
-			<ScrollView style={styles.containerFoot}>
-				<RadioTaskButton
-					name="options_3"
+			<View style={styles.containerFoot}>
+				<RadioField
+					name="options_5"
 					control={control as unknown as Control}
 					options={[
-						{ label: 'Durante o picking', value: 'Durante o picking' },
-						{
-							label: 'Durante a ressuprimento',
-							value: 'Durante a ressuprimento',
-						},
-						{
-							label: 'Durante o armazenamento',
-							value: 'Durante o armazenamento',
-						},
-						{
-							label: 'Durante o repanejamento',
-							value: 'Durante o repanejamento',
-						},
-						{
-							label: 'Avaria detectada na posiçåo',
-							value: 'Avaria detectada na posiçåo',
-						},
+						{ label: 'Depósito', value: 'Depósito' },
+						{ label: 'Transportadora', value: 'Transportadora' },
+						{ label: 'Fábrica', value: 'Fábrica' },
 					]}
-					label="Selecione uma opção"
+					//label="Selecione a area de avaria"
 					rules={{ required: 'Este campo é obrigatório' }}
-					onPress={() => {
-						router.push('/(auth)/forms/responsavel');
-						console.log('options_3:', getValues('options_3'));
+				/>
+				<Input
+					error={''}
+					formProps={{
+						name: 'annotation',
+						control: control as unknown as Control,
+						rules: undefined,
+					}}
+					inputProps={{
+						placeholder: 'occurrence details',
+						autoCapitalize: 'none',
+						onSubmitEditing: () => sapRef.current?.focus(),
 					}}
 				/>
-
-				<View style={styles.containerFootButton}>{''}</View>
-			</ScrollView>
+				<Button
+					title={'enviar'}
+					onPress={() => {
+						console.log('process', getValues('options_2'));
+						console.log('annotation', getValues('annotation'));
+						router.navigate('/(auth)/forms/review');
+					}}
+				/>
+			</View>
 		</View>
 	);
 };
-export default MovInterna;
+export default Occurrence;

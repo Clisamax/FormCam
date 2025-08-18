@@ -9,31 +9,32 @@ import { AuthContext } from '@/context/auth';
 
 import { homeFormData } from '@/@types/types';
 import { api } from '@/services/api';
-import { styles } from '@/styles/auth/stylesRevisao';
+import { styles } from '@/styles/auth/stylesReview';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fontes';
 import { AxiosError } from 'axios';
 
-const Revisao: React.FC<homeFormData> = (data) => {
+const Review: React.FC<homeFormData> = (data) => {
 	const { Logout, user } = useContext(AuthContext);
 	const { control, handleSubmit, getValues } = useFormContext<homeFormData>();
 	const uuid = getValues('uuid');
-	const origem = getValues('options_1');
-	const processo = getValues('options_2');
-	const procedimento = getValues('options_3');
-	const responsavel = getValues('options_4');
-	const ocorrencia = getValues('options_5');
+	const origin = getValues('options_1');
+	const process = getValues('options_2');
+	const procedure = getValues('options_3');
+	const responsible = getValues('options_4');
+	const occurrence = getValues('options_5');
+	const annotation = getValues('annotation');
 
 	async function handleEnviar(data: homeFormData) {
 		try {
 			const formData = {
 				uuid: data.uuid.trim(),
-				origem: data.options_1,
-				processo: data.options_2,
-				procedimento: data.options_3,
-				responsavel: data.options_4,
-				ocorrencia: data.options_5,
-				anotacao: data.anotacao,
+				origin: data.options_1,
+				process: data.options_2,
+				procedure: data.options_3,
+				responsible: data.options_4,
+				occurrence: data.options_5,
+				annotation: data.annotation,
 			};
 
 			const response = await api.post('/create_ocorrencia', formData);
@@ -96,21 +97,27 @@ const Revisao: React.FC<homeFormData> = (data) => {
 				</View>
 			</View>
 			<View style={[styles.containerMid, { marginLeft: 10 }]}>
-				<Text style={[styles.textBold]}>Qual o departamento de origem?</Text>
-				<Text style={styles.textRed}>{`=> ${origem}`}</Text>
+				<Text style={[styles.text, { fontWeight: 'bold' }]}>
+					Qual o departamento de origem?
+				</Text>
+				<Text
+					style={[styles.text, { color: COLORS.red[500] }]}
+				>{`=> ${origin}`}</Text>
 				<Text style={styles.textBold}>Qual o processo?</Text>
-				<Text style={styles.textRed}>{`=> ${processo}`}</Text>
+				<Text style={styles.textRed}>{`=> ${process}`}</Text>
 				<Text style={styles.textBold}>Qual o procedimento?</Text>
-				<Text style={styles.textRed}>{`=> ${procedimento}`}</Text>
+				<Text style={styles.textRed}>{`=> ${procedure}`}</Text>
 				<Text style={styles.textBold}>Responsavel pela avaria ?</Text>
-				<Text style={styles.textRed}>{`=> ${responsavel}`}</Text>
+				<Text style={styles.textRed}>{`=> ${responsible}`}</Text>
 				<Text style={styles.textBold}>Qual o responsável pela ocorrência?</Text>
-				<Text style={styles.textRed}>{`=> ${ocorrencia}`}</Text>
+				<Text style={styles.textRed}>{`=> ${occurrence}`}</Text>
+				<Text style={styles.textBold}>Anotação:</Text>
+				<Text style={styles.textRed}>{`=> ${annotation}`}</Text>
 			</View>
-			<View style={[styles.containerFoot]}>
+			<View style={{ marginTop: 20, alignItems: 'center' }}>
 				<Button title={'enviar'} onPress={handleSubmit(handleEnviar)} />
 			</View>
 		</View>
 	);
 };
-export default Revisao;
+export default Review;

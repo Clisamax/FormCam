@@ -9,7 +9,7 @@ import {
 import { Controller, UseControllerProps } from 'react-hook-form';
 import { Feather } from '@expo/vector-icons';
 
-import { styles } from '@/components/inputSenha/styles';
+import { styles } from '@/components/inputPassword/styles';
 
 type Props = {
 	error?: string;
