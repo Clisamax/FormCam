@@ -22,8 +22,6 @@ const Product: React.FC = () => {
 				name="occurrenceDate"
 				label="Occurrence Date"
 				icon="calendar"
-				oes
-				s
 			/>
 			<Input
 				icon={'user'}
