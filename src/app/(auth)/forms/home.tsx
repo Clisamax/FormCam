@@ -123,7 +123,6 @@ const Home = (data: homeFormData) => {
 						disabled={loading}
 						iconName="rightcircle"
 						size={22}
-						styles={{ height: 55, width: 130 }}
 					/>
 					<Button
 						title="produto"

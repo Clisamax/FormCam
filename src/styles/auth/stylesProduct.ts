@@ -5,5 +5,15 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		width: '95%',
 	},
+	footer:{
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	button:{
+		marginTop: 15,
+		alignItems: 'center',
+		justifyContent: 'center'
+
+	}
 	
 });

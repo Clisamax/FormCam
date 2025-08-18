@@ -3,9 +3,11 @@ import Input from '@/components/input/input';
 import { Control, useFormContext } from 'react-hook-form';
 import { TextInput, View } from 'react-native';
 
+import Button from '@/components/button/button';
 import { DateInput } from '@/components/inputDatePicker';
 import { styles } from '@/styles/auth/stylesProduct';
 import { useRef } from 'react';
+
 const Product: React.FC = () => {
 	const {
 		control,
@@ -55,7 +57,7 @@ const Product: React.FC = () => {
 			/>
 			<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 				<Input
-					style={{ width: '60%' }}
+					style={{ width: '50%' }}
 					icon={'box'}
 					error={errors.produto?.message || ''}
 					ref={ndpRef}
@@ -78,7 +80,7 @@ const Product: React.FC = () => {
 					}}
 				/>
 				<Input
-					style={{ width: '35%' }}
+					style={{ width: '45%' }}
 					icon={'plus-circle'}
 					error={errors.quantity?.message || ''}
 					formProps={{
@@ -88,21 +90,55 @@ const Product: React.FC = () => {
 							required: 'Quantity is required',
 							pattern: {
 								value: /^[0-9]+$/,
-								message: 'Invalid Quantity',
+								message: ' Quantidade invalida',
 							},
 							min: {
 								value: 1,
-								message: 'Quantity must be greater than zero',
+								message: 'Quantidade deve ser maior que zero',
 							},
 						},
 					}}
 					inputProps={{
-						placeholder: 'Quantity',
+						placeholder: 'Quantidade',
 						placeholderTextColor: 'white',
 						keyboardType: 'numeric',
 						returnKeyType: 'done',
 					}}
 				/>
+			</View>
+			<Input
+				icon={'user'}
+				error={errors.name?.message || ''}
+				formProps={{
+					name: 'nameOfResponsible',
+					control: control as unknown as Control,
+					rules: {
+						required: 'nome é obrigatório',
+						pattern: {
+							value:
+								/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]{2,}(?: [A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]{2,})+$/,
+							message: 'Digite nome e sobrenome válidos (apenas letras)',
+						},
+						maxLength: {
+							value: 50,
+							message: 'Nome muito longo',
+						},
+						minLength: {
+							value: 3,
+							message: 'Nome muito curto',
+						},
+					},
+				}}
+				inputProps={{
+					placeholder: 'responsável pela avária',
+					placeholderTextColor: 'white',
+					onSubmitEditing: () => ndpRef.current?.focus(),
+					returnKeyType: 'next',
+				}}
+			/>
+			<View style={styles.footer}>
+
+			<Button styles={styles.button}  title="confirmar" onPress={() => {}} />
 			</View>
 		</View>
 	);
