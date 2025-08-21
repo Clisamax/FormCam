@@ -6,7 +6,7 @@ import {
 	TouchableOpacityProps,
 	View,
 } from 'react-native';
-import { buttonVariants } from './variantes';
+import { buttonVariants } from './variants';
 
 import { style } from '@/components/button/styles';
 import { FONTES } from '@/styles/global/fonts';
