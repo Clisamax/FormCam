@@ -63,6 +63,11 @@ export interface InputDatePickerProps<T extends FieldValues> {
 	inputProps?: TextInputProps;
 	error?: string;
 }
-
+export interface DateInputProps {
+	control: Control<FieldValues>;
+	name: string;
+	label?: string;
+	icon: string;
+}
 
 

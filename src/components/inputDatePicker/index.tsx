@@ -12,6 +12,7 @@ import {
 	TouchableOpacity,
 	View,
 } from 'react-native';
+import { DateInputProps } from "@/@types/types";
 import Icon from 'react-native-vector-icons/Feather';
 
 const isSameDay = (date1: Date, date2: Date) => {
@@ -22,12 +23,7 @@ const isSameDay = (date1: Date, date2: Date) => {
 	);
 };
 
-interface DateInputProps {
-	control: Control<FieldValues>;
-	name: string;
-	label?: string;
-	icon: string;
-}
+
 
 export function DateInput({ control, name, label, icon }: DateInputProps) {
 	const [show, setShow] = useState(false);

@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
 		fontSize: 14,
 		color: COLORS.dark[500],
 		marginBottom: 6,
+		marginLeft: '20%',
 		fontWeight: '500',
 	},
 	inputContainer: {

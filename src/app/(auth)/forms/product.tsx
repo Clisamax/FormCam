@@ -22,7 +22,7 @@ const Product: React.FC = () => {
 			<DateInput
 				control={control as unknown as Control}
 				name="occurrenceDate"
-				label="Occurrence Date"
+				label="Dia da ocorrencia"
 				icon="calendar"
 			/>
 			<Input
