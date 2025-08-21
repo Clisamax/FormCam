@@ -11,7 +11,7 @@ import { homeFormData } from '@/@types/types';
 import RadioTaskButton from '@/components/radioTaskButton/radioTaskButton';
 import { styles } from '@/styles/auth/stylesDispatch';
 import { COLORS } from '@/styles/global/color';
-import { FONTES } from '@/styles/global/fontes';
+import { FONTES } from '@/styles/global/fonts';
 
 export function retorn() {
 	router.back();

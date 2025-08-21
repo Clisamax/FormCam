@@ -1,6 +1,5 @@
-import { COLORS } from '@/styles/global/color';
-import { FONTES } from '@/styles/global/fontes';
-import { styles } from "@/styles/auth/stylesCamera";
+import FlatButtonAnimated from '@/components/flatButton';
+import { styles } from '@/styles/auth/stylesCamera';
 import {
 	CameraCapturedPicture,
 	CameraView,
@@ -13,12 +12,10 @@ import {
 	Alert,
 	Button,
 	StatusBar,
-	StyleSheet,
 	Text,
 	TouchableOpacity,
 	View,
 } from 'react-native';
-import FlatButtonAnimated from '@/components/flatButton';
 
 const Camera: React.FC = () => {
 	const cameraViewRef = React.useRef<CameraView>(null);
@@ -97,7 +94,6 @@ const Camera: React.FC = () => {
 				onCameraReady={handleCameraReady}
 			/>
 			<View style={styles.buttonContainer}>
-				
 				<TouchableOpacity
 					style={[styles.button, !isCameraReady && styles.buttonDisabled]}
 					onPress={takePhoto}
@@ -116,6 +112,5 @@ const Camera: React.FC = () => {
 		</View>
 	);
 };
-
 
 export default Camera;

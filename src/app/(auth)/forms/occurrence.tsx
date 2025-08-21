@@ -13,7 +13,7 @@ import Input from '@/components/inputAnnotation/inputAnnotation';
 import RadioField from '@/components/inputRadio/radioField';
 import { styles } from '@/styles/auth/stylesOccurrence';
 import { COLORS } from '@/styles/global/color';
-import { FONTES } from '@/styles/global/fontes';
+import { FONTES } from '@/styles/global/fonts';
 
 export function retorn() {
 	router.back();

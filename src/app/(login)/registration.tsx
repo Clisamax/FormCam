@@ -11,7 +11,7 @@ import Progress from '@/components/progress/progress';
 
 import { CadastroFormData } from '@/@types/types';
 import { COLORS } from '@/styles/global/color';
-import { stylesCadastro } from '@/styles/login/stylesCadastro';
+import { stylesCadastro } from '@/styles/login/stylesRegistration';
 
 const HandleNext = () => {
 	router.push('/(login)/fineRegistration');

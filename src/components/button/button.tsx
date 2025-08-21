@@ -9,7 +9,7 @@ import {
 import { buttonVariants } from './variantes';
 
 import { style } from '@/components/button/styles';
-import { FONTES } from '@/styles/global/fontes';
+import { FONTES } from '@/styles/global/fonts';
 
 interface ButtonProps {
 	title: string;

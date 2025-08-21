@@ -11,7 +11,7 @@ import { homeFormData } from '@/@types/types';
 import { api } from '@/services/api';
 import { styles } from '@/styles/auth/stylesReview';
 import { COLORS } from '@/styles/global/color';
-import { FONTES } from '@/styles/global/fontes';
+import { FONTES } from '@/styles/global/fonts';
 import { AxiosError } from 'axios';
 
 const Review: React.FC<homeFormData> = (data) => {

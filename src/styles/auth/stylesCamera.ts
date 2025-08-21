@@ -1,12 +1,12 @@
 import { COLORS } from "@/styles/global/color";
-import { FONTES } from "@/styles/global/fontes";
+import { FONTES } from "@/styles/global/fonts";
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
 	fullScreenContainer: {
 		flex: 1,
 		backgroundColor: '#000',
-		position: 'relative',	
+		position: 'relative',
 	},
 	camera: {
 		flex: 1,
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
 		width: 80,
 		alignSelf: 'center',
 		alignItems: 'center',
-		
+
 	},
 	buttonDisabled: {
 		backgroundColor: COLORS.gray[400],

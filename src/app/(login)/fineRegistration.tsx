@@ -6,12 +6,12 @@ import { Alert, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Button from '@/components/button/button';
-import InputSenha from '@/components/inputPassword/inputPassword'
+import InputSenha from '@/components/inputPassword/inputPassword';
 import Progress from '@/components/progress/progress';
 import { api } from '../../services/api';
 
 import { CadastroFormData } from '@/@types/types';
-import { stylesCadastroFinal } from '@/styles/login/stylesCadastro';
+import { stylesCadastroFinal } from '@/styles/login/stylesRegistration';
 
 const CadastroFinal = () => {
 	const [loading, setLoading] = useState(false);

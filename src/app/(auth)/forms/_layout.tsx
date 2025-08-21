@@ -1,5 +1,4 @@
 import { COLORS } from '@/styles/global/color';
-import { FONTES } from '@/styles/global/fontes';
 import { Slot } from 'expo-router';
 import { Image, Text, View } from 'react-native';
 
@@ -21,7 +20,7 @@ export default function FormsLayout() {
 					resizeMode="cover"
 					source={require('@/assets/ChatGPT Image 5 de jun. de 2025, 18_08_20.png')}
 				/>
-		</View>
+			</View>
 			<View
 				style={{
 					justifyContent: 'center',
