@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import { DateInputProps } from "@/@types/types";
 import Icon from 'react-native-vector-icons/Feather';
+import { COLORS } from '@/styles/global/color';
 
 const isSameDay = (date1: Date, date2: Date) => {
 	return (
@@ -38,16 +39,25 @@ export function DateInput({ control, name, label, icon }: DateInputProps) {
 					{label && <Text style={styles.label}>{label}</Text>}
 					<View style={styles.inputArea}>
 						<View style={styles.iconContainer}>
-							<Icon name={icon} size={20} color={error ? '#ff4d4f' : '#666'} />
+							<Icon
+								name={icon}
+								size={20}
+								color={error ? COLORS.gray[400] : COLORS.red[500]}
+							/>
 						</View>
 						<TouchableOpacity
 							style={[
 								styles.inputContainer,
-								error && { borderColor: '#ff4d4f' },
+								error && { borderColor: COLORS.red[500] },
 							]}
 							onPress={() => setShow(true)}
 						>
-							<Text style={[styles.inputText, !value && { color: '#999' }]}>
+							<Text
+								style={[
+									styles.inputText,
+									!value && { color: COLORS.gray[400] },
+								]}
+							>
 								{value === 'data de hoje'
 									? 'Data de hoje'
 									: value

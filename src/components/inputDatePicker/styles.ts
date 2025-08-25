@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		borderWidth: 1,
-		borderColor: '#ccc',
+		borderColor: COLORS.gray[400],
 		borderRadius: 8,
 		paddingHorizontal: 12,
 		height: 48,
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
 		color: '#333',
 	},
 	errorText: {
-		color: '#ff4d4f',
+		color: COLORS.red[500],
 		fontSize: 12,
 		marginTop: 4,
 	},
@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderWidth: 1,
-		borderColor: '#ccc',
+		borderColor: COLORS.gray[400],
 		borderRadius: 8,
 		marginRight: 8,
 		backgroundColor: COLORS.gray[200]
