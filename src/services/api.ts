@@ -3,7 +3,7 @@ import axios, { AxiosError, AxiosInstance } from "axios";
 // Criar instância da API
 const api: AxiosInstance = axios.create({
 	baseURL: 'https://maxcamapi-production.up.railway.app',
-	timeout: 50000,
+	timeout: 5000,
 	headers: {
 		'Content-Type': 'application/json'
 	}

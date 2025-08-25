@@ -18,7 +18,7 @@ export default function FormsLayout() {
 					style={{ width: '100%', height: '100%' }}
 					alt="MaxCam Logo"
 					resizeMode="cover"
-					source={require('@/assets/ChatGPT Image 5 de jun. de 2025, 18_08_20.png')}
+					source={require('@/assets/formcam.png')}
 				/>
 			</View>
 			<View
