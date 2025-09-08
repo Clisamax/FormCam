@@ -17,7 +17,9 @@ const Product: React.FC = () => {
 		watch,
 		formState: { errors },
 	} = useFormContext<produtosFormData>();
-	const ndpRef = useRef<TextInput>(null);
+	const produtoRef = useRef<TextInput>(null);
+	const quantityRef = useRef<TextInput>(null);
+	const nameOfResponsibleRef = useRef<TextInput>(null);
 
 	// Use useEffect para lidar com a lógica de atualização do estado
 	useEffect(() => {
@@ -78,7 +80,7 @@ const Product: React.FC = () => {
 				inputProps={{
 					placeholder: 'Nome Completo',
 					placeholderTextColor: 'white',
-					onSubmitEditing: () => ndpRef.current?.focus(),
+					onSubmitEditing: () => produtoRef.current?.focus(),
 					returnKeyType: 'next',
 				}}
 			/>
@@ -87,7 +89,7 @@ const Product: React.FC = () => {
 					style={{ width: '50%' }}
 					icon={'box'}
 					error={errors.produto?.message || ''}
-					ref={ndpRef}
+					ref={produtoRef}
 					formProps={{
 						name: 'produto',
 						control: control as unknown as Control,
@@ -102,8 +104,9 @@ const Product: React.FC = () => {
 					inputProps={{
 						placeholder: 'Produto',
 						placeholderTextColor: 'white',
-						onSubmitEditing: handleSubmit(() => {}),
+						onSubmitEditing: () => quantityRef.current?.focus(),
 						returnKeyType: 'next',
+						keyboardType: 'numeric',
 					}}
 				/>
 				<InputProduct
@@ -113,6 +116,7 @@ const Product: React.FC = () => {
 					increment={increment}
 					decrement={decrement}
 					error={errors.quantity?.message || ''}
+					ref={quantityRef}
 					formProps={{
 						name: 'quantity',
 						control: control as unknown as Control,
@@ -135,12 +139,14 @@ const Product: React.FC = () => {
 					inputProps={{
 						keyboardType: 'numeric',
 						returnKeyType: 'next',
+						onSubmitEditing: () => nameOfResponsibleRef.current?.focus(),
 					}}
 				/>
 			</View>
 			<Input
 				icon={'user'}
 				error={errors.name?.message || ''}
+				ref={nameOfResponsibleRef}
 				formProps={{
 					name: 'nameOfResponsible',
 					control: control as unknown as Control,
@@ -164,7 +170,7 @@ const Product: React.FC = () => {
 				inputProps={{
 					placeholder: 'responsável pela avária',
 					placeholderTextColor: 'white',
-					onSubmitEditing: () => ndpRef.current?.focus(),
+					onSubmitEditing: handleSubmit(() => {}),
 					returnKeyType: 'next',
 				}}
 			/>
