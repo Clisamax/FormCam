@@ -1,21 +1,48 @@
 import { produtosFormData } from '@/@types/types';
+import Button from '@/components/button/button';
 import Input from '@/components/input/input';
+import { DateInput } from '@/components/inputDatePicker';
+import InputProduct from '@/components/inputProduct/input';
+import { styles } from '@/styles/auth/stylesProduct';
+import { useEffect, useRef } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
 import { TextInput, View } from 'react-native';
-
-import Button from '@/components/button/button';
-import { DateInput } from '@/components/inputDatePicker';
-import { styles } from '@/styles/auth/stylesProduct';
-import { useRef } from 'react';
 
 const Product: React.FC = () => {
 	const {
 		control,
 		handleSubmit,
 		register,
+		setValue,
+		watch,
 		formState: { errors },
 	} = useFormContext<produtosFormData>();
 	const ndpRef = useRef<TextInput>(null);
+
+	// Use useEffect para lidar com a lógica de atualização do estado
+	useEffect(() => {
+		if (
+			Number.isNaN(Number(watch('quantity'))) ||
+			watch('quantity') === '' ||
+			Number(watch('quantity')) < 1
+		) {
+			setValue('quantity', '1');
+		}
+	}, [watch, setValue]);
+
+	const increment = () => {
+		const currentQuantity = Number(watch('quantity')) || 0;
+		if (currentQuantity < 9999) {
+			setValue('quantity', String(currentQuantity + 1));
+		}
+	};
+
+	const decrement = () => {
+		const currentQuantity = Number(watch('quantity')) || 0;
+		if (currentQuantity > 1) {
+			setValue('quantity', String(currentQuantity - 1));
+		}
+	};	
 
 	return (
 		<View style={styles.container}>
@@ -79,9 +106,12 @@ const Product: React.FC = () => {
 						returnKeyType: 'next',
 					}}
 				/>
-				<Input
+				<InputProduct
 					style={{ width: '45%' }}
-					icon={'plus-circle'}
+					icon={'minus-circle'}
+					iconRight="plus-circle"
+					increment={increment}
+					decrement={decrement}
 					error={errors.quantity?.message || ''}
 					formProps={{
 						name: 'quantity',
@@ -96,13 +126,15 @@ const Product: React.FC = () => {
 								value: 1,
 								message: 'Quantidade deve ser maior que zero',
 							},
+							max: {
+								value: 9999,
+								message: 'Quantidade deve ser menor que 9999',
+							},
 						},
 					}}
 					inputProps={{
-						placeholder: 'Quantidade',
-						placeholderTextColor: 'white',
 						keyboardType: 'numeric',
-						returnKeyType: 'done',
+						returnKeyType: 'next',
 					}}
 				/>
 			</View>
@@ -137,8 +169,7 @@ const Product: React.FC = () => {
 				}}
 			/>
 			<View style={styles.footer}>
-
-			<Button styles={styles.button}  title="confirmar" onPress={() => {}} />
+				<Button styles={styles.button} title="confirmar" onPress={() => {}} />
 			</View>
 		</View>
 	);

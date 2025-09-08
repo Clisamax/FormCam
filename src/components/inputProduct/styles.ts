@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
 	control: {
 		flex: 1,
 		padding: 16,
-		letterSpacing: 3
+		letterSpacing: 1
 	},
 	error: {
 		fontSize: 12,
