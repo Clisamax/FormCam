@@ -125,8 +125,6 @@ const Occurrence: React.FC<homeFormData> = (data) => {
 				<Button
 					title={'enviar'}
 					onPress={() => {
-						console.log('process', getValues('options_2'));
-						console.log('annotation', getValues('annotation'));
 						router.navigate('/(auth)/forms/review');
 					}}
 				/>

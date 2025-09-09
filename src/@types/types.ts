@@ -50,6 +50,7 @@ export interface produtosFormData {
 	quantity: string;
 	occurrenceDate: string;
 	annotation: string;
+	nameOfResponsible: string;
 }
 
 export interface InputDatePickerProps<T extends FieldValues> {

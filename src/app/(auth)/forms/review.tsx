@@ -14,9 +14,9 @@ import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fonts';
 import { AxiosError } from 'axios';
 
-const Review: React.FC<homeFormData> = (data) => {
-	const { Logout, user } = useContext(AuthContext);
-	const { control, handleSubmit, getValues } = useFormContext<homeFormData>();
+const Review: React.FC<homeFormData> = () => {
+	const { user } = useContext(AuthContext);
+	const { handleSubmit, getValues } = useFormContext<homeFormData>();
 	const uuid = getValues('uuid');
 	const origin = getValues('options_1');
 	const process = getValues('options_2');

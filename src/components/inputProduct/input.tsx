@@ -1,12 +1,13 @@
 import { Feather } from '@expo/vector-icons';
-import { forwardRef, useEffect } from 'react';
+import { forwardRef } from 'react';
 import { Controller } from 'react-hook-form';
-import { Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { ProductProps } from '@/@types/types';
+
+
+
 import { styles } from './styles';
-import { useState } from 'react';
-import { produtosFormData } from '@/@types/types';
 
 const InputProduct = forwardRef<TextInput, ProductProps>(
 	

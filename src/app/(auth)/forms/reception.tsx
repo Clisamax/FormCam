@@ -111,7 +111,6 @@ const Reception: React.FC<homeFormData> = (data) => {
 					rules={{ required: 'Este campo é obrigatório' }}
 					onPress={() => {
 						router.push('/(auth)/forms/responsible');
-						console.log('options_3:', getValues('options_3'));
 					}}
 				/>
 				<View style={styles.containerFootButton}>{''}</View>

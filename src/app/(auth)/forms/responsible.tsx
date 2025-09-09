@@ -149,8 +149,6 @@ const Responsible: React.FC<homeFormData> = (data) => {
 					rules={{ required: 'Este campo é obrigatório' }}
 					onPress={() => {
 						router.push('/(auth)/forms/occurrence');
-						console.log('options_3:', getValues('options_3'));
-						console.log('options_4:', getValues('options_4'));
 					}}
 				/>
 

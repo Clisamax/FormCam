@@ -118,7 +118,6 @@ const InternalMovement: React.FC<homeFormData> = (data) => {
 					rules={{ required: 'Este campo é obrigatório' }}
 					onPress={() => {
 						router.push('/(auth)/forms/responsible');
-						console.log('options_3:', getValues('options_3'));
 					}}
 				/>
 
