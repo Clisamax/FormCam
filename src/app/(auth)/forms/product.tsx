@@ -22,6 +22,7 @@ const Product: React.FC = () => {
 		getValues,
 		formState: { errors },
 	} = useFormContext<produtosFormData>();
+	const name = getValues('name');
 	const produtoRef = useRef<TextInput>(null);
 	const quantityRef = useRef<TextInput>(null);
 	const nameOfResponsibleRef = useRef<TextInput>(null);
@@ -34,10 +35,12 @@ const Product: React.FC = () => {
 	async function handleEnviar(data: produtosFormData) {
 		try {
 			const formData = {
+				name: data.name.trim(),
 				occurrenceDate: data.occurrenceDate,
 				produto: data.produto.trim(),
 				quantity: Number(data.quantity),
 				nameOfResponsible: data.nameOfResponsible.trim(),
+				unit: data.unit,
 			};
 
 			const response = await api.post('/create_ocorrencia', formData);

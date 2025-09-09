@@ -12,11 +12,15 @@ export const styles = StyleSheet.create({
 		width: '95%',
 	},
 	containerProduto: {
-		flexDirection: 'row', justifyContent: 'space-between',
+		flexDirection: 'row', 
+		justifyContent: 'space-between',
+		marginTop: 10,
 	},
 	footer: {
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
+		marginTop: 10,
+
 	},
 	button: {
 		marginTop: 15,
