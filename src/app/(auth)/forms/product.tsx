@@ -29,6 +29,7 @@ const Product: React.FC = () => {
 	const produto = getValues('produto');
 	const quantity = getValues('quantity');
 	const nameOfResponsible = getValues('nameOfResponsible');
+	const unit = getValues('unit');
 
 	async function handleEnviar(data: produtosFormData) {
 		try {
@@ -219,7 +220,7 @@ const Product: React.FC = () => {
 			</View>
 			<View style={styles.containerRadio}>
 				<RadioField
-					name="options_5"
+					name="unit"
 					control={control as unknown as Control}
 					options={[
 						{ label: 'display', value: 'display' },
