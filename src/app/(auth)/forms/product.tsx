@@ -27,7 +27,7 @@ const Product: React.FC = () => {
 	const quantityRef = useRef<TextInput>(null);
 	const nameOfResponsibleRef = useRef<TextInput>(null);
 	const occurrenceDate = getValues('occurrenceDate');
-	const produto = getValues('produto');
+	const product = getValues('product');
 	const quantity = getValues('quantity');
 	const nameOfResponsible = getValues('nameOfResponsible');
 	const unit = getValues('unit');
@@ -37,13 +37,13 @@ const Product: React.FC = () => {
 			const formData = {
 				name: data.name.trim(),
 				occurrenceDate: data.occurrenceDate,
-				produto: data.produto.trim(),
+				product: data.product.trim(),
 				quantity: Number(data.quantity),
 				nameOfResponsible: data.nameOfResponsible.trim(),
 				unit: data.unit,
 			};
 
-			const response = await api.post('/create_ocorrencia', formData);
+			const response = await api.post('/product', formData);
 
 			if (response.status === 201) {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
@@ -166,7 +166,7 @@ const Product: React.FC = () => {
 				<Input
 					style={{ width: '50%' }}
 					icon={'box'}
-					error={errors.produto?.message || ''}
+					error={errors.product?.message || ''}
 					ref={produtoRef}
 					formProps={{
 						name: 'produto',
