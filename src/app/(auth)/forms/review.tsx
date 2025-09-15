@@ -37,7 +37,7 @@ const Review: React.FC<homeFormData> = () => {
 				annotation: data.annotation,
 			};
 
-			const response = await api.post('/create_ocorrencia', formData);
+			const response = await api.post('/api/v1/occurrences', formData);
 
 			if (response.status === 201) {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [

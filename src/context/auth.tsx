@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 			console.log('API disponível:', !!api);
 			console.log('Método post disponível:', typeof api.post);
 
-			const response = await api.post('/login', {
+			const response = await api.post('/api/v1/login', {
 				sap,
 				password,
 			});

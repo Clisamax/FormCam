@@ -41,7 +41,7 @@ const CadastroFinal = () => {
 				password: data.password,
 			};
 
-			const response = await api.post('/create_user', formData);
+			const response = await api.post('/api/v1/users/create_user', formData);
 
 			if (response.status === 201) {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [

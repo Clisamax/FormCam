@@ -43,7 +43,7 @@ const Product: React.FC = () => {
 				unit: data.unit,
 			};
 
-			const response = await api.post('/product', formData);
+			const response = await api.post('/api/v1/products', formData);
 
 			if (response.status === 201) {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
