@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
 		marginTop: 4,
 	},
 	container: {
-		width: '100%',
+		width: '60%',
 		marginBottom: 10,
 	},
 	inputArea: {

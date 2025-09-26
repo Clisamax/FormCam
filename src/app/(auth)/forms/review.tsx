@@ -14,9 +14,9 @@ import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fonts';
 import { AxiosError } from 'axios';
 
-const Review: React.FC<homeFormData> = (data) => {
-	const { Logout, user } = useContext(AuthContext);
-	const { control, handleSubmit, getValues } = useFormContext<homeFormData>();
+const Review: React.FC<homeFormData> = () => {
+	const { user } = useContext(AuthContext);
+	const { handleSubmit, getValues } = useFormContext<homeFormData>();
 	const uuid = getValues('uuid');
 	const origin = getValues('options_1');
 	const process = getValues('options_2');
@@ -37,7 +37,7 @@ const Review: React.FC<homeFormData> = (data) => {
 				annotation: data.annotation,
 			};
 
-			const response = await api.post('/create_ocorrencia', formData);
+			const response = await api.post('/api/v1/occurrences', formData);
 
 			if (response.status === 201) {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [

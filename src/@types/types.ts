@@ -1,5 +1,6 @@
-import { Control, FieldValues, Path, RegisterOptions } from "react-hook-form";
-import { TextInputProps } from "react-native";
+import { Feather } from "@expo/vector-icons";
+import { Control, FieldValues, Path, RegisterOptions, UseControllerProps } from "react-hook-form";
+import { TextInputProps, ViewStyle } from "react-native";
 
 export interface Iuser {
 	token: string;
@@ -44,11 +45,13 @@ export interface CadastroFormData {
 export interface produtosFormData {
 	uuid: string;
 	name: string;
-	produto: string;
+	product: string;
 	serie: string;
 	quantity: string;
 	occurrenceDate: string;
 	annotation: string;
+	nameOfResponsible: string;
+	unit: string;
 }
 
 export interface InputDatePickerProps<T extends FieldValues> {
@@ -68,6 +71,17 @@ export interface DateInputProps {
 	name: string;
 	label?: string;
 	icon: string;
+}
+
+export interface ProductProps {
+	icon: keyof typeof Feather.glyphMap;
+	iconRight?: keyof typeof Feather.glyphMap;
+	formProps: UseControllerProps;
+	inputProps?: TextInputProps;
+	error?: string;
+	style?: ViewStyle;
+	increment?: () => void;
+	decrement?: () => void;
 }
 
 

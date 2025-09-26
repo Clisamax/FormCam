@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosInstance } from "axios";
 
 // Criar instância da API
 const api: AxiosInstance = axios.create({
-	baseURL: 'formcamapi-production.up.railway.app',
+	baseURL: '',
 	timeout: 5000,
 	headers: {
 		'Content-Type': 'application/json'
