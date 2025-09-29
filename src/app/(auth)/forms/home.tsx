@@ -76,8 +76,8 @@ const Home = (data: homeFormData) => {
 					control={control as unknown as Control}
 					options={[
 						{ label: 'Depósito', value: 'Depósito' },
-						{ label: 'Devolução', value: 'Devolução' },
 						{ label: 'Descarga', value: 'Descarga' },
+						{ label: 'Devolução', value: 'Devolução' },
 					]}
 					//label="Selecione a area de avaria"
 					rules={{ required: 'Este campo é obrigatório' }}
@@ -126,7 +126,7 @@ const Home = (data: homeFormData) => {
 					/>
 					<Button
 						title="produto"
-						onPress={() => router.push('/(auth)/forms/product')}
+						onPress={() => router.push('/(auth)/forms/review')}
 					/>
 				</View>
 			</View>
