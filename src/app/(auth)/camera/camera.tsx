@@ -1,116 +1,133 @@
-import FlatButtonAnimated from '@/components/flatButton';
-import { styles } from '@/styles/auth/stylesCamera';
+import React, { useEffect, useRef, useState } from 'react';
 import {
-	CameraCapturedPicture,
-	CameraView,
-	CameraViewProps,
-	useCameraPermissions,
-} from 'expo-camera';
-import * as FileSystem from 'expo-file-system';
-import React, { useCallback, useState } from 'react';
-import {
-	Alert,
 	Button,
-	StatusBar,
+	StyleSheet,
 	Text,
-	TouchableOpacity,
 	View,
+	Image,
+	Alert,
+	ActivityIndicator,
 } from 'react-native';
+import { Camera, CameraView } from 'expo-camera';
+import * as MediaLibrary from 'expo-media-library';
+import { useIsFocused } from '@react-navigation/native';
 
-const Camera: React.FC = () => {
-	const cameraViewRef = React.useRef<CameraView>(null);
-	const [permission, requestPermission] = useCameraPermissions();
-	const [flash, setFlash] = useState<CameraViewProps['flash']>('off');
-	const [isCameraReady, setIsCameraReady] = useState(false);
+export default function CameraScreen() {
+	const [hasCameraPermission, setHasCameraPermission] = useState<
+		boolean | null
+	>(null);
+	const [hasMediaPermission, setHasMediaPermission] = useState<boolean | null>(
+		null,
+	);
+	const [photoUri, setPhotoUri] = useState<string | null>(null);
+	const [isUploading, setIsUploading] = useState(false);
+	const cameraRef = useRef<CameraView | null>(null);
+	const isFocused = useIsFocused();
 
-	const handleCameraReady = useCallback(() => {
-		console.log('Câmera inicializada com sucesso');
-		setIsCameraReady(true);
+	useEffect(() => {
+		let mounted = true;
+		(async () => {
+			try {
+				const cameraStatus = await Camera.requestCameraPermissionsAsync();
+				const mediaStatus = await MediaLibrary.requestPermissionsAsync();
+				if (!mounted) return;
+				setHasCameraPermission(cameraStatus.status === 'granted');
+				setHasMediaPermission(mediaStatus.status === 'granted');
+			} catch (e) {
+				console.error(e);
+			}
+		})();
+		return () => {
+			mounted = false;
+			// liberando estado ao desmontar
+			setIsUploading(false);
+		};
 	}, []);
 
-	const takePhoto = useCallback(async () => {
-		if (cameraViewRef.current && isCameraReady) {
-			try {
-				const photo: CameraCapturedPicture | undefined =
-					await cameraViewRef.current.takePictureAsync({
-						quality: 0.8,
-						base64: false,
-					});
-				if (photo) {
-					const folderPath: string = `${FileSystem.documentDirectory}/.photos`;
-					const filePath: string = `${folderPath}/photo_${Date.now()}.jpg`;
-					const dirInfo = await FileSystem.getInfoAsync(folderPath);
-					if (!dirInfo.exists) {
-						await FileSystem.makeDirectoryAsync(folderPath, {
-							intermediates: true,
-						});
-					}
-					await FileSystem.moveAsync({
-						from: photo.uri,
-						to: filePath,
-					});
-					Alert.alert('Foto salva!', `Local: ${filePath}`);
-				}
-			} catch (error) {
-				Alert.alert('Erro', 'Erro ao salvar a foto.');
-				console.error('Erro ao tirar foto:', error);
+	const takePicture = async () => {
+		if (!cameraRef.current) return;
+		try {
+			const photo = await cameraRef.current.takePictureAsync();
+			setPhotoUri(photo.uri);
+
+			if (hasMediaPermission) {
+				await MediaLibrary.saveToLibraryAsync(photo.uri);
+				Alert.alert('📸 Foto salva na galeria!');
 			}
-		} else {
-			Alert.alert('Aguarde', 'A câmera ainda não está pronta.');
+
+			await uploadPhoto(photo.uri);
+		} catch (error) {
+			console.error(error);
+			Alert.alert('Erro', 'Não foi possível tirar a foto.');
 		}
-	}, [isCameraReady]);
+	};
 
-	if (!permission) {
-		// Carregando permissões
-		return (
-			<View style={styles.fullScreenContainer}>
-				<StatusBar barStyle="light-content" backgroundColor="#000" />
-				<Text style={styles.loadingText}>Carregando permissões...</Text>
-			</View>
-		);
-	}
+	const uploadPhoto = async (uri: string) => {
+		try {
+			setIsUploading(true);
 
-	if (!permission.granted) {
-		// Permissão não concedida
-		return (
-			<View style={styles.fullScreenContainer}>
-				<StatusBar barStyle="light-content" backgroundColor="#000" />
-				<Text style={styles.permissionText}>
-					Precisamos da sua permissão para acessar a câmera
-				</Text>
-				<Button onPress={requestPermission} title="Conceder permissão" />
-			</View>
-		);
-	}
+			const formData = new FormData();
+			formData.append('file', {
+				uri,
+				name: `foto_${Date.now()}.jpg`,
+				type: 'image/jpeg',
+			} as unknown as Blob);
+
+			// ATENÇÃO: substituir pela sua rota real de upload
+			const response = await fetch('https://seu-backend.com/upload', {
+				method: 'POST',
+				body: formData,
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			});
+
+			if (!response.ok) throw new Error('Falha no upload');
+
+			const result = await response.json();
+			Alert.alert(
+				'✅ Upload concluído!',
+				`Arquivo armazenado em: ${result.url}`,
+			);
+		} catch (error) {
+			console.error(error);
+			Alert.alert('Erro', 'Não foi possível enviar a imagem.');
+		} finally {
+			setIsUploading(false);
+		}
+	};
+
+	// não renderiza câmera se a tela não estiver em foco (evita câmera ativa em background)
+	if (!isFocused) return <View style={{ flex: 1 }} />;
+
+	if (hasCameraPermission === null) return <View />;
+	if (hasCameraPermission === false)
+		return <Text>Permissão negada para câmera.</Text>;
 
 	return (
-		<View style={styles.fullScreenContainer}>
-			<StatusBar barStyle="light-content" backgroundColor="#000" />
-			<CameraView
-				style={styles.camera}
-				facing="back"
-				ref={cameraViewRef}
-				flash={flash}
-				onCameraReady={handleCameraReady}
-			/>
-			<View style={styles.buttonContainer}>
-				<TouchableOpacity
-					style={[styles.button, !isCameraReady && styles.buttonDisabled]}
-					onPress={takePhoto}
-					disabled={!isCameraReady}
-					activeOpacity={0.8}
-				>
-					<Text style={styles.text}>Click</Text>
-				</TouchableOpacity>
-				<FlatButtonAnimated />
-			</View>
-			{!isCameraReady && (
-				<View style={styles.overlay}>
-					<Text style={styles.overlayText}>Inicializando câmera...</Text>
+		<View style={styles.container}>
+			<CameraView style={styles.camera} ref={cameraRef}>
+				<View style={styles.buttonContainer}>
+					<Button title="Tirar Foto" onPress={takePicture} />
+				</View>
+			</CameraView>
+
+			{photoUri && (
+				<View style={styles.previewContainer}>
+					<Text style={styles.previewText}>Prévia:</Text>
+					<Image source={{ uri: photoUri }} style={styles.previewImage} />
+					{isUploading && <ActivityIndicator size="large" color="#fff" />}
 				</View>
 			)}
 		</View>
 	);
-};
+}
 
-export default Camera;
+const styles = StyleSheet.create({
+	container: { flex: 1, backgroundColor: '#000' },
+	camera: { flex: 1 },
+	buttonContainer: { backgroundColor: 'rgba(0,0,0,0.5)', padding: 20 },
+	previewContainer: { alignItems: 'center', marginVertical: 10 },
+	previewText: { color: '#fff', fontSize: 16, marginBottom: 10 },
+	previewImage: { width: 300, height: 400, borderRadius: 10 },
+});
