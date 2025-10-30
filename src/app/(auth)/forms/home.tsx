@@ -126,7 +126,7 @@ const Home = (data: homeFormData) => {
 					/>
 					<Button
 						title="produto"
-						onPress={() => router.push('/(auth)/forms/product')}
+						onPress={() => router.push('/(auth)/camera/camera')}
 					/>
 				</View>
 			</View>
