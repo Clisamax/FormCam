@@ -125,8 +125,8 @@ const Home = (data: homeFormData) => {
 						size={22}
 					/>
 					<Button
-						title="produto"
-						onPress={() => router.push('/(auth)/forms/review')}
+						title="Câmera"
+						onPress={() => router.push('/(auth)/camera/cameraScreen')}
 					/>
 				</View>
 			</View>

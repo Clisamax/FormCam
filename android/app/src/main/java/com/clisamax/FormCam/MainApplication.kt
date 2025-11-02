@@ -1,4 +1,4 @@
-package com.formcam
+package com.clisamax.FormCam
 
 import android.app.Application
 import android.content.res.Configuration

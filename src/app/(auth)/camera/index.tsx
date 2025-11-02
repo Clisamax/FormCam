@@ -1,3 +1,3 @@
-import Camera from './camera';
+import Camera from './cameraScreen';
 
 export default Camera;
