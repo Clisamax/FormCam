@@ -2,7 +2,8 @@ import axios, { AxiosError, AxiosInstance } from "axios";
 
 // Criar instância da API
 const api: AxiosInstance = axios.create({
-	baseURL: 'http://formcamapi-production.up.railway.app',
+	baseURL: 'http://127.0.0.1:3339',
+	//baseURL: 'http://formcamapi-production.up.railway.app',
 	timeout: 5000,
 	headers: {
 		'Content-Type': 'application/json'
@@ -87,6 +88,6 @@ if (typeof api.post !== 'function') {
 	throw new Error('Método post não está disponível na instância da API');
 }
 
-// Exportar tanto como default quanto como named export para compatibilidade
+// Exportar tanto como default quanto como name export para compatibilidade
 export { api };
 export default api;

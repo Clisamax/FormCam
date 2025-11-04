@@ -126,7 +126,7 @@ const Home = (data: homeFormData) => {
 					/>
 					<Button
 						title="Câmera"
-						onPress={() => router.push('/(auth)/camera/cameraScreen')}
+						onPress={() => router.push('/(auth)/camera')}
 					/>
 				</View>
 			</View>

@@ -49,7 +49,7 @@ const Product: React.FC = () => {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
 					{
 						text: 'OK',
-						onPress: () => router.push('/(auth)/camera/camera'),
+						onPress: () => router.push('/(auth)/camera/cameraScreen'),
 					},
 				]);
 			}
