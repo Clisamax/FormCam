@@ -31,24 +31,13 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	containerMid: {
-		flexDirection: 'row',
 		flex: 0.1,
 		width: '100%',
-	},
-	containerMidLeft: {
-
-		alignItems: 'flex-start',
 		justifyContent: 'center',
-		width: '40%',
-		height: '100%',
-		padding: 10,
-	},
-	containerMidRight: {
-		width: '60%',
-		height: '100%',
-		justifyContent: 'center',
-		alignItems: 'flex-start',
-		paddingRight: 10,
+		alignItems: 'center',
+		margin: 10,
+		marginTop: 20,
+		gap: 10,
 	},
 	containerFoot: {
 		flex: 0.7,

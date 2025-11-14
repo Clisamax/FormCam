@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Alert, Text, View } from 'react-native';
+import { Alert, Text, View, ScrollView } from 'react-native';
 
 import Button from '@/components/button/button';
 import Progress from '@/components/progress/progress';
@@ -13,6 +13,7 @@ import { styles } from '@/styles/auth/stylesReview';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fonts';
 import { AxiosError } from 'axios';
+
 
 const Review: React.FC<homeFormData> = () => {
 	const { user } = useContext(AuthContext);
@@ -43,7 +44,7 @@ const Review: React.FC<homeFormData> = () => {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
 					{
 						text: 'OK',
-						onPress: () => router.push('/(auth)/camera/camera'),
+						onPress: () => router.push('/(auth)/forms/product'),
 					},
 				]);
 			}
@@ -96,7 +97,7 @@ const Review: React.FC<homeFormData> = () => {
 					</Text>
 				</View>
 			</View>
-			<View style={[styles.containerMid, { marginLeft: 10 }]}>
+			<ScrollView style={[styles.containerMid, { marginLeft: 10 }]}>
 				<Text style={[styles.text, { fontWeight: 'bold' }]}>
 					Qual o departamento de origem?
 				</Text>
@@ -113,7 +114,7 @@ const Review: React.FC<homeFormData> = () => {
 				<Text style={styles.textRed}>{`=> ${occurrence}`}</Text>
 				<Text style={styles.textBold}>Anotação:</Text>
 				<Text style={styles.textRed}>{`=> ${annotation}`}</Text>
-			</View>
+			</ScrollView>
 			<View style={{ marginTop: 20, alignItems: 'center' }}>
 				<Button title={'enviar'} onPress={handleSubmit(handleEnviar)} />
 			</View>

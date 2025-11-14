@@ -87,6 +87,6 @@ if (typeof api.post !== 'function') {
 	throw new Error('Método post não está disponível na instância da API');
 }
 
-// Exportar tanto como default quanto como named export para compatibilidade
+// Exportar tanto como default quanto como name export para compatibilidade
 export { api };
 export default api;

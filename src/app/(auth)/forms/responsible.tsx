@@ -64,34 +64,22 @@ const Responsible: React.FC<homeFormData> = (data) => {
 			</View>
 
 			<View style={styles.containerMid}>
-				<View style={styles.containerMidLeft}>
-					<Text
-						style={[
-							styles.text,
-							{ textAlign: 'center', color: COLORS.red[500] },
-						]}
-					>
-						<Text style={[styles.text, { fontWeight: 'bold' }]}>
-							Qual o departamento de origem?
-						</Text>
+				<View>
+					<Text style={{ fontFamily: FONTES.FONTS.code }}>
 						<Text
-							style={[styles.text, { color: COLORS.red[500] }]}
-						>{`=> ${origin}`}</Text>
-					</Text>
-					<Text style={[styles.text, { textAlign: 'center' }]}>
-						<Text style={[styles.text, { fontWeight: 'bold' }]}>
-							Qual o procedimento?
+							style={{
+								color: COLORS.red[600],
+								fontFamily: FONTES.FONTS.defaultBold,
+							}}
+						>
+							Origem :{' '}
 						</Text>
-						<Text
-							style={[styles.text, { color: COLORS.red[500] }]}
-						>{`=> ${procedure}`}</Text>
+						{`${origin} => ${process}  `}
 					</Text>
 				</View>
-				<View style={styles.containerMidRight}>
-					<Text style={[styles.text, { textAlign: 'center' }]}>
-						Selecione a opção desejada para continuar
-					</Text>
-				</View>
+				<Text style={[styles.text, { textAlign: 'center' }]}>
+					Selecione a opção desejada para continuar
+				</Text>
 			</View>
 
 			<ScrollView style={styles.containerFoot}>
@@ -149,6 +137,7 @@ const Responsible: React.FC<homeFormData> = (data) => {
 					rules={{ required: 'Este campo é obrigatório' }}
 					onPress={() => {
 						router.push('/(auth)/forms/occurrence');
+						console.log('responsible:', getValues('options_4'));
 					}}
 				/>
 

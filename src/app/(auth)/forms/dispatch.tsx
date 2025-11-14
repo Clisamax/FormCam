@@ -21,9 +21,9 @@ const Dispatch: React.FC<homeFormData> = (data) => {
 	const { Logout, user } = useContext(AuthContext);
 	const { control, handleSubmit, getValues } = useFormContext<homeFormData>();
 	const uuid = getValues('uuid');
-	const options_1 = getValues('options_1');
-	const options_2 = getValues('options_2');
-	const options_3 = getValues('options_3');
+	const origin = getValues('options_1');
+	const process = getValues('options_2');
+	const procedure = getValues('options_3');
 
 	return (
 		<View style={styles.container}>
@@ -60,28 +60,24 @@ const Dispatch: React.FC<homeFormData> = (data) => {
 					</Text>
 				</View>
 			</View>
-
 			<View style={styles.containerMid}>
-				<View style={styles.containerMidLeft}>
-					<Text
-						style={[
-							styles.text,
-							{ textAlign: 'center', color: COLORS.red[500] },
-						]}
-					>
-						{`${options_1}`}
-					</Text>
-					<Text style={[styles.text, { textAlign: 'center' }]}>
-						{`${options_2}`}
-					</Text>
-				</View>
-				<View style={styles.containerMidRight}>
-					<Text style={[styles.text, { textAlign: 'center' }]}>
-						Selecione a opção desejada para continuar
+				<View>
+					<Text style={{ fontFamily: FONTES.FONTS.code }}>
+						<Text
+							style={{
+								color: COLORS.red[600],
+								fontFamily: FONTES.FONTS.defaultBold,
+							}}
+						>
+							Origem :{' '}
+						</Text>
+						{`${origin} => ${process}`}
 					</Text>
 				</View>
+				<Text style={[styles.text, { textAlign: 'center' }]}>
+					Selecione a opção desejada para continuar
+				</Text>
 			</View>
-
 			<View style={styles.containerFoot}>
 				<RadioTaskButton
 					name="options_3"
@@ -104,6 +100,7 @@ const Dispatch: React.FC<homeFormData> = (data) => {
 					rules={{ required: 'Este campo é obrigatório' }}
 					onPress={() => {
 						router.push('/(auth)/forms/responsible');
+						console.log('procedure:', getValues('options_3'));
 					}}
 				/>
 
