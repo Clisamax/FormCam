@@ -113,6 +113,8 @@ const Occurrence: React.FC<homeFormData> = (data) => {
 					title={'enviar'}
 					onPress={() => {
 						router.navigate('/(auth)/forms/review');
+						console.log('occurrence:', getValues('options_5'));
+						console.log('annotation:', getValues('annotation'));
 					}}
 				/>
 			</View>

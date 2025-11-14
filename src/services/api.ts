@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosInstance } from "axios";
 
 // Criar instância da API
 const api: AxiosInstance = axios.create({
-	baseURL: 'http://127.0.0.1:3339',
+	baseURL: 'http://formcamapi-production.up.railway.app',
 	//baseURL: 'http://formcamapi-production.up.railway.app',
 	timeout: 5000,
 	headers: {

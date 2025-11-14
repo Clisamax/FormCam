@@ -100,6 +100,7 @@ const Dispatch: React.FC<homeFormData> = (data) => {
 					rules={{ required: 'Este campo é obrigatório' }}
 					onPress={() => {
 						router.push('/(auth)/forms/responsible');
+						console.log('procedure:', getValues('options_3'));
 					}}
 				/>
 
