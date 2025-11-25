@@ -56,9 +56,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "runtimeVersion": {
-        "policy": "appVersion"
-      },
+      "runtimeVersion": "1.0.0",
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.INTERNET",
