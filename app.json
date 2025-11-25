@@ -79,7 +79,8 @@
         {
           "cameraPermission": "Este aplicativo precisa acessar a câmera para tirar fotos."
         }
-      ]
+      ],
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true

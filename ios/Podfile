@@ -43,11 +43,6 @@ target 'FormCam' do
   )
 
   post_install do |installer|
-    installer.pods_project.targets.each do |target|
-      target.build_configurations.each do |config|
-        config.build_settings['DEFINES_MODULE'] = 'YES'
-      end
-    end
     react_native_post_install(
       installer,
       config[:reactNativePath],
