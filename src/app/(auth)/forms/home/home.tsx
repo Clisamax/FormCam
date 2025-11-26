@@ -7,7 +7,7 @@ import { homeFormData } from '@/@types/types';
 import Button from '@/components/button/button';
 import Input from '@/components/input/input';
 import RadioField from '@/components/inputRadio/radioField';
-import { styles } from '@/styles/auth/stylesHome';
+import { styles } from '@/styles/auth/home/stylesHome';
 
 import { AuthContext } from '@/context/auth';
 import { COLORS } from '@/styles/global/color';

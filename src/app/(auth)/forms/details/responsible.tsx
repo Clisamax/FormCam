@@ -10,7 +10,7 @@ import { AuthContext } from '@/context/auth';
 import { homeFormData } from '@/@types/types';
 
 import RadioTaskButton from '@/components/radioTaskButton/radioTaskButton';
-import { styles } from '@/styles/auth/stylesResponsible';
+import { styles } from '@/styles/auth/details/stylesResponsible';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fonts';
 

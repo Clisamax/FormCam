@@ -9,7 +9,7 @@ import { AuthContext } from '@/context/auth';
 
 import { homeFormData } from '@/@types/types';
 import { api } from '@/services/api';
-import { styles } from '@/styles/auth/stylesReview';
+import { styles } from '@/styles/auth/details/stylesReview';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fonts';
 import { AxiosError } from 'axios';

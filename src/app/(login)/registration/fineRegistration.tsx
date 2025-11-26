@@ -8,7 +8,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import Button from '@/components/button/button';
 import InputSenha from '@/components/inputPassword/inputPassword';
 import Progress from '@/components/progress/progress';
-import { api } from '../../services/api';
+import { api } from '@/services/api';
 
 import { CadastroFormData } from '@/@types/types';
 import { stylesCadastroFinal } from '@/styles/login/stylesRegistration';
@@ -47,7 +47,7 @@ const CadastroFinal = () => {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
 					{
 						text: 'OK',
-						onPress: () => router.push('/(login)/login'),
+						onPress: () => router.push('/(login)/login/login'),
 					},
 				]);
 			}

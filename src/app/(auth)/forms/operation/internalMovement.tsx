@@ -9,7 +9,7 @@ import Progress from '@/components/progress/progress';
 import RadioTaskButton from '@/components/radioTaskButton/radioTaskButton';
 import { AuthContext } from '@/context/auth';
 
-import { styles } from '@/styles/auth/stylesInternalMovement';
+import { styles } from '@/styles/auth/operation/stylesInternalMovement';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fonts';
 

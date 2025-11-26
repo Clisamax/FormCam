@@ -17,7 +17,7 @@ import { homeFormData } from '@/@types/types';
 
 import Input from '@/components/inputAnnotation/inputAnnotation';
 import RadioField from '@/components/inputRadio/radioField';
-import { styles } from '@/styles/auth/stylesOccurrence';
+import { styles } from '@/styles/auth/details/stylesOccurrence';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fonts';
 

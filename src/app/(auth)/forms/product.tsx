@@ -5,7 +5,7 @@ import { DateInput } from '@/components/inputDatePicker';
 import InputProduct from '@/components/inputProduct/input';
 import RadioField from '@/components/inputRadio/radioField';
 import api from '@/services/api';
-import { styles } from '@/styles/auth/stylesProduct';
+import { styles } from '@/styles/auth/product/stylesProduct';
 import { AxiosError } from 'axios';
 import { router } from 'expo-router';
 import { useEffect, useRef } from 'react';
