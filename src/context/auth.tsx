@@ -116,7 +116,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 				'@auth:timestamp',
 			]);
 			setUser(null);
-			router.push('/login');
+			router.push('/(login)/login/login');
 		} catch (error) {
 			console.error('Erro ao fazer logout:', error);
 		}

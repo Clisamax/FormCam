@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FE2176E4CA52A558D027C20 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221AC96CEA0B0758553EE56C /* ExpoModulesProvider.swift */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		4768E618622CACC3F06FFE27 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B012C4B6E015811CE8222D5F /* ExpoModulesProvider.swift */; };
-		64AFC3ECE66F40C2C6333D13 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4512084E338FB98375ED4BD1 /* PrivacyInfo.xcprivacy */; };
-		64B8DFA89A093EC79947151C /* libPods-FormCam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4E25FA7F5E7DAF35C1F778 /* libPods-FormCam.a */; };
+		69B0D03B70669195EC125312 /* libPods-FormCam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8FEFF1F7BA1AB958A08D20E /* libPods-FormCam.a */; };
+		B2277581EFF6F768DC700AFB /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3FDFD3F9CCAF860EB1DB0 /* PrivacyInfo.xcprivacy */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -20,16 +20,16 @@
 		13B07F961A680F5B00A75B9A /* FormCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FormCam/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FormCam/Info.plist; sourceTree = "<group>"; };
-		4512084E338FB98375ED4BD1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = FormCam/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		5D6FE132730C19B6C5A6C15E /* Pods-FormCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormCam.release.xcconfig"; path = "Target Support Files/Pods-FormCam/Pods-FormCam.release.xcconfig"; sourceTree = "<group>"; };
-		9C4E25FA7F5E7DAF35C1F778 /* libPods-FormCam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FormCam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		221AC96CEA0B0758553EE56C /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-FormCam/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		2EB0CA0367C5237E71B040AC /* Pods-FormCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormCam.release.xcconfig"; path = "Target Support Files/Pods-FormCam/Pods-FormCam.release.xcconfig"; sourceTree = "<group>"; };
+		7AC3FDFD3F9CCAF860EB1DB0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = FormCam/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = FormCam/SplashScreen.storyboard; sourceTree = "<group>"; };
-		B012C4B6E015811CE8222D5F /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-FormCam/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		D0C60EEDD09267524B30ADD8 /* Pods-FormCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormCam.debug.xcconfig"; path = "Target Support Files/Pods-FormCam/Pods-FormCam.debug.xcconfig"; sourceTree = "<group>"; };
+		D8FEFF1F7BA1AB958A08D20E /* libPods-FormCam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FormCam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FormCam/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* FormCam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FormCam-Bridging-Header.h"; path = "FormCam/FormCam-Bridging-Header.h"; sourceTree = "<group>"; };
+		F2634EBCB16E3CBD8337D392 /* Pods-FormCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormCam.debug.xcconfig"; path = "Target Support Files/Pods-FormCam/Pods-FormCam.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64B8DFA89A093EC79947151C /* libPods-FormCam.a in Frameworks */,
+				69B0D03B70669195EC125312 /* libPods-FormCam.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +53,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				4512084E338FB98375ED4BD1 /* PrivacyInfo.xcprivacy */,
+				7AC3FDFD3F9CCAF860EB1DB0 /* PrivacyInfo.xcprivacy */,
 			);
 			name = FormCam;
 			sourceTree = "<group>";
@@ -62,25 +62,19 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				9C4E25FA7F5E7DAF35C1F778 /* libPods-FormCam.a */,
+				D8FEFF1F7BA1AB958A08D20E /* libPods-FormCam.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5A9F14347878F04D297FEFFF /* ExpoModulesProviders */ = {
+		4885E9E3C33B7999F8579CB6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7E6851737232ECF3A115C2CC /* FormCam */,
+				F2634EBCB16E3CBD8337D392 /* Pods-FormCam.debug.xcconfig */,
+				2EB0CA0367C5237E71B040AC /* Pods-FormCam.release.xcconfig */,
 			);
-			name = ExpoModulesProviders;
-			sourceTree = "<group>";
-		};
-		7E6851737232ECF3A115C2CC /* FormCam */ = {
-			isa = PBXGroup;
-			children = (
-				B012C4B6E015811CE8222D5F /* ExpoModulesProvider.swift */,
-			);
-			name = FormCam;
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -97,8 +91,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				C71F002C4B6DE1685D5DFB48 /* Pods */,
-				5A9F14347878F04D297FEFFF /* ExpoModulesProviders */,
+				4885E9E3C33B7999F8579CB6 /* Pods */,
+				C7B5190F23D77B7290A62A48 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -113,6 +107,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A76CBB959785E4751CD75C68 /* FormCam */ = {
+			isa = PBXGroup;
+			children = (
+				221AC96CEA0B0758553EE56C /* ExpoModulesProvider.swift */,
+			);
+			name = FormCam;
+			sourceTree = "<group>";
+		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,14 +124,12 @@
 			path = FormCam/Supporting;
 			sourceTree = "<group>";
 		};
-		C71F002C4B6DE1685D5DFB48 /* Pods */ = {
+		C7B5190F23D77B7290A62A48 /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				D0C60EEDD09267524B30ADD8 /* Pods-FormCam.debug.xcconfig */,
-				5D6FE132730C19B6C5A6C15E /* Pods-FormCam.release.xcconfig */,
+				A76CBB959785E4751CD75C68 /* FormCam */,
 			);
-			name = Pods;
-			path = Pods;
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,13 +140,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FormCam" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				A11E3F8D88959865CE6A055E /* [Expo] Configure project */,
+				87305B55E15CDA5C758E12BF /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				A6545F043D7B2CA1F26FFAE8 /* [CP] Embed Pods Frameworks */,
+				53BA0D8DE90B9AB1FD2F01AE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -198,7 +198,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				64AFC3ECE66F40C2C6333D13 /* PrivacyInfo.xcprivacy in Resources */,
+				B2277581EFF6F768DC700AFB /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +240,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53BA0D8DE90B9AB1FD2F01AE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FormCam/Pods-FormCam-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FormCam/Pods-FormCam-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
@@ -326,7 +344,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FormCam/Pods-FormCam-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A11E3F8D88959865CE6A055E /* [Expo] Configure project */ = {
+		87305B55E15CDA5C758E12BF /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -345,24 +363,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-FormCam/expo-configure-project.sh\"\n";
 		};
-		A6545F043D7B2CA1F26FFAE8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FormCam/Pods-FormCam-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FormCam/Pods-FormCam-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -371,7 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				4768E618622CACC3F06FFE27 /* ExpoModulesProvider.swift in Sources */,
+				0FE2176E4CA52A558D027C20 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +380,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0C60EEDD09267524B30ADD8 /* Pods-FormCam.debug.xcconfig */;
+			baseConfigurationReference = F2634EBCB16E3CBD8337D392 /* Pods-FormCam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -419,7 +419,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D6FE132730C19B6C5A6C15E /* Pods-FormCam.release.xcconfig */;
+			baseConfigurationReference = 2EB0CA0367C5237E71B040AC /* Pods-FormCam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
