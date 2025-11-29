@@ -33,8 +33,8 @@ const Occurrence: React.FC<homeFormData> = (data) => {
 	const process = getValues('options_2');
 	const procedure = getValues('options_3');
 	const responsible = getValues('options_4');
-	const occurrence = getValues('options_5');
-	const annotation = getValues('annotation');
+	const description = getValues('options_5');
+	const note = getValues('annotation');
 	const sapRef = useRef<TextInput>(null);
 
 	return (
