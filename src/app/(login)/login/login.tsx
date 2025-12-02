@@ -35,7 +35,7 @@ const Login: React.FC = () => {
 		try {
 			setLoading(true);
 			await Authenticate(data.sap, data.password);
-			router.navigate('/(auth)/forms/home/home');
+			router.navigate('/(login)/login/loading');
 		} catch (error) {
 			Alert.alert('Erro', 'Usuário ou senha inválidos');
 			router.push('/(login)/login/login');

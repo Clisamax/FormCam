@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Alert, Text, View, ScrollView } from 'react-native';
+import { Alert, ScrollView, Text, View } from 'react-native';
 
 import Button from '@/components/button/button';
 import Progress from '@/components/progress/progress';
@@ -44,9 +44,13 @@ const Review: React.FC<homeFormData> = () => {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
 					{
 						text: 'OK',
-						onPress: () => router.push('/(auth)/forms/product'),
+						onPress: () => router.push({
+							pathname: '/(auth)/forms/product',
+							params: { uuid: response.data.occurrence.uuid },
+						}),
 					},
 				]);
+
 			}
 		} catch (error) {
 			if (error instanceof AxiosError) {

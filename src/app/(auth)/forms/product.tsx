@@ -7,12 +7,14 @@ import RadioField from '@/components/inputRadio/radioField';
 import api from '@/services/api';
 import { styles } from '@/styles/auth/product/stylesProduct';
 import { AxiosError } from 'axios';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router'; // <-- ADICIONADO
 import { useEffect, useRef } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Alert, TextInput, View } from 'react-native';
+import { Alert, TextInput, View, Text } from 'react-native';
 
 const Product: React.FC = () => {
+	const { uuid } = useLocalSearchParams(); // <-- ADICIONADO
+
 	const {
 		control,
 		handleSubmit,
@@ -22,19 +24,29 @@ const Product: React.FC = () => {
 		getValues,
 		formState: { errors },
 	} = useFormContext<produtosFormData>();
-	const name = getValues('name');
+
 	const produtoRef = useRef<TextInput>(null);
 	const quantityRef = useRef<TextInput>(null);
 	const nameOfResponsibleRef = useRef<TextInput>(null);
-	const occurrenceDate = getValues('occurrenceDate');
-	const product = getValues('product');
-	const quantity = getValues('quantity');
-	const nameOfResponsible = getValues('nameOfResponsible');
-	const unit = getValues('unit');
+
+	// Mensagem de erro se uuid não existir
+	if (!uuid) {
+		return (
+			<View style={{ padding: 20 }}>
+				<Text style={{ color: 'red', fontSize: 18 }}>
+					Erro: Nenhuma ocorrência foi informada.
+				</Text>
+				<Text style={{ color: 'white' }}>
+					Volte e crie a ocorrência antes de cadastrar produtos.
+				</Text>
+			</View>
+		);
+	}
 
 	async function handleEnviar(data: produtosFormData) {
 		try {
 			const formData = {
+				uuid: String(uuid), // <-- ADICIONADO
 				name: data.name.trim(),
 				occurrenceDate: data.occurrenceDate,
 				product: data.product.trim(),
@@ -68,7 +80,7 @@ const Product: React.FC = () => {
 		}
 	}
 
-	// Registrar o campo "quantity" para garantir que ele seja monitorado
+	// Registrar quantity
 	useEffect(() => {
 		register('quantity', {
 			required: 'Quantity is required',
@@ -87,7 +99,7 @@ const Product: React.FC = () => {
 		});
 	}, [register]);
 
-	// Use useEffect para lidar com a lógica de atualização do estado
+	// Corrigir quantidade inválida
 	useEffect(() => {
 		if (
 			Number.isNaN(Number(watch('quantity'))) ||
@@ -162,6 +174,7 @@ const Product: React.FC = () => {
 					returnKeyType: 'next',
 				}}
 			/>
+
 			<View style={styles.containerProduto}>
 				<Input
 					style={{ width: '50%' }}
@@ -169,7 +182,7 @@ const Product: React.FC = () => {
 					error={errors.product?.message || ''}
 					ref={produtoRef}
 					formProps={{
-						name: 'produto',
+						name: 'product',
 						control: control as unknown as Control,
 						rules: {
 							required: 'Produto é obrigatório',
@@ -187,6 +200,7 @@ const Product: React.FC = () => {
 						keyboardType: 'numeric',
 					}}
 				/>
+
 				<InputProduct
 					style={{ width: '45%' }}
 					icon={'minus-circle'}
@@ -198,21 +212,6 @@ const Product: React.FC = () => {
 					formProps={{
 						name: 'quantity',
 						control: control as unknown as Control,
-						rules: {
-							required: 'Quantity is required',
-							pattern: {
-								value: /^[0-9]+$/,
-								message: ' Quantidade invalida',
-							},
-							min: {
-								value: 1,
-								message: 'Quantidade deve ser maior que zero',
-							},
-							max: {
-								value: 9999,
-								message: 'Quantidade deve ser menor que 9999',
-							},
-						},
 					}}
 					inputProps={{
 						keyboardType: 'numeric',
@@ -221,6 +220,7 @@ const Product: React.FC = () => {
 					}}
 				/>
 			</View>
+
 			<View style={styles.containerRadio}>
 				<RadioField
 					name="unit"
@@ -230,12 +230,12 @@ const Product: React.FC = () => {
 						{ label: 'caixa', value: 'caixa' },
 						{ label: 'palete', value: 'palete' },
 					]}
-					//label="Selecione a area de avaria"
 					rules={{ required: 'Este campo é obrigatório' }}
 				/>
+
 				<Input
 					icon={'user'}
-					error={errors.name?.message || ''}
+					error={errors.nameOfResponsible?.message || ''}
 					ref={nameOfResponsibleRef}
 					formProps={{
 						name: 'nameOfResponsible',
@@ -245,26 +245,19 @@ const Product: React.FC = () => {
 							pattern: {
 								value:
 									/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]{2,}(?: [A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]{2,})+$/,
-								message: 'Digite nome e sobrenome válidos (apenas letras)',
-							},
-							maxLength: {
-								value: 50,
-								message: 'Nome muito longo',
-							},
-							minLength: {
-								value: 3,
-								message: 'Nome muito curto',
+								message: 'Digite nome e sobrenome válidos',
 							},
 						},
 					}}
 					inputProps={{
 						placeholder: 'responsável pela avária',
 						placeholderTextColor: 'white',
-						onSubmitEditing: handleSubmit(() => {}),
+						onSubmitEditing: handleSubmit(handleEnviar),
 						returnKeyType: 'next',
 					}}
 				/>
 			</View>
+
 			<View style={styles.footer}>
 				<Button
 					styles={styles.button}
@@ -275,4 +268,5 @@ const Product: React.FC = () => {
 		</View>
 	);
 };
+
 export default Product;
