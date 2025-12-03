@@ -1,9 +1,11 @@
+import { DateInputProps } from "@/@types/types";
 import { styles } from '@/components/inputDatePicker/styles';
+import { COLORS } from '@/styles/global/color';
 import DateTimePicker, {
 	DateTimePickerEvent,
 } from '@react-native-community/datetimepicker';
 import React, { useState } from 'react';
-import { Control, Controller, FieldValues } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import {
 	Modal,
 	Platform,
@@ -12,9 +14,7 @@ import {
 	TouchableOpacity,
 	View,
 } from 'react-native';
-import { DateInputProps } from "@/@types/types";
 import Icon from 'react-native-vector-icons/Feather';
-import { COLORS } from '@/styles/global/color';
 
 const isSameDay = (date1: Date, date2: Date) => {
 	return (
@@ -24,16 +24,48 @@ const isSameDay = (date1: Date, date2: Date) => {
 	);
 };
 
+const formatDateToDDMMYYYY = (date: Date): string => {
+	const day = String(date.getDate()).padStart(2, '0');
+	const month = String(date.getMonth() + 1).padStart(2, '0');
+	const year = date.getFullYear();
+	return `${day}-${month}-${year}`;
+};
+
 
 
 export function DateInput({ control, name, label, icon }: DateInputProps) {
 	const [show, setShow] = useState(false);
 
+	// Helper to convert value to Date object for the picker
+	const getDateValue = (value: any): Date => {
+		if (!value) return new Date();
+		if (value === 'data de hoje') return new Date();
+		if (value instanceof Date) return value;
+		// If it's a dd-mm-yyyy string, parse it
+		if (typeof value === 'string' && value.match(/^\d{2}-\d{2}-\d{4}$/)) {
+			const [day, month, year] = value.split('-');
+			return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+		}
+		return new Date(value);
+	};
+
+	// Helper to display the value
+	const getDisplayValue = (value: any): string => {
+		if (value === 'data de hoje') return 'Data de hoje';
+		if (!value) return 'Selecionar data';
+		// If it's already a dd-mm-yyyy string, return it
+		if (typeof value === 'string' && value.match(/^\d{2}-\d{2}-\d{4}$/)) {
+			return value;
+		}
+		// Otherwise convert to dd-mm-yyyy
+		return formatDateToDDMMYYYY(getDateValue(value));
+	};
+
 	return (
 		<Controller
 			control={control}
 			name={name}
-			defaultValue={new Date()}
+			defaultValue={formatDateToDDMMYYYY(new Date())}
 			render={({ field: { onChange, value }, fieldState: { error } }) => (
 				<View style={styles.container}>
 					{label && <Text style={styles.label}>{label}</Text>}
@@ -42,7 +74,7 @@ export function DateInput({ control, name, label, icon }: DateInputProps) {
 							<Icon
 								name={icon}
 								size={20}
-								color={error ? COLORS.gray[400] : COLORS.red[500]}
+								color={error ? COLORS.red[500] : COLORS.gray[400]}
 							/>
 						</View>
 						<TouchableOpacity
@@ -58,11 +90,7 @@ export function DateInput({ control, name, label, icon }: DateInputProps) {
 									!value && { color: COLORS.gray[400] },
 								]}
 							>
-								{value === 'data de hoje'
-									? 'Data de hoje'
-									: value
-										? new Date(value).toLocaleDateString()
-										: 'Selecionar data'}
+								{getDisplayValue(value)}
 							</Text>
 						</TouchableOpacity>
 					</View>
@@ -84,7 +112,7 @@ export function DateInput({ control, name, label, icon }: DateInputProps) {
 								onPress={(e) => e.stopPropagation()}
 							>
 								<DateTimePicker
-									value={value || new Date()}
+									value={getDateValue(value)}
 									mode="date"
 									display={Platform.OS === 'ios' ? 'spinner' : 'default'}
 									onChange={(
@@ -97,7 +125,7 @@ export function DateInput({ control, name, label, icon }: DateInputProps) {
 											if (isSameDay(selectedDate, today)) {
 												onChange('data de hoje'); // Envia a string "data de hoje"
 											} else {
-												onChange(selectedDate); // Envia a data selecionada
+												onChange(formatDateToDDMMYYYY(selectedDate)); // Envia a data formatada como dd-mm-yyyy
 											}
 										}
 										if (Platform.OS === 'android') {

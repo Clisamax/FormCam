@@ -55,6 +55,8 @@ const Product: React.FC = () => {
 				unit: data.unit,
 			};
 
+			console.log('Dados enviados:', formData);
+
 			const response = await api.post('/api/v1/products', formData);
 
 			if (response.status === 201) {
