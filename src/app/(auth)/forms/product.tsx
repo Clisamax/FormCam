@@ -1,7 +1,7 @@
 import { produtosFormData } from '@/@types/types';
 import Button from '@/components/button/button';
 import Input from '@/components/input/input';
-import { DateInput } from '@/components/inputDatePicker';
+import { DateInput } from '@/components/button';
 import InputProduct from '@/components/inputProduct/input';
 import RadioField from '@/components/inputRadio/radioField';
 import api from '@/services/api';
@@ -10,7 +10,7 @@ import { AxiosError } from 'axios';
 import { router, useLocalSearchParams } from 'expo-router'; // <-- ADICIONADO
 import { useEffect, useRef } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Alert, TextInput, View, Text } from 'react-native';
+import { Alert, TextInput, View, Text, Pressable, Keyboard } from 'react-native';
 
 const Product: React.FC = () => {
 	const { uuid } = useLocalSearchParams(); // <-- ADICIONADO
@@ -127,6 +127,7 @@ const Product: React.FC = () => {
 	};
 
 	return (
+		<Pressable onPress={Keyboard.dismiss} style={{ flex: 1 }}>
 		<View style={styles.container}>
 			<View style={[styles.containerTop]}>
 				<Button
@@ -268,6 +269,7 @@ const Product: React.FC = () => {
 				/>
 			</View>
 		</View>
+		</Pressable>
 	);
 };
 

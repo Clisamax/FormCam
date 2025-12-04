@@ -3,9 +3,9 @@ import { useContext, useRef } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
 import {
 	Keyboard,
+	Pressable,
 	Text,
 	TextInput,
-	TouchableWithoutFeedback,
 	View,
 } from 'react-native';
 
@@ -38,7 +38,7 @@ const Occurrence: React.FC<homeFormData> = (data) => {
 	const sapRef = useRef<TextInput>(null);
 
 	return (
-		<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+		<Pressable onPress={Keyboard.dismiss} style={{ flex: 1 }}>
 			<View style={styles.container}>
 				<View style={[styles.containerTop]}>
 					<View style={[styles.containerTopLefth, { padding: 10 }]}>
@@ -129,7 +129,7 @@ const Occurrence: React.FC<homeFormData> = (data) => {
 					/>
 				</View>
 			</View>
-		</TouchableWithoutFeedback>
+		</Pressable>
 	);
 };
 export default Occurrence;
