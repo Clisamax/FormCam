@@ -79,7 +79,7 @@ const Home = (data: homeFormData) => {
 					]}
 					rules={{ required: 'Este campo é obrigatório' }}
 				/>
-				<View style={styles.containerInput}>
+				<View style={[styles.containerInput, { marginRight: 15 }]}>
 					<Input
 						icon="file"
 						error={errors.uuid?.message || ''}
