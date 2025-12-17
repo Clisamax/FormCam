@@ -171,7 +171,7 @@ const Product: React.FC = () => {
 					},
 				}}
 				inputProps={{
-					placeholder: 'Nome Completo',
+					placeholder: 'Nome do Responsável',
 					placeholderTextColor: 'white',
 					onSubmitEditing: () => produtoRef.current?.focus(),
 					returnKeyType: 'next',
@@ -236,29 +236,7 @@ const Product: React.FC = () => {
 					rules={{ required: 'Este campo é obrigatório' }}
 				/>
 
-				<Input
-					icon={'user'}
-					error={errors.nameOfResponsible?.message || ''}
-					ref={nameOfResponsibleRef}
-					formProps={{
-						name: 'nameOfResponsible',
-						control: control as unknown as Control,
-						rules: {
-							required: 'nome é obrigatório',
-							pattern: {
-								value:
-									/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]{2,}(?: [A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]{2,})+$/,
-								message: 'Digite nome e sobrenome válidos',
-							},
-						},
-					}}
-					inputProps={{
-						placeholder: 'responsável pela avária',
-						placeholderTextColor: 'white',
-						onSubmitEditing: handleSubmit(handleEnviar),
-						returnKeyType: 'next',
-					}}
-				/>
+		
 			</View>
 
 			<View style={styles.footer}>

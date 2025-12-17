@@ -1,10 +1,10 @@
 import { COLORS } from '@/styles/global/color';
 import { Slot } from 'expo-router';
-import { Image, Text, View, Pressable } from 'react-native';
+import { Image, Text, View, Pressable, Keyboard } from 'react-native';
 
 export default function FormsLayout() {
 	return (
-		<Pressable onPress={() => {}} style={{ flex: 1 }}>
+		<Pressable onPress={() => Keyboard.dismiss()} style={{ flex: 1 }}>
 		<View style={{ flex: 1 }}>
 			<View
 				style={{
