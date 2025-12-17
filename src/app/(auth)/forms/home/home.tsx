@@ -35,7 +35,7 @@ const Home = (data: homeFormData) => {
 		console.log(data);
 	}
 	return (
-		<Pressable onPress={Keyboard.dismiss} style={{ flex: 1 }}>
+		//<Pressable onPress={Keyboard.dismiss} style={{ flex: 1 }}>
 		<View style={styles.container}>
 			<View style={styles.containerTop}>
 				<Button
@@ -123,7 +123,7 @@ const Home = (data: homeFormData) => {
 				</View>
 			</View>
 		</View>
-		</Pressable>
+		//</Pressable>
 	);
 };
 

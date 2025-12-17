@@ -45,7 +45,7 @@ const Review: React.FC<homeFormData> = () => {
 					{
 						text: 'OK',
 						onPress: () => router.push({
-							pathname: '/(auth)/forms/product',
+							pathname: '/(auth)/forms/product/product',
 							params: { uuid: response.data.occurrence.uuid },
 						}),
 					},

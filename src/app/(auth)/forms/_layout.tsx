@@ -1,9 +1,10 @@
 import { COLORS } from '@/styles/global/color';
 import { Slot } from 'expo-router';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, View, Pressable } from 'react-native';
 
 export default function FormsLayout() {
 	return (
+		<Pressable onPress={() => {}} style={{ flex: 1 }}>
 		<View style={{ flex: 1 }}>
 			<View
 				style={{
@@ -55,5 +56,6 @@ export default function FormsLayout() {
 				<Text style={{ color: COLORS.gray[400] }}>Clisamax Gomes</Text>
 			</View>
 		</View>
+		</Pressable>
 	);
 }

@@ -27,7 +27,7 @@ const Cadastro: React.FC = () => {
 	const sapRef = useRef<TextInput>(null);
 
 	return (
-		<Pressable onPress={Keyboard.dismiss} style={stylesCadastro.pressable}>
+		//<Pressable onPress={Keyboard.dismiss} style={stylesCadastro.pressable}>
 		<View style={stylesCadastro.container}>
 			<Progress progress={50} />
 			<Input
@@ -105,7 +105,7 @@ const Cadastro: React.FC = () => {
 				</NavLink>
 			</View>
 		</View>
-		</Pressable>
+		//</Pressable>
 	);
 };
 

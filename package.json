@@ -93,6 +93,9 @@
 			"reactNativeDirectoryCheck": {
 				"exclude": ["metro", "metro-resolver", "metro-config"]
 			}
-		}
+		},
+		 "ios": {
+      "simulatorDevice": "iPhone 15"
+    }
 	}
 }

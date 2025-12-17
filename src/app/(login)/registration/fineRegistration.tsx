@@ -71,7 +71,7 @@ const CadastroFinal = () => {
 	}
 
 	return (
-		<Pressable onPress={Keyboard.dismiss} style={stylesCadastroFinal.pressable}>
+		//<Pressable onPress={Keyboard.dismiss} style={stylesCadastroFinal.pressable}>
 		<View style={stylesCadastroFinal.container}>
 			<Progress progress={100} />
 			<View style={stylesCadastroFinal.form}>
@@ -134,7 +134,7 @@ const CadastroFinal = () => {
 				/>
 			</View>
 		</View>
-		</Pressable>
+		//</Pressable>
 	);
 };
 

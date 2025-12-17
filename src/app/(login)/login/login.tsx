@@ -45,7 +45,7 @@ const Login: React.FC = () => {
 	};
 
 	return (
-		<Pressable onPress={Keyboard.dismiss} style={styles.pressable}>
+		//<Pressable onPress={Keyboard.dismiss} style={styles.pressable}>
 			<View style={styles.container}>
 			<View style={styles.form}>
 				<Input
@@ -119,7 +119,7 @@ const Login: React.FC = () => {
 				</View>
 			</View>
 		</View>
-		</Pressable>
+		//</Pressable>
 	);
 };
 
