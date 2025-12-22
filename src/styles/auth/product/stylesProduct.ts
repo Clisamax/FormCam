@@ -32,6 +32,7 @@ export const styles = StyleSheet.create({
 		height: 120,
 		alignItems: 'center',
 		justifyContent: 'center',
+		flexDirection: 'row',
 	},
 }
 );
