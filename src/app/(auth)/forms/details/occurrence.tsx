@@ -3,9 +3,9 @@ import { useContext, useRef } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
 import {
 	Keyboard,
+	Pressable,
 	Text,
 	TextInput,
-	TouchableWithoutFeedback,
 	View,
 } from 'react-native';
 
@@ -17,7 +17,7 @@ import { homeFormData } from '@/@types/types';
 
 import Input from '@/components/inputAnnotation/inputAnnotation';
 import RadioField from '@/components/inputRadio/radioField';
-import { styles } from '@/styles/auth/stylesOccurrence';
+import { styles } from '@/styles/auth/details/stylesOccurrence';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fonts';
 
@@ -33,12 +33,12 @@ const Occurrence: React.FC<homeFormData> = (data) => {
 	const process = getValues('options_2');
 	const procedure = getValues('options_3');
 	const responsible = getValues('options_4');
-	const occurrence = getValues('options_5');
-	const annotation = getValues('annotation');
+	const description = getValues('options_5');
+	const note = getValues('annotation');
 	const sapRef = useRef<TextInput>(null);
 
 	return (
-		<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+		<Pressable onPress={Keyboard.dismiss} style={{ flex: 1 }}>
 			<View style={styles.container}>
 				<View style={[styles.containerTop]}>
 					<View style={[styles.containerTopLefth, { padding: 10 }]}>
@@ -129,7 +129,7 @@ const Occurrence: React.FC<homeFormData> = (data) => {
 					/>
 				</View>
 			</View>
-		</TouchableWithoutFeedback>
+		</Pressable>
 	);
 };
 export default Occurrence;

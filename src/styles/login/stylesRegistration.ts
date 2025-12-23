@@ -1,6 +1,10 @@
 import { StyleSheet } from "react-native";
 
 export const stylesCadastro = StyleSheet.create({
+	pressable: {
+		flex: 1,
+		width: '100%',
+	},
 	container: {
 		width: '100%',
 		gap: 22,
@@ -12,6 +16,10 @@ export const stylesCadastro = StyleSheet.create({
 });
 
 export const stylesCadastroFinal = StyleSheet.create({
+	pressable: {
+		flex: 1,
+		width: '100%',
+	},
 	container: {
 		flex: 1,
 		width: '100%',

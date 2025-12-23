@@ -30,8 +30,9 @@ export const styles = StyleSheet.create({
 	containerRadio: {
 		width: '100%',
 		height: 120,
-		alignItems: 'stretch',
+		alignItems: 'center',
 		justifyContent: 'center',
+		flexDirection: 'row',
 	},
 }
 );

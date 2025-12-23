@@ -1,13 +1,13 @@
 import { router } from 'expo-router';
 import { useContext, useState } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Text, View } from 'react-native';
+import { Keyboard, Pressable, Text, View } from 'react-native';
 
 import { homeFormData } from '@/@types/types';
 import Button from '@/components/button/button';
 import Input from '@/components/input/input';
 import RadioField from '@/components/inputRadio/radioField';
-import { styles } from '@/styles/auth/stylesHome';
+import { styles } from '@/styles/auth/home/stylesHome';
 
 import { AuthContext } from '@/context/auth';
 import { COLORS } from '@/styles/global/color';
@@ -35,6 +35,7 @@ const Home = (data: homeFormData) => {
 		console.log(data);
 	}
 	return (
+		//<Pressable onPress={Keyboard.dismiss} style={{ flex: 1 }}>
 		<View style={styles.container}>
 			<View style={styles.containerTop}>
 				<Button
@@ -76,10 +77,9 @@ const Home = (data: homeFormData) => {
 						{ label: 'Descarga', value: 'Descarga' },
 						{ label: 'Devolução', value: 'Devolução' },
 					]}
-					//label="Selecione a area de avaria"
 					rules={{ required: 'Este campo é obrigatório' }}
 				/>
-				<View style={styles.containerInput}>
+				<View style={[styles.containerInput, { marginRight: 15 }]}>
 					<Input
 						icon="file"
 						error={errors.uuid?.message || ''}
@@ -109,7 +109,6 @@ const Home = (data: homeFormData) => {
 							{ label: 'Expedição', value: 'Expedição' },
 							{ label: 'Mov. Interna', value: 'Mov. Interna' },
 						]}
-						//label="Selecione a area de avaria"
 						rules={{ required: 'Este campo é obrigatório' }}
 					/>
 				</View>
@@ -121,13 +120,10 @@ const Home = (data: homeFormData) => {
 						iconName="rightcircle"
 						size={22}
 					/>
-					{/* <Button
-						title="Câmera"
-						onPress={() => router.push('/(auth)/camera')}
-					/> */}
 				</View>
 			</View>
 		</View>
+		//</Pressable>
 	);
 };
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import { useRouter } from "expo-router";
 
-import { styles } from '@/styles/auth/stylesLoading';
+import { styles } from '@/styles/login/stylesLoading';
 
 
 const LoadingScreen = () => {

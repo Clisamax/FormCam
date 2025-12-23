@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { useRef } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Text, View } from 'react-native';
+import { Keyboard, Pressable, Text, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Button from '@/components/button/button';
@@ -27,6 +27,7 @@ const Cadastro: React.FC = () => {
 	const sapRef = useRef<TextInput>(null);
 
 	return (
+		//<Pressable onPress={Keyboard.dismiss} style={stylesCadastro.pressable}>
 		<View style={stylesCadastro.container}>
 			<Progress progress={50} />
 			<Input
@@ -104,6 +105,7 @@ const Cadastro: React.FC = () => {
 				</NavLink>
 			</View>
 		</View>
+		//</Pressable>
 	);
 };
 

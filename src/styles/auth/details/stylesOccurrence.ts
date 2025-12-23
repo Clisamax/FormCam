@@ -44,6 +44,7 @@ export const styles = StyleSheet.create({
 		width: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
+		marginBottom: 20,
 	},
 	text: {
 		fontFamily: FONTES.FONTS.default,

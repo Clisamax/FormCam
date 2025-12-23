@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Alert, Text, View, ScrollView } from 'react-native';
+import { Alert, ScrollView, Text, View } from 'react-native';
 
 import Button from '@/components/button/button';
 import Progress from '@/components/progress/progress';
@@ -9,7 +9,7 @@ import { AuthContext } from '@/context/auth';
 
 import { homeFormData } from '@/@types/types';
 import { api } from '@/services/api';
-import { styles } from '@/styles/auth/stylesReview';
+import { styles } from '@/styles/auth/details/stylesReview';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fonts';
 import { AxiosError } from 'axios';
@@ -23,19 +23,19 @@ const Review: React.FC<homeFormData> = () => {
 	const process = getValues('options_2');
 	const procedure = getValues('options_3');
 	const responsible = getValues('options_4');
-	const occurrence = getValues('options_5');
+	const description = getValues('options_5');
 	const annotation = getValues('annotation');
 
 	async function handleEnviar(data: homeFormData) {
 		try {
 			const formData = {
-				uuid: data.uuid.trim(),
+				uuid: data.uuid.trim(), // revizar aqui
 				origin: data.options_1,
 				process: data.options_2,
 				procedure: data.options_3,
 				responsible: data.options_4,
-				occurrence: data.options_5,
-				annotation: data.annotation,
+				description: data.options_5, // description
+				note: data.annotation, // note
 			};
 
 			const response = await api.post('/api/v1/occurrences', formData);
@@ -44,9 +44,13 @@ const Review: React.FC<homeFormData> = () => {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
 					{
 						text: 'OK',
-						onPress: () => router.push('/(auth)/forms/product'),
+						onPress: () => router.push({
+							pathname: '/(auth)/forms/product/product',
+							params: { uuid: response.data.occurrence.uuid },
+						}),
 					},
 				]);
+
 			}
 		} catch (error) {
 			if (error instanceof AxiosError) {
@@ -112,11 +116,11 @@ const Review: React.FC<homeFormData> = () => {
 				<Text style={styles.textBold}>Responsavel pela avaria ?</Text>
 				<Text style={styles.textRed}>{`=> ${responsible}`}</Text>
 				<Text style={styles.textBold}>Qual o responsável pela ocorrência?</Text>
-				<Text style={styles.textRed}>{`=> ${occurrence}`}</Text>
+				<Text style={styles.textRed}>{`=> ${description}`}</Text>
 				<Text style={styles.textBold}>Anotação:</Text>
 				<Text style={styles.textRed}>{`=> ${annotation}`}</Text>
 			</ScrollView>
-			<View style={{ marginTop: 20, alignItems: 'center' }}>
+			<View style={{ marginTop: 20, alignItems: 'center', marginBottom: 20 }}>
 				<Button title={'enviar'} onPress={handleSubmit(handleEnviar)} />
 			</View>
 		</View>

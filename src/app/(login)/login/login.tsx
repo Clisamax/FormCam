@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useContext, useRef, useState } from 'react';
 import { Control, useForm } from 'react-hook-form';
-import { Alert, Text, View } from 'react-native';
+import { Alert, Keyboard, Pressable, Text, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Button from '@/components/button/button';
@@ -35,7 +35,7 @@ const Login: React.FC = () => {
 		try {
 			setLoading(true);
 			await Authenticate(data.sap, data.password);
-			router.navigate('/(login)/login/login');
+			router.navigate('/(login)/login/loading');
 		} catch (error) {
 			Alert.alert('Erro', 'Usuário ou senha inválidos');
 			router.push('/(login)/login/login');
@@ -45,7 +45,8 @@ const Login: React.FC = () => {
 	};
 
 	return (
-		<View style={styles.container}>
+		//<Pressable onPress={Keyboard.dismiss} style={styles.pressable}>
+			<View style={styles.container}>
 			<View style={styles.form}>
 				<Input
 					icon="user"
@@ -118,6 +119,7 @@ const Login: React.FC = () => {
 				</View>
 			</View>
 		</View>
+		//</Pressable>
 	);
 };
 

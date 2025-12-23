@@ -2,6 +2,10 @@ import { COLORS } from '@/styles/global/color';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+	pressable: {
+		flex: 1,
+		width: '100%',
+	},
 	container: {
 		flex: 1,
 		width: '100%',

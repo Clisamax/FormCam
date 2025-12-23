@@ -15,7 +15,7 @@ export default function App() {
 	}
 
 	return signed ? (
-		<Redirect href="/(auth)/forms/home" />
+		<Redirect href="/(auth)/forms/home/home" />
 	) : (
 		<Redirect href="/(login)" />
 	);

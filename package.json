@@ -15,7 +15,8 @@
 		"ios": "expo run:ios",
 		"eas:build:ios": "eas build --profile development --platform ios",
 		"web": "expo start --web",
-		"test": "jest --watchAll"
+		"test": "jest --watchAll", 
+		"ios:build": "rm -rf ios/Pods ios/Podfile.lock && cd ios && pod install"
 	},
 	"jest": {
 		"preset": "jest-expo"
@@ -92,6 +93,9 @@
 			"reactNativeDirectoryCheck": {
 				"exclude": ["metro", "metro-resolver", "metro-config"]
 			}
-		}
+		},
+		 "ios": {
+      "simulatorDevice": "iPhone 15"
+    }
 	}
 }

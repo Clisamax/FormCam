@@ -37,6 +37,8 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 					const lastActivity = Number(storageTimestamp);
 
 					if (now - lastActivity < EXPIRATION_TIME) {
+						// Restaura o token no header da API
+						api.defaults.headers.common.Authorization = `Bearer ${storageToken}`;
 						setUser(JSON.parse(storageUser));
 						// Atualiza o timestamp a cada acesso
 						await AsyncStorage.setItem('@auth:timestamp', now.toString());
@@ -116,7 +118,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 				'@auth:timestamp',
 			]);
 			setUser(null);
-			router.push('/login');
+			router.push('/(login)/login/login');
 		} catch (error) {
 			console.error('Erro ao fazer logout:', error);
 		}

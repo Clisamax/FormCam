@@ -2,13 +2,13 @@ import { AxiosError } from 'axios';
 import { router } from 'expo-router';
 import { useRef, useState } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Alert, View } from 'react-native';
+import { Alert, Keyboard, Pressable, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Button from '@/components/button/button';
 import InputSenha from '@/components/inputPassword/inputPassword';
 import Progress from '@/components/progress/progress';
-import { api } from '../../services/api';
+import { api } from '@/services/api';
 
 import { CadastroFormData } from '@/@types/types';
 import { stylesCadastroFinal } from '@/styles/login/stylesRegistration';
@@ -47,7 +47,7 @@ const CadastroFinal = () => {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
 					{
 						text: 'OK',
-						onPress: () => router.push('/(login)/login'),
+						onPress: () => router.push('/(login)/login/login'),
 					},
 				]);
 			}
@@ -71,6 +71,7 @@ const CadastroFinal = () => {
 	}
 
 	return (
+		//<Pressable onPress={Keyboard.dismiss} style={stylesCadastroFinal.pressable}>
 		<View style={stylesCadastroFinal.container}>
 			<Progress progress={100} />
 			<View style={stylesCadastroFinal.form}>
@@ -133,6 +134,7 @@ const CadastroFinal = () => {
 				/>
 			</View>
 		</View>
+		//</Pressable>
 	);
 };
 
