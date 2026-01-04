@@ -30,7 +30,7 @@ const Home = (data: homeFormData) => {
 		} else if (data.options_2 === 'Recepção') {
 			router.push('/(auth)/forms/operation/reception');
 		} else if (data.options_2 === 'Mov. Interna') {
-			router.push('/(auth)/forms/operation/internalMovement');
+			router.push('/(auth)/forms/operation/internalMovement');8
 		}
 		console.log(data);
 	}

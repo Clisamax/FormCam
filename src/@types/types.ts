@@ -44,9 +44,7 @@ export interface CadastroFormData {
 
 export interface produtosFormData {
 	uuid: string;
-	name: string;
 	product: string;
-	serie: string;
 	quantity: string;
 	occurrenceDate: string;
 	annotation: string;
