@@ -109,10 +109,10 @@ const Camera: React.FC = () => {
 					left: 20,
 					right: 20,
 					flexDirection: 'row',
-					justifyContent: 'space-between',
+					justifyContent: 'center',
 				}}
 			>
-				{''}
+				<Button title="Tirar Foto" onPress={takePhoto}  />
 			</View>
 		</View>
 	);

@@ -120,6 +120,13 @@ const Home = (data: homeFormData) => {
 						iconName="rightcircle"
 						size={22}
 					/>
+					<Button
+						title="Camera"
+						onPress={() => router.push('/(auth)/camera/cameraScreen')}
+						disabled={loading}
+						iconName="rightcircle"
+						size={22}
+					/>
 				</View>
 			</View>
 		</View>

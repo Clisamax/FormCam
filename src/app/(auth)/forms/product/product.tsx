@@ -156,9 +156,9 @@ const Product: React.FC = () => {
 
 				<Input
 					icon={'user'}
-					error={errors.name?.message || ''}
+					error={errors.nameOfResponsible?.message || ''}
 					formProps={{
-						name: 'name',
+						name: 'nameOfResponsible',
 						control: control as unknown as Control,
 						rules: {
 							required: 'nome é obrigatório',
