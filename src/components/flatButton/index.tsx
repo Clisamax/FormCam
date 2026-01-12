@@ -51,7 +51,7 @@ const FlatButtonAnimated = () => {
 			</Animated.View>
 
 			<Animated.View style={[styles.button, styles.submenu, animatedStyle3]}>
-				<TouchableOpacity onPress={() => router.navigate('/(auth)/forms/home')}>
+				<TouchableOpacity onPress={() => router.navigate('/(auth)/forms/home/home')}>
 					<FontAwesome name="home" size={24} color="#FFF" />
 				</TouchableOpacity>
 			</Animated.View>

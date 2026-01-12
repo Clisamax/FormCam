@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { useContext, useState } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Keyboard, Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { homeFormData } from '@/@types/types';
 import Button from '@/components/button/button';
@@ -30,12 +30,12 @@ const Home = (data: homeFormData) => {
 		} else if (data.options_2 === 'Recepção') {
 			router.push('/(auth)/forms/operation/reception');
 		} else if (data.options_2 === 'Mov. Interna') {
-			router.push('/(auth)/forms/operation/internalMovement');8
+			router.push('/(auth)/forms/operation/internalMovement');
+			8;
 		}
 		console.log(data);
 	}
 	return (
-		//<Pressable onPress={Keyboard.dismiss} style={{ flex: 1 }}>
 		<View style={styles.container}>
 			<View style={styles.containerTop}>
 				<Button
@@ -130,7 +130,6 @@ const Home = (data: homeFormData) => {
 				</View>
 			</View>
 		</View>
-		//</Pressable>
 	);
 };
 

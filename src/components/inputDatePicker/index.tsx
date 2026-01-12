@@ -37,20 +37,20 @@ export function DateInput({ control, name, label, icon }: DateInputProps) {
 	const [show, setShow] = useState(false);
 
 	// Helper to convert value to Date object for the picker
-	const getDateValue = (value: any): Date => {
+	const getDateValue = (value: Date | string | null | undefined): Date => {
 		if (!value) return new Date();
 		if (value === 'data de hoje') return new Date();
 		if (value instanceof Date) return value;
 		// If it's a dd-mm-yyyy string, parse it
 		if (typeof value === 'string' && value.match(/^\d{2}-\d{2}-\d{4}$/)) {
 			const [day, month, year] = value.split('-');
-			return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+			return new Date(Number.parseInt(year), Number.parseInt(month) - 1, Number.parseInt(day));
 		}
 		return new Date(value);
 	};
 
 	// Helper to display the value
-	const getDisplayValue = (value: any): string => {
+	const getDisplayValue = (value: Date | string | null | undefined): string => {
 		if (value === 'data de hoje') return 'Data de hoje';
 		if (!value) return 'Selecionar data';
 		// If it's already a dd-mm-yyyy string, return it

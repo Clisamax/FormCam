@@ -1,5 +1,5 @@
 import { produtosFormData } from '@/@types/types';
-import { DateInput } from '@/components/button';
+import { DateInput } from '@/components/inputDatePicker';
 import Button from '@/components/button/button';
 import Input from '@/components/input/input';
 import InputProduct from '@/components/inputProduct/input';
