@@ -1,6 +1,7 @@
 import { COLORS } from "@/styles/global/color";
 import { FONTES } from "@/styles/global/fonts";
 import { StyleSheet } from "react-native";
+import { makeTextStyle, colors } from "@/styles/global/theme";
 
 export const styles = StyleSheet.create({
 	container: {
@@ -23,10 +24,8 @@ export const styles = StyleSheet.create({
 	},
 	topTextName: {
 		color: COLORS.red[500],
-		fontWeight: 'bold',
-		fontSize: 18,
 		flexDirection: 'row',
-		fontFamily: FONTES.FONTS.defaultBold,
+		...makeTextStyle('default', 'default'),
 	},
 	containerBotton: {
 		flexDirection: "row",

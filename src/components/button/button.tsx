@@ -9,6 +9,7 @@ import {
 import { buttonVariants } from './variants';
 
 import { style } from '@/components/button/styles';
+import { makeTextStyle, colors} from '@/styles/global/theme';
 import { FONTES } from '@/styles/global/fonts';
 
 interface ButtonProps {
@@ -38,7 +39,7 @@ const Button: React.FC<ButtonProps> = ({
 	variant = 'primary',
 	styles,
 	size = 24,
-	fontSize = 16,
+	
 }) => {
 	// define as cores, estilos e ícones dos botões de acordo com a variant
 	const ButtonVariant = buttonVariants[variant];
@@ -69,8 +70,7 @@ const Button: React.FC<ButtonProps> = ({
 					<Text
 						style={{
 							color: ButtonStyle.title.color,
-							fontSize: fontSize,
-							fontFamily: FONTES.FONTS.button,
+							...makeTextStyle('button', 'button'),
 						}}
 					>
 						{title}

@@ -1,6 +1,4 @@
 export const COLORS = {
-	
-
 				// Cores Gerais
 				transparent: 'transparent',
 				current: 'currentColor',

@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { colors, makeTextStyle } from "@/styles/global/theme";
 
 export const stylesCadastro = StyleSheet.create({
 	pressable: {
@@ -34,5 +35,14 @@ export const stylesCadastroFinal = StyleSheet.create({
 	buttonContainer: {
 		alignItems: 'center',
 	},
+	registerText: {
+			...makeTextStyle('default', 'h3'),
+			textAlign: 'center',
+			color: colors.textSecondary,
+		},
+		link: {
+			color: colors.error,
+			...makeTextStyle('title', 'h3'),
+		},
 });
 

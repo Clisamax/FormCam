@@ -2,7 +2,7 @@ import { AxiosError } from 'axios';
 import { router } from 'expo-router';
 import { useRef, useState } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Alert, Keyboard, Pressable, View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Button from '@/components/button/button';

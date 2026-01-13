@@ -30,13 +30,12 @@ const Reception: React.FC<homeFormData> = (data) => {
 			<View style={styles.containerTop}>
 				<View style={[styles.containerTopLefth, { padding: 10 }]}>
 					<Button
-						iconName="back"
-						title="retornar"
+						iconName="arrowleft"
+						title="return"
 						onPress={() => router.back()}
 						variant="outline"
-						styles={{ height: 50, width: 100 }}
-						fontSize={12}
-						size={14}
+						styles={{ height: 60, width: 110 }}
+						disabled={false}
 					/>
 				</View>
 				<View style={styles.containerTopRight}>

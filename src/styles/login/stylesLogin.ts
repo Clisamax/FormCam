@@ -1,4 +1,4 @@
-import { COLORS } from '@/styles/global/color';
+import { colors, makeTextStyle } from "@/styles/global/theme";
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -13,22 +13,27 @@ export const styles = StyleSheet.create({
 	},
 	form: {
 		width: '100%',
-		gap: 24,
-		marginBottom: 32,
+		gap: 28,
+		marginBottom: 42,
 	},
 	footer: {
 		gap: 16,
 		alignItems: 'center',
 	},
 	registerContainer: {
+		width: '100%',
+		height: '100%',
 		alignItems: 'center',
-		marginTop: 8,
+		marginTop: 48,
+		
 	},
 	registerText: {
+		...makeTextStyle('default', 'h3'),
 		textAlign: 'center',
+		color: colors.textSecondary,
 	},
 	link: {
-		color: COLORS.red[500],
-		fontWeight: 'bold',
+		color: colors.error,
+		...makeTextStyle('title', 'h3'),
 	},
 });

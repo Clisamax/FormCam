@@ -14,7 +14,6 @@ import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fonts';
 import { AxiosError } from 'axios';
 
-
 const Review: React.FC<homeFormData> = () => {
 	const { user } = useContext(AuthContext);
 	const { handleSubmit, getValues } = useFormContext<homeFormData>();
@@ -44,13 +43,13 @@ const Review: React.FC<homeFormData> = () => {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
 					{
 						text: 'OK',
-						onPress: () => router.push({
-							pathname: '/(auth)/forms/product/product',
-							params: { uuid: response.data.occurrence.uuid },
-						}),
+						onPress: () =>
+							router.push({
+								pathname: '/(auth)/forms/product/product',
+								params: { uuid: response.data.occurrence.uuid },
+							}),
 					},
 				]);
-
 			}
 		} catch (error) {
 			if (error instanceof AxiosError) {
@@ -72,13 +71,12 @@ const Review: React.FC<homeFormData> = () => {
 			<View style={[styles.containerTop]}>
 				<View style={[styles.containerTopLefth, { padding: 10 }]}>
 					<Button
-						iconName="back"
-						title="retornar"
+						iconName="arrowleft"
+						title="return"
 						onPress={() => router.back()}
 						variant="outline"
-						styles={{ height: 50, width: 100 }}
-						fontSize={12}
-						size={14}
+						styles={{ height: 60, width: 110 }}
+						disabled={false}
 					/>
 				</View>
 				<View style={styles.containerTopRight}>
@@ -102,7 +100,7 @@ const Review: React.FC<homeFormData> = () => {
 					</Text>
 				</View>
 			</View>
-			<ScrollView style={[styles.containerMid, { marginLeft: 10 }]}>
+			<ScrollView style={[styles.containerMid, { marginLeft: 20 }]}>
 				<Text style={[styles.text, { fontWeight: 'bold' }]}>
 					Qual o departamento de origem?
 				</Text>

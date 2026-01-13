@@ -12,7 +12,9 @@ import { homeFormData } from '@/@types/types';
 import RadioTaskButton from '@/components/radioTaskButton/radioTaskButton';
 import { styles } from '@/styles/auth/details/stylesResponsible';
 import { COLORS } from '@/styles/global/color';
+import { makeTextStyle } from '@/styles/global/theme';
 import { FONTES } from '@/styles/global/fonts';
+
 
 export function retorn() {
 	router.back();
@@ -32,13 +34,12 @@ const Responsible: React.FC<homeFormData> = (data) => {
 			<View style={styles.containerTop}>
 				<View style={[styles.containerTopLefth, { padding: 10 }]}>
 					<Button
-						iconName="back"
-						title="retornar"
+						iconName="arrowleft"
+						title="return"
 						onPress={() => router.back()}
 						variant="outline"
-						styles={{ height: 50, width: 100 }}
-						fontSize={12}
-						size={14}
+						styles={{ height: 60, width: 110 }}
+						disabled={false}
 					/>
 				</View>
 				<View style={styles.containerTopRight}>
@@ -53,7 +54,7 @@ const Responsible: React.FC<homeFormData> = (data) => {
 						<Text
 							style={{
 								color: COLORS.gray[600],
-								fontFamily: FONTES.FONTS.defaultBold,
+								...makeTextStyle('default', 'default'),
 							}}
 						>
 							UUID {''}

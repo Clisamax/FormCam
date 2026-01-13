@@ -43,9 +43,7 @@ const Home = (data: homeFormData) => {
 					title="logout"
 					onPress={Logout}
 					variant="outline"
-					styles={{ height: 50, width: 100 }}
-					fontSize={12}
-					size={14}
+					styles={{ height: 60, width: 120 }}
 					disabled={loading}
 				/>
 				<View style={styles.containerTopText}>

@@ -1,13 +1,7 @@
 import { router } from 'expo-router';
 import { useContext, useRef } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import {
-	Keyboard,
-	Pressable,
-	Text,
-	TextInput,
-	View,
-} from 'react-native';
+import { Keyboard, Pressable, Text, TextInput, View } from 'react-native';
 
 import Button from '@/components/button/button';
 import Progress from '@/components/progress/progress';
@@ -43,13 +37,12 @@ const Occurrence: React.FC<homeFormData> = (data) => {
 				<View style={[styles.containerTop]}>
 					<View style={[styles.containerTopLefth, { padding: 10 }]}>
 						<Button
-							iconName="back"
-							title="retornar"
+							iconName="arrowleft"
+							title="return"
 							onPress={() => router.back()}
 							variant="outline"
-							styles={{ height: 50, width: 100 }}
-							fontSize={12}
-							size={14}
+							styles={{ height: 60, width: 110 }}
+							disabled={false}
 						/>
 					</View>
 					<View style={styles.containerTopRight}>
@@ -124,7 +117,6 @@ const Occurrence: React.FC<homeFormData> = (data) => {
 						onPress={() => {
 							router.navigate('/(auth)/forms/details/review');
 							console.log(data);
-							
 						}}
 					/>
 				</View>

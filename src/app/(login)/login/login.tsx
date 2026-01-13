@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useContext, useRef, useState } from 'react';
 import { Control, useForm } from 'react-hook-form';
-import { Alert, Keyboard, Pressable, Text, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Button from '@/components/button/button';
@@ -11,7 +11,6 @@ import NavLink from '@/components/navLink/navLink';
 import { AuthContext } from '@/context/auth';
 
 import { LoginFormData } from '@/@types/types';
-import { COLORS } from '@/styles/global/color';
 import { styles } from '@/styles/login/stylesLogin';
 
 const Login: React.FC = () => {
@@ -45,8 +44,7 @@ const Login: React.FC = () => {
 	};
 
 	return (
-		//<Pressable onPress={Keyboard.dismiss} style={styles.pressable}>
-			<View style={styles.container}>
+		<View style={styles.container}>
 			<View style={styles.form}>
 				<Input
 					icon="user"
@@ -110,16 +108,15 @@ const Login: React.FC = () => {
 						Não tem uma conta?
 						<NavLink
 							href="/(login)/registration/registration"
-							style={{ color: COLORS.red[500] }}
+							style={{ ...styles.link }}
 						>
-							{' '}
+							{'  '}
 							cadastre-se já
 						</NavLink>
 					</Text>
 				</View>
 			</View>
 		</View>
-		//</Pressable>
 	);
 };
 

@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { useRef } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
-import { Keyboard, Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Button from '@/components/button/button';
@@ -10,8 +10,10 @@ import NavLink from '@/components/navLink/navLink';
 import Progress from '@/components/progress/progress';
 
 import { CadastroFormData } from '@/@types/types';
-import { COLORS } from '@/styles/global/color';
-import { stylesCadastro } from '@/styles/login/stylesRegistration';
+import {
+	stylesCadastro,
+	stylesCadastroFinal,
+} from '@/styles/login/stylesRegistration';
 
 const HandleNext = () => {
 	router.push('/(login)/registration/fineRegistration');
@@ -99,8 +101,13 @@ const Cadastro: React.FC = () => {
 					flexDirection: 'row',
 				}}
 			>
-				<Text>Já possue uma conta, {''}</Text>
-				<NavLink href="/(login)/login/login" style={{ color: COLORS.red[500] }}>
+				<Text style={{ ...stylesCadastroFinal.registerText }}>
+					Já possue uma conta,{'  '}
+				</Text>
+				<NavLink
+					href="/(login)/login/login"
+					style={{ ...stylesCadastroFinal.link }}
+				>
 					retorne ao login
 				</NavLink>
 			</View>

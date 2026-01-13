@@ -1,7 +1,7 @@
 import { produtosFormData } from '@/@types/types';
-import { DateInput } from '@/components/inputDatePicker';
 import Button from '@/components/button/button';
 import Input from '@/components/input/input';
+import { DateInput } from '@/components/inputDatePicker';
 import InputProduct from '@/components/inputProduct/input';
 import RadioField from '@/components/inputRadio/radioField';
 import api from '@/services/api';
@@ -138,13 +138,12 @@ const Product: React.FC = () => {
 			<View style={styles.container}>
 				<View style={[styles.containerTop]}>
 					<Button
-						iconName="back"
-						title="retornar"
+						iconName="arrowleft"
+						title="return"
 						onPress={() => router.back()}
 						variant="outline"
-						styles={{ height: 50, width: 100 }}
-						fontSize={12}
-						size={14}
+						styles={{ height: 60, width: 110 }}
+						disabled={false}
 					/>
 					<DateInput
 						control={control as unknown as Control}

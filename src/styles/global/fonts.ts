@@ -15,18 +15,7 @@ export const FONTES = {
 		pre: 'FiraCode_400Regular',              // Blocos de código (preformatted)
 		button: 'Roboto_500Medium',              // Botões (geralmente uma fonte clara e legível)
 		label: 'Lato_400Regular', 						   // Rótulos (labels) em formulários e botões
-		input: 'Montserrat_400Regular',         // Campos de entrada (input fields)
-		
-	
-	// yarn add @expo-google-fonts/montserrat
-	// yarn add @expo-google-fonts/fira-code
-	// yarn add @expo-google-fonts/open-sans
-	// yarn add @expo-google-fonts/oswald
-	// yarn add @expo-google-fonts/lato
-	// yarn add @expo-google-fonts/pt-sans
-	// yarn add @expo-google-fonts/raleway
-	// yarn add @expo-google-fonts/work-sans
-	// yarn add @expo-google-fonts/poppins
-	//	yarn add @expo-google-fonts/roboto
+		input: 'Montserrat_400Regular',         // Campos de entrada (input fields)	
+
 }
 }
