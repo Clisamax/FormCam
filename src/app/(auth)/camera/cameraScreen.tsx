@@ -6,7 +6,7 @@ import CameraUpload from '@/components/cameraUpload/indexCamera';
 export default function CameraScreen() {
   return (
     <View style={styles.container}>
-      <CameraUpload />
+      <CameraUpload saveToGallery={true} />
     </View>
   );
 }

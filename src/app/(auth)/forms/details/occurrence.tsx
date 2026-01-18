@@ -9,7 +9,7 @@ import { AuthContext } from '@/context/auth';
 
 import { homeFormData } from '@/@types/types';
 
-import Input from '@/components/inputAnnotation/inputAnnotation';
+import Input from '@/components/inputAnnotation/inputAnnotation'
 import RadioField from '@/components/inputRadio/radioField';
 import { styles } from '@/styles/auth/details/stylesOccurrence';
 import { COLORS } from '@/styles/global/color';

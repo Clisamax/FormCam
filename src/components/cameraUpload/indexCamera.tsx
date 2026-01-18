@@ -14,6 +14,7 @@ import { resizeImage } from "@/utils/image";
 import { useCamera } from '../../hooks/useCamera';
 
 import { styles, colors } from './styles';
+import SaveToGallery from './SaveToGallery';
 
 // Upload helpers – one for AWS S3, one for a local server.
 import { uploadToS3Server } from './S3Uploader';
@@ -23,9 +24,11 @@ type Props = {
  /** Quando verdadeiro, a imagem é carregada em um servidor de desenvolvimento local.
    * Quando falso (padrão), a imagem é carregada no AWS S3 por meio de um URL pré-assinado. */
   useLocal?: boolean;
+  /** Quando true, a foto tirada será salva na galeria do dispositivo antes do upload. */
+  saveToGallery?: boolean;
 };
 
-export default function CameraUpload({ useLocal = false }: Props) {
+export default function CameraUpload({ useLocal = false, saveToGallery = false }: Props) {
   const {
     cameraRef,
     permission,
@@ -36,6 +39,8 @@ export default function CameraUpload({ useLocal = false }: Props) {
   } = useCamera();
 
   const [processing, setProcessing] = useState(false);
+  const [savedUri, setSavedUri] = useState<string | null>(null);
+
 
   const takeAndUpload = useCallback(async () => {
     if (!ensureReady()) return;
@@ -59,6 +64,9 @@ export default function CameraUpload({ useLocal = false }: Props) {
       const cachedUri = await moveToCache(resized.uri);
 
       // 4️⃣ Delegate upload – either S3 or local based on prop
+      if (saveToGallery) {
+        setSavedUri(cachedUri);
+      }
       if (useLocal) {
         await uploadToLocalServer(cachedUri);
       } else {
@@ -70,7 +78,7 @@ export default function CameraUpload({ useLocal = false }: Props) {
     } finally {
       setProcessing(false);
     }
-  }, [ensureReady, cameraRef, useLocal]);
+  }, [ensureReady, cameraRef, useLocal, saveToGallery]);
 
   // -----------------------------------------------------------------
   // Renderização
@@ -99,6 +107,7 @@ export default function CameraUpload({ useLocal = false }: Props) {
           <Button title="Tirar foto + Upload" onPress={takeAndUpload} />
         )}
       </View>
+      <SaveToGallery uri={savedUri} saveToGallery={saveToGallery} />
     </View>
   );
 }
