@@ -1,88 +1,104 @@
-// src/components/CameraUpload/CameraUpload.tsx
+// src/components/cameraUpload/indexCamera.tsx
 import React, { useCallback, useState } from 'react';
 import {
-	ActivityIndicator,
-	Alert,
-	Button,
-	StatusBar,
-	View,
+  ActivityIndicator,
+  Alert,
+  Button,
+  StatusBar,
+  View,
 } from 'react-native';
 import { CameraView } from 'expo-camera';
 
-import { fetchPresignedUrl } from '../../api/s3';
-import { moveToCache, uploadToS3 } from '../../utils/file';
-import { resizeImage } from '../../utils/image';
+import { moveToCache } from '@/utils/file';
+import { resizeImage } from "@/utils/image";
 import { useCamera } from '../../hooks/useCamera';
 
 import { styles, colors } from './styles';
 
-export default function CameraUpload() {
-	const {
-		cameraRef,
-		permission,
-		requestPermission,
-		flash,
-		onCameraReady,
-		ensureReady,
-	} = useCamera();
+// Upload helpers – one for AWS S3, one for a local server.
+import { uploadToS3Server } from './S3Uploader';
+import { uploadToLocalServer } from './LocalUploader';
 
-	const [processing, setProcessing] = useState(false);
+type Props = {
+ /** Quando verdadeiro, a imagem é carregada em um servidor de desenvolvimento local.
+   * Quando falso (padrão), a imagem é carregada no AWS S3 por meio de um URL pré-assinado. */
+  useLocal?: boolean;
+};
 
-	const takeAndUpload = useCallback(async () => {
-		if (!ensureReady()) return;
+export default function CameraUpload({ useLocal = false }: Props) {
+  const {
+    cameraRef,
+    permission,
+    requestPermission,
+    flash,
+    onCameraReady,
+    ensureReady,
+  } = useCamera();
 
-		try {
-			setProcessing(true);
+  const [processing, setProcessing] = useState(false);
 
-			const raw = await cameraRef.current!.takePictureAsync({
-				quality: 0.8,
-				base64: false,
-			});
+  const takeAndUpload = useCallback(async () => {
+    if (!ensureReady()) return;
 
-			const resized = await resizeImage(raw.uri);
-			const cachedUri = await moveToCache(resized.uri);
-			const fileName = cachedUri.split('/').pop() ?? `photo_${Date.now()}.jpg`;
+    try {
+      setProcessing(true);
 
-			const presignedUrl = await fetchPresignedUrl(fileName, 'image/jpeg');
-			await uploadToS3(presignedUrl, cachedUri);
+      // 1️⃣ Capture raw image
+      if (!cameraRef.current) {
+        throw new Error('Camera not ready');
+      }
+      const raw = await cameraRef.current.takePictureAsync({
+        quality: 0.8,
+        base64: false,
+      });
 
-			const publicUrl = presignedUrl.split('?')[0];
-			Alert.alert('✅ Upload concluído', publicUrl);
-		} catch (e) {
-			console.error(e);
-			Alert.alert('❌ Erro', (e as Error).message);
-		} finally {
-			setProcessing(false);
-		}
-	}, [ensureReady, cameraRef]);
+      // 2️⃣ Resize
+      const resized = await resizeImage(raw.uri);
 
-	// --------------------------------------------------------------
-	// Render
-	// --------------------------------------------------------------
-	if (!permission?.granted) {
-		return (
-			<View style={styles.center}>
-				<Button title="Conceder permissão" onPress={requestPermission} />
-			</View>
-		);
-	}
+      // 3️⃣ Move to a cache/document location (stub currently returns the same URI)
+      const cachedUri = await moveToCache(resized.uri);
 
-	return (
-		<View style={styles.container}>
-			<StatusBar hidden />
-			<CameraView
-				ref={cameraRef}
-				style={styles.camera}
-				flash={flash}
-				onCameraReady={onCameraReady}
-			/>
-			<View style={styles.controls}>
-				{processing ? (
-					<ActivityIndicator size="large" color={colors.textPrimary} />
-				) : (
-					<Button title="Tirar foto + Upload" onPress={takeAndUpload} />
-				)}
-			</View>
-		</View>
-	);
+      // 4️⃣ Delegate upload – either S3 or local based on prop
+      if (useLocal) {
+        await uploadToLocalServer(cachedUri);
+      } else {
+        await uploadToS3Server(cachedUri);
+      }
+    } catch (e) {
+      console.error(e);
+      Alert.alert('❌ Erro', (e as Error).message);
+    } finally {
+      setProcessing(false);
+    }
+  }, [ensureReady, cameraRef, useLocal]);
+
+  // -----------------------------------------------------------------
+  // Renderização
+  // -----------------------------------------------------------------
+  if (!permission?.granted) {
+    return (
+      <View style={styles.center}>
+        <Button title="Conceder permissão" onPress={requestPermission} />
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      <StatusBar hidden />
+      <CameraView
+        ref={cameraRef}
+        style={styles.camera}
+        flash={flash}
+        onCameraReady={onCameraReady}
+      />
+      <View style={styles.controls}>
+        {processing ? (
+          <ActivityIndicator size="large" color={colors.textPrimary} />
+        ) : (
+          <Button title="Tirar foto + Upload" onPress={takeAndUpload} />
+        )}
+      </View>
+    </View>
+  );
 }
