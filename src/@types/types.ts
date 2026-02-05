@@ -2,7 +2,7 @@ import { Feather } from "@expo/vector-icons";
 import { Control, FieldValues, Path, RegisterOptions, UseControllerProps } from "react-hook-form";
 import { TextInputProps, ViewStyle } from "react-native";
 
-export interface Iuser {
+export interface IUser {
 	token: string;
 	sap: string;
 	name: string;
@@ -10,9 +10,11 @@ export interface Iuser {
 }
 
 export interface IContext {
-	user: Iuser | null;
+	user: IUser | null;
 	signed: boolean;
 	loading: boolean;
+	immichApiKey: string | null;
+	immichUrl: string | null;
 	Authenticate: (sap: string, password: string) => Promise<void>;
 	Logout: () => Promise<void>;
 }

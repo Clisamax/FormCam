@@ -1,3 +1,3 @@
-import Camera from './cameraScreen';
+import CameraUpload from './cameraScreen';
 
-export default Camera;
+export default CameraUpload;

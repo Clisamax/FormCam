@@ -6,8 +6,8 @@
 // used interchangeably by `CameraUpload`.
 
 import { Alert } from 'react-native';
-import { fetchPresignedUrl } from '../../api/s3'; // keep import for possible future use
-import { uploadToS3 } from '../../utils/file'; // placeholder – replace with real logic
+import { fetchPresignedUrl } from '@/api/s3'; // keep import for possible future use
+import { uploadToS3 } from '@/utils/file'; // placeholder – replace with real logic
 
 export async function uploadToLocalServer(uri: string) {
   try {

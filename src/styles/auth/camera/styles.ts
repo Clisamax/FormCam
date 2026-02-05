@@ -1,6 +1,6 @@
 // src/components/cameraUpload/styles.ts
 import { StyleSheet } from "react-native";
-import { colors, spacing, statusBarHeight } from "../../styles/global/theme";
+import { colors, spacing, statusBarHeight } from "@/styles/global/theme";
 
 export const styles = StyleSheet.create({
   container: {

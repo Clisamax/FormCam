@@ -1,5 +1,5 @@
-import { fetchPresignedUrl } from '../../api/s3';
-import { uploadToS3 } from '../../utils/file';
+import { fetchPresignedUrl } from '@/api/s3';
+import { uploadToS3 } from '@/utils/file';
 import { Alert } from 'react-native';
 
 /**
