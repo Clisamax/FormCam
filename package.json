@@ -45,7 +45,7 @@
 		"buffer": "^6.0.3",
 		"dotenv": "^16.5.0",
 		"expo": "~53.0.24",
-		"expo-camera": "^17.0.10",
+		"expo-camera": "~16.1.11",
 		"expo-constants": "^18.0.13",
 		"expo-dev-client": "~5.2.4",
 		"expo-file-system": "^19.0.21",

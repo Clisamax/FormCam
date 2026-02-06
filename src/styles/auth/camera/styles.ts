@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     left: spacing.lg,
     right: spacing.lg,
     alignItems: "center" as const,
-    backgroundColor: "rgba(0,0,0,0.35)",
+    backgroundColor: "transparent",
     paddingVertical: spacing.sm,
     borderRadius: 8,
   },
@@ -38,7 +38,15 @@ export const styles = StyleSheet.create({
     color: colors.textPrimary,
     textAlign: "center",
   },
+	buttonContainer: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		paddingHorizontal: spacing.lg,
+		paddingVertical: spacing.sm,
+		borderRadius: 50,
+	}
 });
 
-// Export colors (used by CameraUpload component) for convenience.
+ // Export colors (used by CameraUpload component) for convenience.
 export { colors };

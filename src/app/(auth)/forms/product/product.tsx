@@ -1,5 +1,5 @@
 import { produtosFormData } from '@/@types/types';
-import Button from '@/components/button/button';
+import { default as Button, default as ButtonVariant } from '@/components/buttonVariants/buttonVariant';
 import Input from '@/components/input/input';
 import { DateInput } from '@/components/inputDatePicker';
 import InputProduct from '@/components/inputProduct/input';
@@ -244,7 +244,7 @@ const Product: React.FC = () => {
 				</View>
 
 				<View style={styles.footer}>
-					<Button
+					<ButtonVariant
 						styles={styles.button}
 						title="confirmar"
 						onPress={handleSubmit(handleEnviar)}

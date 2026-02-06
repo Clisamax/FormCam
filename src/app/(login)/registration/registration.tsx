@@ -4,7 +4,7 @@ import { Control, useFormContext } from 'react-hook-form';
 import { Text, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
-import Button from '@/components/button/button';
+import Button from '@/components/buttonVariants/buttonVariant';
 import Input from '@/components/input/input';
 import NavLink from '@/components/navLink/navLink';
 import Progress from '@/components/progress/progress';

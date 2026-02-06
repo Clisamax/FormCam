@@ -1,6 +1,6 @@
 import { COLORS } from "@/styles/global/color";
 import { Platform, StatusBar } from 'react-native';
-import { rs, lineHeight } from './fontScale';
+import { lineHeight, rs } from './fontScale';
 
 /* ────────────────────────────────────────────────────────────────
 	 1️⃣  PALETTE DE CORES

@@ -8,9 +8,8 @@ import {
 } from 'react-native';
 import { buttonVariants } from './variants';
 
-import { style } from '@/components/button/styles';
-import { makeTextStyle, colors} from '@/styles/global/theme';
-import { FONTES } from '@/styles/global/fonts';
+import { style } from '@/components/buttonVariants/styles';
+import { makeTextStyle } from '@/styles/global/theme';
 
 interface ButtonProps {
 	title: string;
@@ -30,7 +29,7 @@ interface ButtonProps {
 	fontSize?: number;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const ButtonVariant: React.FC<ButtonProps> = ({
 	title,
 	onPress,
 	isLoading = false,
@@ -81,4 +80,4 @@ const Button: React.FC<ButtonProps> = ({
 	);
 };
 
-export default Button;
+export default ButtonVariant;

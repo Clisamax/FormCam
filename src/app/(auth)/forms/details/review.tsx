@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Alert, ScrollView, Text, View } from 'react-native';
 
-import Button from '@/components/button/button';
+import Button from '@/components/buttonVariants/buttonVariant';
 import Progress from '@/components/progress/progress';
 import { AuthContext } from '@/context/auth';
 

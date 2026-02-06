@@ -5,7 +5,7 @@ import { Control, useFormContext } from 'react-hook-form';
 import { Alert, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
-import Button from '@/components/button/button';
+import Button from '@/components/buttonVariants/buttonVariant';
 import InputSenha from '@/components/inputPassword/inputPassword';
 import Progress from '@/components/progress/progress';
 import { api } from '@/services/api';

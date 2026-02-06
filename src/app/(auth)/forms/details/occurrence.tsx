@@ -3,13 +3,13 @@ import { useContext, useRef } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
 import { Keyboard, Pressable, Text, TextInput, View } from 'react-native';
 
-import Button from '@/components/button/button';
+import Button from '@/components/buttonVariants/buttonVariant';
 import Progress from '@/components/progress/progress';
 import { AuthContext } from '@/context/auth';
 
 import { homeFormData } from '@/@types/types';
 
-import Input from '@/components/inputAnnotation/inputAnnotation'
+import Input from '@/components/inputAnnotation/inputAnnotation';
 import RadioField from '@/components/inputRadio/radioField';
 import { styles } from '@/styles/auth/details/stylesOccurrence';
 import { COLORS } from '@/styles/global/color';

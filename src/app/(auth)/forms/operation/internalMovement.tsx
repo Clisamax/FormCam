@@ -4,7 +4,7 @@ import { Control, useFormContext } from 'react-hook-form';
 import { ScrollView, Text, View } from 'react-native';
 
 import { homeFormData } from '@/@types/types';
-import Button from '@/components/button/button';
+import Button from '@/components/buttonVariants/buttonVariant';
 import Progress from '@/components/progress/progress';
 import RadioTaskButton from '@/components/radioTaskButton/radioTaskButton';
 import { AuthContext } from '@/context/auth';

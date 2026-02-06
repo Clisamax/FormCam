@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
 import { ScrollView, Text, View } from 'react-native';
 
-import Button from '@/components/button/button';
+import Button from '@/components/buttonVariants/buttonVariant';
 import Progress from '@/components/progress/progress';
 import { AuthContext } from '@/context/auth';
 
@@ -12,8 +12,8 @@ import { homeFormData } from '@/@types/types';
 import RadioTaskButton from '@/components/radioTaskButton/radioTaskButton';
 import { styles } from '@/styles/auth/details/stylesResponsible';
 import { COLORS } from '@/styles/global/color';
-import { makeTextStyle } from '@/styles/global/theme';
 import { FONTES } from '@/styles/global/fonts';
+import { makeTextStyle } from '@/styles/global/theme';
 
 
 export function retorn() {

@@ -4,7 +4,7 @@ import { Control, useFormContext } from 'react-hook-form';
 import { Text, View } from 'react-native';
 
 import { homeFormData } from '@/@types/types';
-import Button from '@/components/button/button';
+import Button from '@/components/buttonVariants/buttonVariant';
 import Input from '@/components/input/input';
 import RadioField from '@/components/inputRadio/radioField';
 import { styles } from '@/styles/auth/home/stylesHome';
