@@ -3,7 +3,7 @@ import { useContext, useRef } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
 import { Keyboard, Pressable, Text, TextInput, View } from 'react-native';
 
-import Button from '@/components/buttonVariants/buttonVariant';
+import ButtonVariant from '@/components/buttonVariants/buttonVariant';
 import Progress from '@/components/progress/progress';
 import { AuthContext } from '@/context/auth';
 
@@ -36,7 +36,7 @@ const Occurrence: React.FC<homeFormData> = (data) => {
 			<View style={styles.container}>
 				<View style={[styles.containerTop]}>
 					<View style={[styles.containerTopLefth, { padding: 10 }]}>
-						<Button
+						<ButtonVariant
 							iconName="arrowleft"
 							title="return"
 							onPress={() => router.back()}
@@ -112,7 +112,7 @@ const Occurrence: React.FC<homeFormData> = (data) => {
 							onSubmitEditing: () => sapRef.current?.focus(),
 						}}
 					/>
-					<Button
+					<ButtonVariant
 						title={'enviar'}
 						onPress={() => {
 							router.navigate('/(auth)/forms/details/review');

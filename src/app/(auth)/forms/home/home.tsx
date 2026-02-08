@@ -4,7 +4,7 @@ import { Control, useFormContext } from 'react-hook-form';
 import { Text, View } from 'react-native';
 
 import { homeFormData } from '@/@types/types';
-import Button from '@/components/buttonVariants/buttonVariant';
+import ButtonVariant from '@/components/buttonVariants/buttonVariant';
 import Input from '@/components/input/input';
 import RadioField from '@/components/inputRadio/radioField';
 import { styles } from '@/styles/auth/home/stylesHome';
@@ -38,7 +38,7 @@ const Home = (data: homeFormData) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerTop}>
-				<Button
+				<ButtonVariant
 					iconName="logout"
 					title="logout"
 					onPress={Logout}
@@ -111,14 +111,14 @@ const Home = (data: homeFormData) => {
 					/>
 				</View>
 				<View style={styles.containerBotton}>
-					<Button
+					<ButtonVariant
 						title="UUID"
 						onPress={handleSubmit(uuid)}
 						disabled={loading}
 						iconName="rightcircle"
 						size={22}
 					/>
-					<Button
+					<ButtonVariant
 						title="Camera"
 						onPress={() => router.push('/(auth)/camera/cameraScreen')}
 						disabled={loading}

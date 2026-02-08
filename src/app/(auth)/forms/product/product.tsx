@@ -1,5 +1,5 @@
 import { produtosFormData } from '@/@types/types';
-import { default as Button, default as ButtonVariant } from '@/components/buttonVariants/buttonVariant';
+import ButtonVariant from '@/components/buttonVariants/buttonVariant';
 import Input from '@/components/input/input';
 import { DateInput } from '@/components/inputDatePicker';
 import InputProduct from '@/components/inputProduct/input';
@@ -137,7 +137,7 @@ const Product: React.FC = () => {
 		<Pressable onPress={Keyboard.dismiss} style={{ flex: 1 }}>
 			<View style={styles.container}>
 				<View style={[styles.containerTop]}>
-					<Button
+					<ButtonVariant
 						iconName="arrowleft"
 						title="return"
 						onPress={() => router.back()}

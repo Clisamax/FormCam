@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { Control, useFormContext } from 'react-hook-form';
 import { Text, View } from 'react-native';
 
-import Button from '@/components/buttonVariants/buttonVariant';
+import ButtonVariant from '@/components/buttonVariants/buttonVariant';
 import Progress from '@/components/progress/progress';
 import { AuthContext } from '@/context/auth';
 
@@ -12,6 +12,7 @@ import RadioTaskButton from '@/components/radioTaskButton/radioTaskButton';
 import { styles } from '@/styles/auth/operation/stylesReception';
 import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fonts';
+
 
 export function retorn() {
 	router.back();
@@ -29,7 +30,7 @@ const Reception: React.FC<homeFormData> = (data) => {
 		<View style={styles.container}>
 			<View style={styles.containerTop}>
 				<View style={[styles.containerTopLefth, { padding: 10 }]}>
-					<Button
+					<ButtonVariant
 						iconName="arrowleft"
 						title="return"
 						onPress={() => router.back()}

@@ -4,7 +4,7 @@ import { Control, useForm } from 'react-hook-form';
 import { Alert, Text, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
-import Button from '@/components/buttonVariants/buttonVariant';
+import ButtonVariant from '@/components/buttonVariants/buttonVariant';
 import Input from '@/components/input/input';
 import InputSenha from '@/components/inputPassword/inputPassword';
 import NavLink from '@/components/navLink/navLink';
@@ -96,7 +96,7 @@ const Login: React.FC = () => {
 			</View>
 
 			<View style={styles.footer}>
-				<Button
+				<ButtonVariant
 					title="Entrar"
 					onPress={handleSubmit(handleLogin)}
 					disabled={loading}
