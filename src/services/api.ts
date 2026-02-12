@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosInstance } from "axios";
 
 // Criar instância da API
 const api: AxiosInstance = axios.create({
-	baseURL: 'https://formcamapi-production.up.railway.app',
+	baseURL: process.env.EXPO_PUBLIC_API_URL || 'https://formcamapi-production.up.railway.app',
 	timeout: 5000,
 	headers: {
 		'Content-Type': 'application/json'
@@ -44,8 +44,7 @@ api.interceptors.response.use(
 			originalRequest._retryCount = retryCount + 1;
 
 			console.log(
-				`Servidor pode estar inativo. Tentativa ${
-					retryCount + 1
+				`Servidor pode estar inativo. Tentativa ${retryCount + 1
 				} de ${maxRetries}...`
 			);
 

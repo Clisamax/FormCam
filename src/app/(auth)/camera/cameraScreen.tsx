@@ -12,9 +12,9 @@ import React, { useCallback, useRef, useState } from 'react';
 import { Alert, Button, StatusBar, Text, View } from 'react-native';
 
 const s3 = new AWS.S3({
-	accessKeyId: 'YOUR_ACCESS_KEY_ID',
-	secretAccessKey: 'YOUR_SECRET_ACCESS_KEY',
-	region: 'YOUR_AWS_REGION',
+	accessKeyId: process.env.EXPO_PUBLIC_AWS_ACCESS_KEY_ID,
+	secretAccessKey: process.env.EXPO_PUBLIC_AWS_SECRET_ACCESS_KEY,
+	region: process.env.EXPO_PUBLIC_AWS_REGION,
 });
 
 import FloatingOrbitButton, {
@@ -73,7 +73,8 @@ const Camera: React.FC = () => {
 					const buffer = Buffer.from(fileContent, 'base64');
 
 					const params = {
-						Bucket: 'YOUR_S3_BUCKET_NAME',
+						Bucket:
+							process.env.EXPO_PUBLIC_AWS_S3_BUCKET || 'YOUR_S3_BUCKET_NAME',
 						Key: `photos/photo_${Date.now()}.jpg`,
 						Body: buffer,
 						ContentType: 'image/jpeg',
