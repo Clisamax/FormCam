@@ -54,4 +54,3 @@ export default function RootLayout() {
 		</AuthProvider>
 	);
 }
-//<StatusBar style="auto" translucent={true} backgroundColor="transparent" />
