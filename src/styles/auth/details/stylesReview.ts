@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
 		width: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
+
 	},
 	containerTop: {
 		flex: 0.2,
@@ -37,6 +38,7 @@ export const styles = StyleSheet.create({
 		height: '100%',
 		padding: 10,
 		gap: 5,
+		marginTop: '4%',
 	},
 	containerFoot: {
 		flex: 0.2,

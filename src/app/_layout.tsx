@@ -1,13 +1,11 @@
+import { AuthProvider } from '@/context/auth';
+import { FontAssetMap, fontAssetMap } from '@/styles/global/fontAssets';
+import { useFonts } from 'expo-font'; // expo-font já está instalado via expo-google-fonts
 // src/app/_layout.tsx   (ou qualquer caminho que você tenha)
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-
-import { AuthProvider } from '@/context/auth';
-import { theme } from '@/styles/global/theme';
-import { fontAssetMap, FontAssetMap } from '@/styles/global/fontAssets';
-import { useFonts } from 'expo-font'; // expo-font já está instalado via expo-google-fonts
 
 /* ------------------------------------------------------------------ */
 /*  1️⃣  Forçar a splash screen até que todas as fontes estejam prontas */
@@ -56,3 +54,4 @@ export default function RootLayout() {
 		</AuthProvider>
 	);
 }
+//<StatusBar style="auto" translucent={true} backgroundColor="transparent" />
