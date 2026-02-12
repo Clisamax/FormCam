@@ -7,11 +7,12 @@ import {
 import * as FileSystem from 'expo-file-system';
 import React, { useCallback, useRef, useState } from 'react';
 import { Alert, Button, StatusBar, Text, View } from 'react-native';
+import * as MediaLibrary from 'expo-media-library';
 
+import { uploadToLocalServer } from '@/components/cameraUpload/LocalUploader';
 import FloatingOrbitButton, {
 	OrbitAction,
 } from '@/components/floatingOrbitButton';
-import { uploadToImmich } from '@/utils/immich';
 import { router } from 'expo-router';
 
 const Camera: React.FC = () => {
@@ -58,28 +59,10 @@ const Camera: React.FC = () => {
 					});
 					console.log('Foto salva localmente em:', filePath);
 
-					// Upload para o Immich
-					const immichUrl = process.env.EXPO_PUBLIC_IMMICH_URL;
-					const immichKey = process.env.EXPO_PUBLIC_IMMICH_API_KEY;
-
-					if (!immichUrl || !immichKey) {
-						Alert.alert(
-							'Erro de Configuração',
-							'URL ou API Key do Immich não configuradas.',
-						);
-						return;
-					}
-
-					try {
-						await uploadToImmich(filePath, immichKey, immichUrl);
-						Alert.alert('Sucesso', 'Foto enviada para o Immich com sucesso!');
-					} catch (uploadError) {
-						Alert.alert(
-							'Erro no Upload',
-							'Não foi possível enviar para o Immich.',
-						);
-						console.error('Erro ao fazer upload para o Immich:', uploadError);
-					}
+					// Upload para o Immich (via LocalUploader)
+					await uploadToLocalServer(filePath);
+					// save photo to gallery
+					await MediaLibrary.createAssetAsync(filePath);
 				}
 			} catch (error) {
 				Alert.alert('Erro', 'Erro ao processar a foto.');
