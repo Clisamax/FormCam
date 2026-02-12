@@ -1,6 +1,3 @@
-import AWS from 'aws-sdk';
-/* crie um componente tsx react native com expo câmera usando o câmera view do expo camera, adicione a função de salvar a foto localmente e no S3 da AWS. O componente deve solicitar permissão para usar a câmera, permitir tirar fotos, salvar localmente e fazer upload para o S3. Use hooks e boas práticas de programação. */
-
 import {
 	CameraCapturedPicture,
 	CameraView,
@@ -11,15 +8,10 @@ import * as FileSystem from 'expo-file-system';
 import React, { useCallback, useRef, useState } from 'react';
 import { Alert, Button, StatusBar, Text, View } from 'react-native';
 
-const s3 = new AWS.S3({
-	accessKeyId: 'YOUR_ACCESS_KEY_ID',
-	secretAccessKey: 'YOUR_SECRET_ACCESS_KEY',
-	region: 'YOUR_AWS_REGION',
-});
-
 import FloatingOrbitButton, {
 	OrbitAction,
 } from '@/components/floatingOrbitButton';
+import { uploadToImmich } from '@/utils/immich';
 import { router } from 'expo-router';
 
 const Camera: React.FC = () => {
@@ -64,33 +56,33 @@ const Camera: React.FC = () => {
 						from: photo.uri,
 						to: filePath,
 					});
-					Alert.alert('Foto salva localmente!', `Local: ${filePath}`);
+					console.log('Foto salva localmente em:', filePath);
 
-					//upload to S3
-					const fileContent = await FileSystem.readAsStringAsync(filePath, {
-						encoding: FileSystem.EncodingType.Base64,
-					});
-					const buffer = Buffer.from(fileContent, 'base64');
+					// Upload para o Immich
+					const immichUrl = process.env.EXPO_PUBLIC_IMMICH_URL;
+					const immichKey = process.env.EXPO_PUBLIC_IMMICH_API_KEY;
 
-					const params = {
-						Bucket: 'YOUR_S3_BUCKET_NAME',
-						Key: `photos/photo_${Date.now()}.jpg`,
-						Body: buffer,
-						ContentType: 'image/jpeg',
-					};
+					if (!immichUrl || !immichKey) {
+						Alert.alert(
+							'Erro de Configuração',
+							'URL ou API Key do Immich não configuradas.',
+						);
+						return;
+					}
 
-					// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-					s3.upload(params, (err: any, data: { Location: any }): void => {
-						if (err) {
-							Alert.alert('Erro', 'Erro ao fazer upload para o S3.');
-							console.error('Erro ao fazer upload para o S3:', err);
-						} else {
-							Alert.alert('Upload bem-sucedido!', `URL: ${data.Location}`);
-						}
-					});
+					try {
+						await uploadToImmich(filePath, immichKey, immichUrl);
+						Alert.alert('Sucesso', 'Foto enviada para o Immich com sucesso!');
+					} catch (uploadError) {
+						Alert.alert(
+							'Erro no Upload',
+							'Não foi possível enviar para o Immich.',
+						);
+						console.error('Erro ao fazer upload para o Immich:', uploadError);
+					}
 				}
 			} catch (error) {
-				Alert.alert('Erro', 'Erro	 ao salvar a foto.');
+				Alert.alert('Erro', 'Erro ao processar a foto.');
 				console.error('Erro ao tirar foto:', error);
 			}
 		} else {
@@ -98,6 +90,7 @@ const Camera: React.FC = () => {
 		}
 	}, [isCameraReady]);
 
+	// MODIFIQUE AQUI: Configure os ícones e funções dos botões que aparecem em volta do botão principal
 	const orbitActions: OrbitAction[] = [
 		{
 			iconName: 'home',

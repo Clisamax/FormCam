@@ -1,7 +1,7 @@
 import { IAuthProvider, IContext, IUser } from '@/@types/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
-import { createContext, useEffect, useState, useRef } from 'react';
+import { createContext, useEffect, useRef, useState } from 'react';
 import { AppState, AppStateStatus } from 'react-native';
 import { api } from '../services/api';
 
@@ -39,7 +39,8 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 				const storageToken = await AsyncStorage.getItem('@auth:token');
 				const storageUser = await AsyncStorage.getItem('@auth:user');
 				const storageTimestamp = await AsyncStorage.getItem('@auth:timestamp');
-				const storageImmichKey = await AsyncStorage.getItem('@auth:immichApiKey');
+				const storageImmichKey =
+					await AsyncStorage.getItem('@auth:immichApiKey');
 				const storageImmichUrl = await AsyncStorage.getItem('@auth:immichUrl');
 
 				if (storageToken && storageUser && storageTimestamp) {
@@ -109,12 +110,35 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 			appState.current = nextAppState;
 		};
 
-		const subscription = AppState.addEventListener('change', handleAppStateChange);
+		const subscription = AppState.addEventListener(
+			'change',
+			handleAppStateChange,
+		);
 
 		return () => {
 			subscription.remove();
 		};
 	}, []);
+
+	// Verificação periódica de expiração (mesmo com o app em foreground)
+	useEffect(() => {
+		const interval = setInterval(async () => {
+			if (user) {
+				const storageTimestamp = await AsyncStorage.getItem('@auth:timestamp');
+				if (storageTimestamp) {
+					const now = Date.now();
+					const lastActivity = Number(storageTimestamp);
+					if (now - lastActivity >= EXPIRATION_TIME) {
+						console.log('Sessão expirada por inatividade (foreground check)');
+						await clearAuthData();
+						router.push('/(login)/login/login');
+					}
+				}
+			}
+		}, 60000); // Verifica a cada 1 minuto
+
+		return () => clearInterval(interval);
+	}, [user]);
 
 	async function clearAuthData() {
 		api.defaults.headers.common.Authorization = '';
@@ -136,6 +160,9 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 			console.log('API disponível:', !!api);
 			console.log('Método post disponível:', typeof api.post);
 
+			// Limpar token antigo antes de tentar novo login para evitar erro 401 por token expirado
+			api.defaults.headers.common.Authorization = '';
+
 			const response = await api.post('/api/v1/login', {
 				sap,
 				password,
@@ -154,7 +181,8 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 			await AsyncStorage.setItem('@auth:timestamp', now.toString());
 
 			// Salvar credenciais do Immich se existirem na resposta
-			const apiKey = response.data.immichApiKey || response.data.user?.immichApiKey;
+			const apiKey =
+				response.data.immichApiKey || response.data.user?.immichApiKey;
 			const url = response.data.immichUrl || response.data.user?.immichUrl;
 
 			if (apiKey) {
@@ -169,6 +197,9 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 			setUser(response.data.user);
 		} catch (error: unknown) {
 			console.error('Erro no login:', error);
+
+			// Limpar dados de autenticação em caso de erro para garantir um estado limpo
+			await clearAuthData();
 
 			// Tratamento específico de erros de rede
 			const errorMessage =

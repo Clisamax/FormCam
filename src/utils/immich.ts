@@ -1,9 +1,21 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { Platform } from 'react-native';
 
 interface ImmichUploadResponse {
 	id: string;
-	[key: string]: any;
+	[key: string]: unknown;
+}
+
+interface ImmichErrorResponse {
+	message?: string;
+	statusCode?: number;
+	error?: string;
+}
+
+interface ReactNativeFile {
+	uri: string;
+	name: string;
+	type: string;
 }
 
 /**
@@ -32,13 +44,13 @@ export async function uploadToImmich(
 	const filename = imageUri.split('/').pop() || `upload_${Date.now()}.jpg`;
 
 	// Create the file object. React Native needs { uri, name, type }
-	const file = {
+	const file: ReactNativeFile = {
 		uri: Platform.OS === 'ios' ? imageUri.replace('file://', '') : imageUri,
 		name: filename,
 		type: 'image/jpeg', // Assuming JPEG from camera
-	} as any;
+	};
 
-	formData.append('assetData', file);
+	formData.append('assetData', file as unknown as Blob);
 	formData.append('deviceAssetId', `${filename}-${Date.now()}`);
 	formData.append('deviceId', 'react-native-app');
 	formData.append('fileCreatedAt', new Date().toISOString());
@@ -65,31 +77,32 @@ export async function uploadToImmich(
 
 		console.log('[Immich] Upload success:', response.data);
 		return response.data;
-	} catch (error: any) {
-		console.error('[Immich] Upload failed - Full error:', error);
-		console.error('[Immich] Error message:', error.message);
-		console.error('[Immich] Error code:', error.code);
-		console.error('[Immich] Response status:', error.response?.status);
-		console.error('[Immich] Response data:', error.response?.data);
+	} catch (error) {
+		const axiosError = error as AxiosError<ImmichErrorResponse>;
+		console.error('[Immich] Upload failed - Full error:', axiosError);
+		console.error('[Immich] Error message:', axiosError.message);
+		console.error('[Immich] Error code:', axiosError.code);
+		console.error('[Immich] Response status:', axiosError.response?.status);
+		console.error('[Immich] Response data:', axiosError.response?.data);
 		console.error('[Immich] Request config:', {
-			url: error.config?.url,
-			method: error.config?.method,
-			headers: error.config?.headers,
+			url: axiosError.config?.url,
+			method: axiosError.config?.method,
+			headers: axiosError.config?.headers,
 		});
 
 		// Provide more specific error messages
-		if (error.code === 'ECONNREFUSED') {
+		if (axiosError.code === 'ECONNREFUSED') {
 			throw new Error('Cannot connect to Immich server. Is it running?');
 		}
-		if (error.code === 'ETIMEDOUT' || error.message.includes('timeout')) {
+		if (axiosError.code === 'ETIMEDOUT' || axiosError.message.includes('timeout')) {
 			throw new Error('Connection to Immich server timed out');
 		}
-		if (error.message === 'Network Error') {
+		if (axiosError.message === 'Network Error') {
 			throw new Error('Network error - check if Immich URL is correct and server is accessible');
 		}
 
 		throw new Error(
-			error.response?.data?.message || error.message || 'Failed to upload to Immich'
+			axiosError.response?.data?.message || axiosError.message || 'Failed to upload to Immich'
 		);
 	}
 }
