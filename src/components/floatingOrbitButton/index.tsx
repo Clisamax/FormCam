@@ -23,6 +23,10 @@ export interface OrbitAction {
 }
 
 interface FloatingOrbitButtonProps {
+	/**
+	 * @description Para modificar os ícones e as funções dos botões em órbita,
+	 * altere os objetos dentro deste array 'actions'.
+	 */
 	actions: OrbitAction[];
 	mainIconName?: IconName;
 	mainIconFamily?: ActionIconFamily;

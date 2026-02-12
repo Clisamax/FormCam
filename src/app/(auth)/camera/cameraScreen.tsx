@@ -1,6 +1,5 @@
 import AWS from 'aws-sdk';
-/* crie um componente tsx react native com expo câmera usando o câmera view do expo camera, adicione a função de salvar a foto localmente e no S3 da AWS. O componente deve solicitar permissão para usar a câmera, permitir tirar fotos, salvar localmente e fazer upload para o S3. Use hooks e boas práticas de programação. */
-
+import { Buffer } from 'buffer';
 import {
 	CameraCapturedPicture,
 	CameraView,
@@ -99,6 +98,7 @@ const Camera: React.FC = () => {
 		}
 	}, [isCameraReady]);
 
+	// MODIFIQUE AQUI: Configure os ícones e funções dos botões que aparecem em volta do botão principal
 	const orbitActions: OrbitAction[] = [
 		{
 			iconName: 'home',

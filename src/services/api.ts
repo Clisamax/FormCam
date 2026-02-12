@@ -1,8 +1,9 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios, { AxiosError, AxiosInstance } from "axios";
 
 // Criar instância da API
 const api: AxiosInstance = axios.create({
-	baseURL: process.env.EXPO_PUBLIC_API_URL || 'https://formcamapi-production.up.railway.app',
+	baseURL: process.env.EXPO_PUBLIC_API_URL,
 	timeout: 5000,
 	headers: {
 		'Content-Type': 'application/json'
@@ -15,6 +16,25 @@ if (!api) {
 }
 
 console.log('API criada com sucesso:', api.defaults.baseURL);
+
+// Interceptor para renovar o timestamp de sessão a cada requisição
+api.interceptors.request.use(
+	async (config) => {
+		try {
+			// Não atualiza o timestamp se for a requisição de login para evitar conflitos
+			if (config.url !== '/api/v1/login') {
+				const now = Date.now();
+				await AsyncStorage.setItem('@auth:timestamp', now.toString());
+			}
+		} catch (error) {
+			console.error('Erro ao atualizar timestamp de sessão:', error);
+		}
+		return config;
+	},
+	(error) => {
+		return Promise.reject(error);
+	}
+);
 
 // Interceptor para tratamento de erros de resposta
 api.interceptors.response.use(
@@ -64,7 +84,9 @@ api.interceptors.response.use(
 		}
 
 		if (error.response?.status === 401) {
-			throw new Error('Sessão expirada. Faça login novamente.');
+			// @ts-ignore
+			const serverMessage = error.response?.data?.message;
+			throw new Error(serverMessage || 'Sessão expirada. Faça login novamente.');
 		}
 
 		if (error.response?.status === 502) {
