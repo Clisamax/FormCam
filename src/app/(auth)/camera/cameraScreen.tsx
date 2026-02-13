@@ -5,10 +5,11 @@ import {
 	useCameraPermissions,
 } from 'expo-camera';
 import * as FileSystem from 'expo-file-system';
+import * as MediaLibrary from 'expo-media-library';
 import React, { useCallback, useRef, useState } from 'react';
 import { Alert, Button, StatusBar, Text, View } from 'react-native';
-import * as MediaLibrary from 'expo-media-library';
 
+import CameraButton from '@/components/buttonCamera/button';
 import { uploadToLocalServer } from '@/components/cameraUpload/LocalUploader';
 import FloatingOrbitButton, {
 	OrbitAction,
@@ -28,9 +29,9 @@ const Camera: React.FC = () => {
 
 	const toggleFlash = useCallback(() => {
 		setFlash((prev) => {
-			if (prev === 'off') return 'on';
-			if (prev === 'on') return 'auto';
-			return 'off';
+			const next = prev === 'off' ? 'on' : prev === 'on' ? 'auto' : 'off';
+			console.log('Flash alternado de:', prev, 'para:', next);
+			return next;
 		});
 	}, []);
 
@@ -74,28 +75,36 @@ const Camera: React.FC = () => {
 	}, [isCameraReady]);
 
 	// MODIFIQUE AQUI: Configure os ícones e funções dos botões que aparecem em volta do botão principal
-	const orbitActions: OrbitAction[] = [
-		{
-			iconName: 'home',
-			iconFamily: 'FontAwesome',
-			onPress: () => router.back(),
-		},
-		{
-			iconName:
-				flash === 'off'
-					? 'flash-off'
-					: flash === 'on'
-						? 'flash-on'
-						: 'flash-auto',
-			iconFamily: 'MaterialIcons',
-			onPress: toggleFlash,
-		},
-		{
-			iconName: 'camera',
-			iconFamily: 'FontAwesome',
-			onPress: takePhoto,
-		},
-	];
+	const orbitActions: OrbitAction[] = React.useMemo(
+		() => [
+			{
+				id: 'flash',
+				iconName:
+					flash === 'off'
+						? 'flash-off'
+						: flash === 'on'
+							? 'flash-on'
+							: 'flash-auto',
+				iconFamily: 'MaterialIcons',
+				onPress: toggleFlash,
+			},
+			{
+				id: 'camera',
+				iconName: 'camera',
+				iconFamily: 'FontAwesome',
+				onPress: takePhoto,
+			},
+			{
+				id: 'home',
+				iconName: 'home',
+				iconFamily: 'FontAwesome',
+				onPress: () => router.back(),
+			},
+		],
+		[flash, toggleFlash, takePhoto],
+	);
+
+	console.log('Renderizando Camera - flash:', flash);
 
 	if (!permission || !permission.granted) {
 		return (
@@ -112,12 +121,25 @@ const Camera: React.FC = () => {
 				ref={cameraRef}
 				style={{ flex: 1 }}
 				flash={flash}
+				enableTorch={flash === 'on'}
 				onCameraReady={handleCameraReady}
 			/>
+			<View
+				style={{
+					position: 'absolute',
+					bottom: 80,
+					left: 0,
+					right: 0,
+					alignItems: 'center',
+				}}
+				pointerEvents="box-none"
+			>
+				<CameraButton onPress={takePhoto} />
+			</View>
 
 			<FloatingOrbitButton
 				actions={orbitActions}
-				containerStyle={{ bottom: 40, right: 30 }}
+				containerStyle={{ bottom: 40, right: 20 }}
 			/>
 		</View>
 	);

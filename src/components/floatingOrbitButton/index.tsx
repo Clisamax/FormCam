@@ -16,6 +16,7 @@ type IconName =
 	| React.ComponentProps<typeof MaterialIcons>['name'];
 
 export interface OrbitAction {
+	id: string;
 	iconName: IconName;
 	iconFamily: ActionIconFamily;
 	onPress: () => void;
@@ -91,15 +92,15 @@ const FloatingOrbitButton = ({
 	};
 
 	const createAnimatedStyle = (index: number) => {
-		// Angles: 160, 210, 260 for 3 buttons
+		// Angles: 180 (Left), 225 (Up-Left), 270 (Up)
 		const startAngle = 160;
-		const endAngle = 260;
+		const endAngle = 280;
 		const angleStep =
 			actions.length > 1 ? (endAngle - startAngle) / (actions.length - 1) : 0;
 		const angle = startAngle + index * angleStep;
 
 		return useAnimatedStyle(() => {
-			const radius = 90;
+			const radius = 80;
 			const translateX =
 				animation.value * radius * Math.cos(angle * (Math.PI / 180));
 			const translateY =
@@ -116,7 +117,7 @@ const FloatingOrbitButton = ({
 		<View style={[styles.container, containerStyle]}>
 			{actions.map((action, index) => (
 				<Animated.View
-					key={`${action.iconName}-${index}`}
+					key={action.id}
 					style={[
 						styles.button,
 						styles.submenu,
