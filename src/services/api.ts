@@ -50,22 +50,30 @@ api.interceptors.response.use(
 
 		// @ts-ignore
 		const retryCount = originalRequest._retryCount || 0;
-		const maxRetries = 10; // Aumentado para 10 tentativas
-		const retryDelay = 3000; // Aumentado para 3 segundos
+		const maxRetries = 10;
+		const maxAuthRetries = 5; // Menos tentativas para 401 no login
+		const retryDelay = 4000;
 
-		// Condição para tentar novamente: erro de conexão, timeout ou servidor acordando (502)
-		if (
+		const isLoginRoute = originalRequest.url === '/api/v1/login';
+
+		// Condição para tentar novamente:
+		// 1. Erros de rede/timeout/502 (até 10 vezes)
+		// 2. Erro 401 especificamente no login (até 3 vezes) para contornar problemas de "primeiro login"
+		const shouldRetry =
 			(error.code === 'ECONNABORTED' ||
 				error.code === 'ERR_NETWORK' ||
-				error.response?.status === 502) &&
-			retryCount < maxRetries
-		) {
+				error.response?.status === 502 ||
+				(error.response?.status === 401 && isLoginRoute)) &&
+			retryCount < (error.response?.status === 401 ? maxAuthRetries : maxRetries);
+
+		if (shouldRetry) {
 			// @ts-ignore
 			originalRequest._retryCount = retryCount + 1;
 
+			const reason = error.response?.status === 401 ? 'Autenticação' : 'Conexão';
 			console.log(
-				`Servidor pode estar inativo. Tentativa ${retryCount + 1
-				} de ${maxRetries}...`
+				`Problema de ${reason}. Tentativa ${retryCount + 1} de ${error.response?.status === 401 ? maxAuthRetries : maxRetries
+				}...`
 			);
 
 			return new Promise((resolve) => {
@@ -84,6 +92,9 @@ api.interceptors.response.use(
 		}
 
 		if (error.response?.status === 401) {
+			if (isLoginRoute) {
+				throw new Error('Usuário ou senha incorretos.');
+			}
 			// @ts-ignore
 			const serverMessage = error.response?.data?.message;
 			throw new Error(serverMessage || 'Sessão expirada. Faça login novamente.');

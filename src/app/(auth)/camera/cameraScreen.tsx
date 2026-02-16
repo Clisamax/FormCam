@@ -92,16 +92,16 @@ const Camera: React.FC = () => {
 				id: 'camera',
 				iconName: 'camera',
 				iconFamily: 'FontAwesome',
-				onPress: takePhoto,
+				onPress: () => router.replace('/(auth)/forms/product/product'),
 			},
 			{
 				id: 'home',
 				iconName: 'home',
 				iconFamily: 'FontAwesome',
-				onPress: () => router.back(),
+				onPress: () => router.replace('/(auth)/forms/home/home'),
 			},
 		],
-		[flash, toggleFlash, takePhoto],
+		[flash, toggleFlash],
 	);
 
 	console.log('Renderizando Camera - flash:', flash);

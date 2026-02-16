@@ -141,7 +141,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 	}, [user]);
 
 	async function clearAuthData() {
-		api.defaults.headers.common.Authorization = '';
+		api.defaults.headers.common.Authorization = undefined;
 		await AsyncStorage.multiRemove([
 			'@auth:token',
 			'@auth:user',
@@ -160,8 +160,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 			console.log('API disponível:', !!api);
 			console.log('Método post disponível:', typeof api.post);
 
-			// Limpar token antigo antes de tentar novo login para evitar erro 401 por token expirado
-			api.defaults.headers.common.Authorization = '';
+			api.defaults.headers.common.Authorization = undefined;
 
 			const response = await api.post('/api/v1/login', {
 				sap,

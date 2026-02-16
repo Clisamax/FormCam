@@ -1,0 +1,23 @@
+[2026-02-16 01:55:37] 🚀 Iniciando script de build – 2026-02-16_01-55-37
+[2026-02-16 01:55:37] ✅ Node v24.12.0 OK
+[2026-02-16 01:55:37] ✅ Yarn 1.22.22 OK
+[2026-02-16 01:55:38] ✅ Expo CLI 6.3.10 OK
+[2026-02-16 01:55:38] ✅ Xcode 26.2 OK
+[2026-02-16 01:55:39] ✅ CocoaPods 1.16.2 OK
+[2026-02-16 01:55:39] ✅ watchman 2026.01.12.00 encontrado
+[2026-02-16 01:55:39] ⚠️ idevice_id não encontrado – usarei fallback via system_profiler.
+[2026-02-16 01:55:39] 📦 Instalando dependências com Yarn (frozen‑lockfile)…
+yarn install v1.22.22
+[1/4] Resolving packages...
+(node:6476) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+Done in 0.31s.
+[2026-02-16 01:55:40] 🧹 Limpando artefatos de build anteriores…
+[2026-02-16 01:55:40]    • .expo removida
+[2026-02-16 01:55:40]    • DerivedData (/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai
+/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-dafqrjcqenjoxbfbwuupgqbhuhip) removida
+[2026-02-16 01:55:40]    • Resetando cache do Metro
+  --non-interactive is not supported, use $CI=1 instead
+env: load .env
+env: export EXPO_PUBLIC_API_URL EXPO_PUBLIC_IMMICH_URL EXPO_PUBLIC_IMMICH_API_KEY

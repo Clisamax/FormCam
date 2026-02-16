@@ -1,0 +1,41 @@
+[2026-02-16 01:48:40] 🚀 Iniciando script de build – 2026-02-16_01-48-40
+[2026-02-16 01:48:40] ✅ Node v24.12.0 OK
+[2026-02-16 01:48:41] ✅ Yarn 1.22.22 OK
+[2026-02-16 01:48:41] ⚠️ Expo CLI não está instalado globalmente – será usado via npx.
+[2026-02-16 01:48:41] ✅ Xcode 26.2 OK
+[2026-02-16 01:48:42] ✅ CocoaPods 1.16.2 OK
+[2026-02-16 01:48:42] ⚠️ watchman não encontrado – recomendável instalar (brew install watchman).
+[2026-02-16 01:48:42] ⚠️ idevice_id não encontrado – usarei fallback via system_profiler.
+[2026-02-16 01:48:42] 📦 Instalando dependências com Yarn (frozen‑lockfile)…
+yarn install v1.22.22
+[1/4] Resolving packages...
+(node:99775) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+Done in 0.31s.
+[2026-02-16 01:48:42] 🧹 Limpando artefatos de build anteriores…
+[2026-02-16 01:48:42]    • ios/build removida
+[2026-02-16 01:48:42]    • .expo removida
+[2026-02-16 01:48:42]    • DerivedData (/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai
+/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-dafqrjcqenjoxbfbwuupgqbhuhip) removida
+[2026-02-16 01:48:42]    • Resetando cache do Metro
+  --non-interactive is not supported, use $CI=1 instead
+env: load .env
+env: export EXPO_PUBLIC_API_URL EXPO_PUBLIC_IMMICH_URL EXPO_PUBLIC_IMMICH_API_KEY
+The /ios project does not contain any URI schemes. Expo CLI will not be able to use links to launch the project. You can configure a custom URI scheme using the --scheme option.
+Starting project at /Users/clisamax/Documents/GITHUB/FormCam
+Using src/app as the root directory for Expo Router.
+Starting Metro Bundler
+warning: Bundler cache is empty, rebuilding (this may take a minute)
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+[2026-02-16 01:53:16] 🔧 Instalando/atualizando Pods…
+
+[!] Invalid `Podfile` file: .
+
+ #  from /Users/clisamax/Documents/GITHUB/FormCam/ios/Podfile:17
+ #  -------------------------------------------
+ #  target 'FormCam' do
+ >    use_expo_modules!
+ #  
+ #  -------------------------------------------
