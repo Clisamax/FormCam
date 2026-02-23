@@ -1,0 +1,88 @@
+[2026-02-17 08:17:19] 🚀 Iniciando script – 2026-02-17_08-17-19
+[2026-02-17 08:17:19] ✅ Node v24.12.0 OK
+[2026-02-17 08:17:19] ✅ Yarn 4.12.0 OK
+[2026-02-17 08:17:19] ✅ Expo (local) 54.0.23
+[2026-02-17 08:17:19] ✅ Xcode 26.2 OK
+[2026-02-17 08:17:20] ✅ CocoaPods 1.16.2 OK
+[2026-02-17 08:17:20] ✅ libimobiledevice (idevicepair) disponível
+[2026-02-17 08:17:20] 🚀 Iniciando script – 2026-02-17_08-17-19
+[2026-02-17 08:17:20] 🧹 Limpando artefatos da build anterior…
+[2026-02-17 08:17:26]    • DerivedData removida (/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai
+/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-dafqrjcqenjoxbfbwuupgqbhuhip)
+[2026-02-17 08:17:26] ✅ Limpeza completa concluída.
+[2026-02-17 08:17:26] 📦 Instalando dependências JavaScript (Yarn – frozen‑lockfile)…
+➤ YN0050: The --frozen-lockfile option is deprecated; use --immutable and/or --immutable-cache instead
+
+➤ YN0000: · Yarn 4.12.0
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Post-resolution validation
+➤ YN0060: │ react is listed by your project with version 19.1.0 (pf5c6e9), which doesn't satisfy what react-test-renderer and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0086: │ Some peer dependencies are incorrectly met by your project; run yarn explain peer-requirements <hash> for details, where <hash> is the six-letter p-prefixed code.
+➤ YN0086: │ Some peer dependencies are incorrectly met by dependencies; run yarn explain peer-requirements for details.
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0000: └ Completed in 0s 462ms
+➤ YN0000: ┌ Link step
+➤ YN0007: │ @biomejs/biome@npm:1.9.2 must be built because it never has been before or the last one failed
+➤ YN0007: │ aws-sdk@npm:2.1693.0 must be built because it never has been before or the last one failed
+➤ YN0000: └ Completed in 5s 573ms
+➤ YN0000: · Done with warnings in 6s 242ms
+[2026-02-17 08:17:32] ✅ Yarn install concluído.
+[2026-02-17 08:17:32] 🔧 Atualizando expo-modules-core para a versão recomendada…
+[2026-02-17 08:17:32]    • Executando: npx
+expo
+install
+expo-modules-core
+env: load .env
+env: export EXPO_PUBLIC_API_URL EXPO_PUBLIC_IMMICH_URL EXPO_PUBLIC_IMMICH_API_KEY
+› Installing 1 SDK 54.0.0 compatible native module using yarn
+> yarn add expo-modules-core@~3.0.29
+➤ YN0000: · Yarn 4.12.0
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Post-resolution validation
+➤ YN0060: │ react is listed by your project with version 19.1.0 (pf5c6e9), which doesn't satisfy what react-test-renderer and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0086: │ Some peer dependencies are incorrectly met by your project; run yarn explain peer-requirements <hash> for details, where <hash> is the six-letter p-prefixed code.
+➤ YN0086: │ Some peer dependencies are incorrectly met by dependencies; run yarn explain peer-requirements for details.
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0000: └ Completed in 0s 435ms
+➤ YN0000: ┌ Link step
+➤ YN0000: └ Completed
+➤ YN0000: · Done with warnings in 0s 863ms
+[2026-02-17 08:17:34] ✅ expo-modules-core atualizado.
+[2026-02-17 08:17:34] 🩺 Executando npx expo-doctor…
+[2026-02-17 08:17:34] ⚡ expo-doctor não encontrado – instalando como dev‑dependency…
+[2026-02-17 08:17:34]    • Executando: yarn
+add
+-D
+expo-doctor
+➤ YN0000: · Yarn 4.12.0
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Post-resolution validation
+➤ YN0060: │ react is listed by your project with version 19.1.0 (pf5c6e9), which doesn't satisfy what react-test-renderer and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0086: │ Some peer dependencies are incorrectly met by your project; run yarn explain peer-requirements <hash> for details, where <hash> is the six-letter p-prefixed code.
+➤ YN0086: │ Some peer dependencies are incorrectly met by dependencies; run yarn explain peer-requirements for details.
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0000: └ Completed in 0s 462ms
+➤ YN0000: ┌ Link step
+➤ YN0000: └ Completed
+➤ YN0000: · Done with warnings in 0s 783ms
+[2026-02-17 08:17:35]    • Executando: npx
+expo-doctor
+env: load .env
+env: export EXPO_PUBLIC_API_URL EXPO_PUBLIC_IMMICH_URL EXPO_PUBLIC_IMMICH_API_KEY
+Running 17 checks on your project...
+16/17 checks passed. 1 checks failed. Possible issues detected:
+Use the --verbose flag to see more details about passed checks.
+
+✖ Check dependencies for packages that should not be installed directly
+The package "expo-modules-core" should not be installed directly in your project. You should instead use the exported API from the expo package.
+Advice:
+Remove these packages from your package.json.
+
+1 check failed, indicating possible issues with the project.
+[2026-02-17 08:17:39] ❌ ERRO: ❌ expo-doctor encontrou problemas. Corrija antes de continuar.

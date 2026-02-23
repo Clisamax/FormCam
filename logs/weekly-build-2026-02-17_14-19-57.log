@@ -1,0 +1,17 @@
+[2026-02-17 14:19:57] 🚀 Iniciando script – 2026-02-17_14-19-57
+[2026-02-17 14:19:57] ✅ Node v24.12.0 OK
+[2026-02-17 14:19:57] ✅ Yarn 4.12.0 OK
+[2026-02-17 14:19:57] ✅ Expo (local) 54.0.23
+[2026-02-17 14:19:57] ✅ Xcode 26.2 OK
+[2026-02-17 14:19:58] ✅ CocoaPods 1.16.2 OK
+[2026-02-17 14:19:58] ✅ libimobiledevice (idevicepair) disponível
+[2026-02-17 14:19:58] 🚀 Iniciando script – 2026-02-17_14-19-57
+[2026-02-17 14:19:58] 🧹 Iniciando limpeza rápida dos artefatos da build anterior…
+[2026-02-17 14:19:58]    • Número máximo de jobs paralelos: 10
+[2026-02-17 14:19:58]    • /Users/clisamax/Documents/GITHUB/FormCam/ios/Podfile.lock → /var/folders/88/p03mzgs51pj3xpcnz_66wt_w0000gn/T//tmp-clean-Podfile.lock-90746 (remoção async iniciada)
+[2026-02-17 14:19:58]    • Aguardando finalização das remoções async…
+[2026-02-17 14:19:58]    • /Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai → /var/folders/88/p03mzgs51pj3xpcnz_66wt_w0000gn/T//tmp-clean-FormCam-bghffiesmchebqfenymgyejtnsai-90746 (remoção async iniciada)
+[2026-02-17 14:26:59]    • /Users/clisamax/Documents/GITHUB/FormCam/.expo → /var/folders/88/p03mzgs51pj3xpcnz_66wt_w0000gn/T//tmp-clean-.expo-90746 (remoção async iniciada)
+[2026-02-17 14:27:09]    • /Users/clisamax/Documents/GITHUB/FormCam/ios/build → /var/folders/88/p03mzgs51pj3xpcnz_66wt_w0000gn/T//tmp-clean-build-90746 (remoção async iniciada)
+[2026-02-17 14:36:23]    • /Users/clisamax/Documents/GITHUB/FormCam/ios/Pods → /var/folders/88/p03mzgs51pj3xpcnz_66wt_w0000gn/T//tmp-clean-Pods-90746 (remoção async iniciada)
+[2026-02-17 14:41:42]    • /Users/clisamax/Documents/GITHUB/FormCam/node_modules → /var/folders/88/p03mzgs51pj3xpcnz_66wt_w0000gn/T//tmp-clean-node_modules-90746 (remoção async iniciada)

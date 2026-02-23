@@ -80,6 +80,9 @@ yarn-error.*
 
 # ios
 ios/*
+ios/logs
 
 # android
 android/*
+# scripts
+expo-weekly-build.sh

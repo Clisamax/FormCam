@@ -1,0 +1,58 @@
+[2026-02-17 05:04:24] 🚀 Iniciando script – 2026-02-17_05-04-24
+[2026-02-17 05:04:24] ✅ Node v24.12.0 OK
+[2026-02-17 05:04:24] ✅ Yarn 1.22.22 OK
+[2026-02-17 05:04:24] ✅ Expo (SDK) local (54.0.23)
+[2026-02-17 05:04:24] ✅ Xcode 26.2 OK
+[2026-02-17 05:04:25] ✅ CocoaPods 1.16.2 OK
+[2026-02-17 05:04:25] ✅ watchman 2026.01.12.00 encontrado
+[2026-02-17 05:04:25] ⚠️ idevice_id não encontrado – usarei fallback via system_profiler.
+[2026-02-17 05:04:25] 📦 Instalando dependências com Yarn (frozen‑lockfile)…
+yarn install v1.22.22
+[1/4] Resolving packages...
+(node:92046) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+Done in 0.13s.
+[2026-02-17 05:04:25] 🧹 Limpando artefatos de build anteriores…
+[2026-02-17 05:04:25]    • ios/build removida
+[2026-02-17 05:04:25]    • .expo removida
+[2026-02-17 05:04:25]    • DerivedData (/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai
+/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-dafqrjcqenjoxbfbwuupgqbhuhip) removida
+[2026-02-17 05:04:25] 🧹 Resetando o cache do Metro…
+[2026-02-17 05:04:25]    • Criando RAM‑disk de 2g (primeira tentativa)…
+[2026-02-17 05:04:25]    • -size não suportado – usando fallback baseado em setores
+[2026-02-17 05:04:25]    • RAM‑disk criado via setores (/dev/disk17         	                               	)
+[2026-02-17 05:04:25]    • Device limpo = /dev/disk17
+[2026-02-17 05:04:25]    • Formatando como APFS (nome: metro-ram)…
+[2026-02-17 05:04:27] ✅  RAM‑disk criado e montado em /Volumes/metro-ram
+[2026-02-17 05:04:27]    • METRO_CACHE_DIR = /Volumes/metro-ram/metro-cache
+[2026-02-17 05:04:27]    • Iniciando Metro em background (gera grafo)…
+[2026-02-17 05:04:27] ⏳ Metro ainda indexando (0s, PID=92148) – cache   0B
+2026-02-17T08:04:27.667Z expo:telemetry Switching strategy from detached to instant
+2026-02-17T08:04:27.696Z expo:telemetry Recording 1 event(s)
+2026-02-17T08:04:27.701Z expo:env Loaded environment variables from: /Users/clisamax/Documents/GITHUB/FormCam/.env
+2026-02-17T08:04:27.701Z expo:env /Users/clisamax/Documents/GITHUB/FormCam/.env.development does not exist, skipping this env file
+2026-02-17T08:04:27.701Z expo:env /Users/clisamax/Documents/GITHUB/FormCam/.env.local does not exist, skipping this env file
+2026-02-17T08:04:27.701Z expo:env /Users/clisamax/Documents/GITHUB/FormCam/.env.development.local does not exist, skipping this env file
+env: load .env
+env: export EXPO_PUBLIC_API_URL EXPO_PUBLIC_IMMICH_URL EXPO_PUBLIC_IMMICH_API_KEY
+2026-02-17T08:04:27.766Z expo:utils:scheme ios application Info.plist path: FormCam/Info.plist
+2026-02-17T08:04:27.771Z expo:utils:scheme ios application schemes: [ 'formcam', 'com.clisamax.FormCam', 'exp+formcam' ]
+2026-02-17T08:04:27.784Z expo:utils:scheme expected error collecting android application schemes for the main activity: TypeError: Cannot read properties of null (reading 'manifest')
+    at isManifest (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/config-plugins/build/android/Manifest.js:73:16)
+    at Object.readAndroidManifestAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/config-plugins/build/android/Manifest.js:66:8)
+    at async getSchemesForAndroidAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/cli/build/src/utils/scheme.js:155:26)
+    at async Promise.all (index 1)
+    at async getOptionalDevClientSchemeAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/cli/build/src/utils/scheme.js:182:28)
+    at async resolveSchemeAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/cli/build/src/start/resolveOptions.js:99:32)
+    at async resolveOptionsAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/cli/build/src/start/resolveOptions.js:70:20)
+    at async expoStart (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/cli/build/src/start/index.js:140:21)
+Starting project at /Users/clisamax/Documents/GITHUB/FormCam
+2026-02-17T08:04:27.990Z expo:utils:getRunningProcess pid: 91377 for port: 8081
+› Port 8081 is running this app in another window
+  /Users/clisamax/Documents/GITHUB/FormCam (pid 91377)
+Input is required, but 'npx expo' is in non-interactive mode.
+Required input:
+> Use port 8082 instead?
+› Skipping dev server
+[2026-02-17 05:04:37] ❌ ERRO: ❌ Metro terminou com erro – consulte /Users/clisamax/Documents/GITHUB/FormCam/logs/weekly-build-2026-02-17_05-04-24.log.

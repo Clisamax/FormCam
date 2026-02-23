@@ -1,0 +1,24 @@
+[2026-02-17 04:16:20] 🚀 Iniciando script – 2026-02-17_04-16-20
+[2026-02-17 04:16:21] ✅ Node v24.12.0 OK
+[2026-02-17 04:16:21] ✅ Yarn 1.22.22 OK
+[2026-02-17 04:16:21] ✅ Expo (SDK) local (54.0.23)
+[2026-02-17 04:16:22] ✅ Xcode 26.2 OK
+[2026-02-17 04:16:23] ✅ CocoaPods 1.16.2 OK
+[2026-02-17 04:16:23] ✅ watchman 2026.01.12.00 encontrado
+[2026-02-17 04:16:23] ⚠️ idevice_id não encontrado – usarei fallback via system_profiler.
+[2026-02-17 04:16:23] 📦 Instalando dependências com Yarn (frozen‑lockfile)…
+yarn install v1.22.22
+[1/4] Resolving packages...
+(node:73921) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+Done in 2.59s.
+[2026-02-17 04:16:25] 🧹 Limpando artefatos de build anteriores…
+[2026-02-17 04:16:25]    • DerivedData (/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai
+/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-dafqrjcqenjoxbfbwuupgqbhuhip) removida
+[2026-02-17 04:16:25] 🧹 Resetando o cache do Metro…
+[2026-02-17 04:16:26]    • Criando RAM‑disk de 2g (primeira tentativa)…
+[2026-02-17 04:16:26]    • -size não suportado – usando fallback baseado em setores
+[2026-02-17 04:16:26]    • RAM‑disk criado via setores (/dev/disk12         	                               	)
+[2026-02-17 04:16:26]    • Formatando como APFS (nome: metro-ram)…
+[2026-02-17 04:16:34] ❌ ERRO: Falha ao formatar /dev/disk12         	                               	 para APFS (sudo).

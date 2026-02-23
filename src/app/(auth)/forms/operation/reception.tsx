@@ -31,7 +31,7 @@ const Reception: React.FC<homeFormData> = (data) => {
 			<View style={styles.containerTop}>
 				<View style={[styles.containerTopLefth, { padding: 10 }]}>
 					<ButtonVariant
-						iconName="arrowleft"
+						iconName="arrow-left"
 						title="return"
 						onPress={() => router.back()}
 						variant="outline"

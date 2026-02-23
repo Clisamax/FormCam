@@ -1,0 +1,145 @@
+[2026-02-17 04:20:59] 🚀 Iniciando script – 2026-02-17_04-20-59
+[2026-02-17 04:21:00] ✅ Node v24.12.0 OK
+[2026-02-17 04:21:00] ✅ Yarn 1.22.22 OK
+[2026-02-17 04:21:00] ✅ Expo (SDK) local (54.0.23)
+[2026-02-17 04:21:00] ✅ Xcode 26.2 OK
+[2026-02-17 04:21:00] ✅ CocoaPods 1.16.2 OK
+[2026-02-17 04:21:00] ✅ watchman 2026.01.12.00 encontrado
+[2026-02-17 04:21:00] ⚠️ idevice_id não encontrado – usarei fallback via system_profiler.
+[2026-02-17 04:21:00] 📦 Instalando dependências com Yarn (frozen‑lockfile)…
+yarn install v1.22.22
+[1/4] Resolving packages...
+(node:76620) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+Done in 0.14s.
+[2026-02-17 04:21:00] 🧹 Limpando artefatos de build anteriores…
+[2026-02-17 04:21:00]    • DerivedData (/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai
+/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-dafqrjcqenjoxbfbwuupgqbhuhip) removida
+[2026-02-17 04:21:00] 🧹 Resetando o cache do Metro…
+[2026-02-17 04:21:00] ✅  RAM‑disk já está montado em /Volumes/metro-ram
+[2026-02-17 04:21:00]    • METRO_CACHE_DIR = /Volumes/metro-ram/metro-cache
+[2026-02-17 04:21:00]    • Iniciando Metro em background (gera grafo)…
+[2026-02-17 04:21:00] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+2026-02-17T07:21:01.051Z expo:telemetry Switching strategy from detached to instant
+2026-02-17T07:21:01.080Z expo:telemetry Recording 1 event(s)
+2026-02-17T07:21:01.086Z expo:env Loaded environment variables from: /Users/clisamax/Documents/GITHUB/FormCam/.env
+2026-02-17T07:21:01.086Z expo:env /Users/clisamax/Documents/GITHUB/FormCam/.env.development does not exist, skipping this env file
+2026-02-17T07:21:01.086Z expo:env /Users/clisamax/Documents/GITHUB/FormCam/.env.local does not exist, skipping this env file
+2026-02-17T07:21:01.086Z expo:env /Users/clisamax/Documents/GITHUB/FormCam/.env.development.local does not exist, skipping this env file
+env: load .env
+env: export EXPO_PUBLIC_API_URL EXPO_PUBLIC_IMMICH_URL EXPO_PUBLIC_IMMICH_API_KEY
+2026-02-17T07:21:01.170Z expo:utils:scheme ios application Info.plist path: FormCam/Info.plist
+2026-02-17T07:21:01.174Z expo:utils:scheme ios application schemes: [ 'formcam', 'com.clisamax.FormCam', 'exp+formcam' ]
+2026-02-17T07:21:01.187Z expo:utils:scheme expected error collecting android application schemes for the main activity: TypeError: Cannot read properties of null (reading 'manifest')
+    at isManifest (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/config-plugins/build/android/Manifest.js:73:16)
+    at Object.readAndroidManifestAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/config-plugins/build/android/Manifest.js:66:8)
+    at async getSchemesForAndroidAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/cli/build/src/utils/scheme.js:155:26)
+    at async Promise.all (index 1)
+    at async getOptionalDevClientSchemeAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/cli/build/src/utils/scheme.js:182:28)
+    at async resolveSchemeAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/cli/build/src/start/resolveOptions.js:99:32)
+    at async resolveOptionsAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/cli/build/src/start/resolveOptions.js:70:20)
+    at async expoStart (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/cli/build/src/start/index.js:140:21)
+Starting project at /Users/clisamax/Documents/GITHUB/FormCam
+2026-02-17T07:21:01.245Z expo:utils:fileNotifier Observing /Users/clisamax/Documents/GITHUB/FormCam/babel.config.js
+2026-02-17T07:21:01.309Z expo:start:server:devServer Stopping dev server (bundler: metro)
+2026-02-17T07:21:01.309Z expo:start:server:devServer Stopped dev server (bundler: metro)
+Using src/app as the root directory for Expo Router.
+2026-02-17T07:21:01.522Z expo:metro:config react-native-reanimated package.json: /Users/clisamax/Documents/GITHUB/FormCam/node_modules/react-native-reanimated/package.json
+2026-02-17T07:21:01.526Z expo:metro:config react-native-reanimated package.json: /Users/clisamax/Documents/GITHUB/FormCam/node_modules/react-native-reanimated/package.json
+
+Expo Metro config:
+- Version: 54.0.14
+- Extensions: ts, tsx, mjs, js, jsx, json, cjs, scss, sass, css
+- React Native: /Users/clisamax/Documents/GITHUB/FormCam/node_modules/react-native
+- Watch Folders: 
+- Node Module Paths: 
+- Sass: null
+- Reanimated: 3.17.5
+- Worklets: null
+- Babel Runtime: null
+
+
+Expo Metro config:
+- Version: 54.0.14
+- Extensions: ts, tsx, mjs, js, jsx, json, cjs, scss, sass, css
+- React Native: /Users/clisamax/Documents/GITHUB/FormCam/node_modules/react-native
+- Watch Folders: 
+- Node Module Paths: 
+- Sass: null
+- Reanimated: 3.17.5
+- Worklets: null
+- Babel Runtime: null
+
+2026-02-17T07:21:01.612Z expo:metro:withMetroResolvers Appending 8 custom resolvers to Metro config. (has custom resolver: false)
+2026-02-17T07:21:01.625Z expo:start:server:urlCreator URL: http://127.0.0.1:8081
+Metro is running in CI mode, reloads are disabled. Remove CI=true to enable watch mode.
+Starting Metro Bundler
+warning: Bundler cache is empty, rebuilding (this may take a minute)
+2026-02-17T07:21:01.729Z expo:start:server:middleware:serveStatic Serving static files from: /Users/clisamax/Documents/GITHUB/FormCam/public
+2026-02-17T07:21:01.849Z expo:start:server:urlCreator URL: http://192.168.0.6:8081
+2026-02-17T07:21:01.849Z expo:start:server:urlCreator Dev client URL: exp+formcam://expo-development-client/?url=http%3A%2F%2F192.168.0.6%3A8081 -- manifestUrl: http://192.168.0.6:8081 -- {}
+2026-02-17T07:21:01.851Z expo:start:server:developmentSession This project will not be suggested in Expo Go or Dev Clients because Expo CLI is running in CI.
+2026-02-17T07:21:01.851Z expo:utils:fileNotifier Observing /Users/clisamax/Documents/GITHUB/FormCam/metro.config.js
+2026-02-17T07:21:01.851Z expo:start:server:metro:waitForTypescript Watching file changes: [
+  '/Users/clisamax/Documents/GITHUB/FormCam/.env.development.local',
+  '/Users/clisamax/Documents/GITHUB/FormCam/.env.local',
+  '/Users/clisamax/Documents/GITHUB/FormCam/.env.development',
+  '/Users/clisamax/Documents/GITHUB/FormCam/.env'
+]
+2026-02-17T07:21:01.851Z expo:doctor:typescriptSupport Ensuring TypeScript support is setup
+2026-02-17T07:21:01.869Z expo:doctor:apple:simulatorApp Simulator app id: com.apple.iphonesimulator
+2026-02-17T07:21:01.882Z expo:doctor:dependencies:getMissingPackages Required package "typescript" found (no version constraint specified).
+2026-02-17T07:21:01.882Z expo:doctor:dependencies:getMissingPackages Required package "@types/react" found (no version constraint specified).
+2026-02-17T07:21:01.884Z expo:typed-routes Ensuring typed routes side-effects are setup (experiments.typedRoutes: true, typesDirectory: /Users/clisamax/Documents/GITHUB/FormCam/.expo/types)
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+2026-02-17T07:21:01.889Z expo:start:server:metro:metroWatchTypeScriptFiles Waiting for TypeScript files to be added to the project...
+[2026-02-17 04:21:16] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:21:31] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:21:46] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:22:01] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:22:16] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:22:31] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:22:46] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:23:01] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:23:16] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:23:31] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:23:46] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:24:01] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:24:16] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:24:31] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:24:46] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:25:01] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:25:16] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:25:31] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:25:46] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:26:01] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:26:16] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:26:31] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:26:46] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:27:01] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:27:16] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:27:31] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:27:46] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:28:01] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:28:16] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:28:31] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:28:46] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:29:01] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:29:16] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:29:31] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:29:46] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:30:01] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:30:16] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:30:31] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:30:46] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:31:01] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:31:16] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:31:32] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:31:47] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:32:02] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:32:17] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:32:32] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:32:47] ⏳ Metro ainda indexando (PID=76651) – cache   0B
+[2026-02-17 04:33:02] ⏳ Metro ainda indexando (PID=76651) – cache   0B

@@ -138,7 +138,7 @@ const Product: React.FC = () => {
 			<View style={styles.container}>
 				<View style={[styles.containerTop]}>
 					<ButtonVariant
-						iconName="arrowleft"
+						iconName="arrow-left"
 						title="return"
 						onPress={() => router.back()}
 						variant="outline"

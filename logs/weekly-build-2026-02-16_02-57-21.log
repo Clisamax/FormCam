@@ -1,0 +1,32 @@
+[2026-02-16 02:57:21] 🚀 Iniciando script – 2026-02-16_02-57-21
+[2026-02-16 02:57:22] ✅ Node v24.12.0 OK
+[2026-02-16 02:57:22] ✅ Yarn 1.22.22 OK
+[2026-02-16 02:57:22] ✅ Expo CLI local (6.3.10)
+[2026-02-16 02:57:22] ✅ Xcode 26.2 OK
+[2026-02-16 02:57:23] ✅ CocoaPods 1.16.2 OK
+[2026-02-16 02:57:24] ✅ watchman 2026.01.12.00 encontrado
+[2026-02-16 02:57:24] ⚠️ idevice_id não encontrado – usarei fallback via system_profiler.
+[2026-02-16 02:57:24] 📦 Instalando dependências com Yarn (frozen‑lockfile)…
+yarn install v1.22.22
+[1/4] Resolving packages...
+(node:41809) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+Done in 0.35s.
+[2026-02-16 02:57:24] 🧹 Limpando artefatos de build anteriores…
+[2026-02-16 02:57:24]    • .expo removida
+[2026-02-16 02:57:24]    • DerivedData (/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai
+/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-dafqrjcqenjoxbfbwuupgqbhuhip) removida
+[2026-02-16 02:57:24] 🧹 Resetando o cache do Metro…
+[2026-02-16 02:57:24] ⚠️ /Volumes/metro-ram/metro-cache não está acessível – usando /tmp/metro-cache como fallback.
+[2026-02-16 02:57:24]    • METRO_CACHE_DIR = /tmp/metro-cache
+[2026-02-16 02:57:24]    • Iniciando Metro em background (gera grafo)…
+[2026-02-16 02:57:24] ⏳ Metro ainda indexando (PID=41851)…
+[33mWARNING: The legacy expo-cli does not support Node +17. Migrate to the new local Expo CLI: https://blog.expo.dev/the-new-expo-cli-f4250d8e3421.[39m
+[02:57:25] Starting project at /Users/clisamax/Documents/GITHUB/FormCam
+[02:57:25] ExpoMetroConfig.loadAsync is not a function
+[02:57:25] TypeError: ExpoMetroConfig.loadAsync is not a function
+    at runMetroDevServerAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/@expo/dev-server/src/MetroDevServer.ts:86:45)
+    at startDevServerAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/xdl/src/start/startDevServerAsync.ts:75:77)
+    at startAsync (/Users/clisamax/Documents/GITHUB/FormCam/node_modules/xdl/src/start/startAsync.ts:84:41)
+[2026-02-16 02:57:54] ❌ ERRO: ❌ Metro terminou com erro – veja /Users/clisamax/Documents/GITHUB/FormCam/logs/weekly-build-2026-02-16_02-57-21.log.

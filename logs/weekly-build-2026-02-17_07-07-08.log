@@ -1,0 +1,190 @@
+[2026-02-17 07:07:08] 🚀 Iniciando script – 2026-02-17_07-07-08
+[2026-02-17 07:07:08] ✅ Node v24.12.0 OK
+[2026-02-17 07:07:08] ✅ Yarn 1.22.22 OK
+[2026-02-17 07:07:08] ✅ Expo (local) 54.0.23
+[2026-02-17 07:07:08] ✅ Xcode 26.2 OK
+[2026-02-17 07:07:10] ✅ CocoaPods 1.16.2 OK
+[2026-02-17 07:07:10] ✅ libimobiledevice (idevicepair) disponível
+[2026-02-17 07:07:10] 🚀 Iniciando script – 2026-02-17_07-07-08
+[2026-02-17 07:07:10] 🧹 Limpando artefatos da build anterior…
+[2026-02-17 07:07:33]    • DerivedData removida (/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai
+/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-dafqrjcqenjoxbfbwuupgqbhuhip)
+[2026-02-17 07:07:33] ✅ Limpeza completa concluída.
+[2026-02-17 07:07:33] 📦 Instalando dependências JavaScript (Yarn – frozen‑lockfile)…
+yarn install v1.22.22
+[1/4] Resolving packages...
+(node:49887) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+warning "@types/react-native-datepicker > react-native@0.84.0" has incorrect peer dependency "react@^19.2.3".
+warning "expo-module-scripts > eslint-config-universe@15.0.3" has unmet peer dependency "eslint@>=8.10".
+warning "expo-module-scripts > eslint-config-universe > @typescript-eslint/eslint-plugin@8.56.0" has unmet peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning "expo-module-scripts > eslint-config-universe > @typescript-eslint/parser@8.56.0" has unmet peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-config-prettier@9.1.2" has unmet peer dependency "eslint@>=7.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-import@2.32.0" has unmet peer dependency "eslint@^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8 || ^9".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-n@17.24.0" has unmet peer dependency "eslint@>=8.23.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-node@11.1.0" has unmet peer dependency "eslint@>=5.16.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-prettier@5.5.5" has unmet peer dependency "eslint@>=8.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-prettier@5.5.5" has unmet peer dependency "prettier@>=3.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-react@7.37.5" has unmet peer dependency "eslint@^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-react-hooks@5.2.0" has unmet peer dependency "eslint@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0".
+warning "expo-module-scripts > eslint-config-universe > @typescript-eslint/eslint-plugin > @typescript-eslint/type-utils@8.56.0" has unmet peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning "expo-module-scripts > eslint-config-universe > @typescript-eslint/eslint-plugin > @typescript-eslint/utils@8.56.0" has unmet peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-n > @eslint-community/eslint-utils@4.9.1" has unmet peer dependency "eslint@^6.0.0 || ^7.0.0 || >=8.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-n > eslint-plugin-es-x@7.8.0" has unmet peer dependency "eslint@>=8".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-node > eslint-plugin-es@3.0.1" has unmet peer dependency "eslint@>=4.19.1".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-n > eslint-plugin-es-x > eslint-compat-utils@0.5.1" has unmet peer dependency "eslint@>=6.0.0".
+warning " > react-test-renderer@18.2.0" has incorrect peer dependency "react@^18.2.0".
+warning "react-test-renderer > react-shallow-renderer@16.15.0" has incorrect peer dependency "react@^16.0.0 || ^17.0.0 || ^18.0.0".
+warning Workspaces can only be enabled in private projects.
+[4/4] Building fresh packages...
+Done in 53.42s.
+[2026-02-17 07:08:27] ✅ Yarn install concluído.
+[2026-02-17 07:08:27] 🔧 Atualizando expo-modules-core para a versão recomendada…
+[2026-02-17 07:08:27]    • Executando: npx
+expo
+install
+expo-modules-core
+env: load .env
+env: export EXPO_PUBLIC_API_URL EXPO_PUBLIC_IMMICH_URL EXPO_PUBLIC_IMMICH_API_KEY
+› Installing 1 SDK 53.0.0 compatible native module using yarn
+> yarn add expo-modules-core@~2.5.0
+yarn add v1.22.22
+(node:51963) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+warning "@types/react-native-datepicker > react-native@0.84.0" has incorrect peer dependency "react@^19.2.3".
+warning "expo-module-scripts > eslint-config-universe@15.0.3" has unmet peer dependency "eslint@>=8.10".
+warning "expo-module-scripts > eslint-config-universe > @typescript-eslint/eslint-plugin@8.56.0" has unmet peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning "expo-module-scripts > eslint-config-universe > @typescript-eslint/parser@8.56.0" has unmet peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-config-prettier@9.1.2" has unmet peer dependency "eslint@>=7.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-import@2.32.0" has unmet peer dependency "eslint@^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8 || ^9".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-n@17.24.0" has unmet peer dependency "eslint@>=8.23.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-node@11.1.0" has unmet peer dependency "eslint@>=5.16.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-prettier@5.5.5" has unmet peer dependency "eslint@>=8.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-prettier@5.5.5" has unmet peer dependency "prettier@>=3.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-react@7.37.5" has unmet peer dependency "eslint@^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-react-hooks@5.2.0" has unmet peer dependency "eslint@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0".
+warning "expo-module-scripts > eslint-config-universe > @typescript-eslint/eslint-plugin > @typescript-eslint/type-utils@8.56.0" has unmet peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning "expo-module-scripts > eslint-config-universe > @typescript-eslint/eslint-plugin > @typescript-eslint/utils@8.56.0" has unmet peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-n > @eslint-community/eslint-utils@4.9.1" has unmet peer dependency "eslint@^6.0.0 || ^7.0.0 || >=8.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-n > eslint-plugin-es-x@7.8.0" has unmet peer dependency "eslint@>=8".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-node > eslint-plugin-es@3.0.1" has unmet peer dependency "eslint@>=4.19.1".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-n > eslint-plugin-es-x > eslint-compat-utils@0.5.1" has unmet peer dependency "eslint@>=6.0.0".
+warning " > react-test-renderer@18.2.0" has incorrect peer dependency "react@^18.2.0".
+warning "react-test-renderer > react-shallow-renderer@16.15.0" has incorrect peer dependency "react@^16.0.0 || ^17.0.0 || ^18.0.0".
+warning Workspaces can only be enabled in private projects.
+[4/4] Building fresh packages...
+warning Workspaces can only be enabled in private projects.
+success Saved 0 new dependencies.
+Done in 5.59s.
+[2026-02-17 07:08:34] ✅ expo-modules-core atualizado.
+[2026-02-17 07:08:34] 🩺 Executando npx expo-doctor…
+[2026-02-17 07:08:34] ⚡ expo-doctor não encontrado – instalando como dev‑dependency…
+[2026-02-17 07:08:34]    • Executando: yarn
+add
+-D
+expo-doctor
+yarn add v1.22.22
+(node:52012) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+warning "@types/react-native-datepicker > react-native@0.84.0" has incorrect peer dependency "react@^19.2.3".
+warning "expo-module-scripts > eslint-config-universe@15.0.3" has unmet peer dependency "eslint@>=8.10".
+warning "expo-module-scripts > eslint-config-universe > @typescript-eslint/eslint-plugin@8.56.0" has unmet peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning "expo-module-scripts > eslint-config-universe > @typescript-eslint/parser@8.56.0" has unmet peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-config-prettier@9.1.2" has unmet peer dependency "eslint@>=7.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-import@2.32.0" has unmet peer dependency "eslint@^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8 || ^9".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-n@17.24.0" has unmet peer dependency "eslint@>=8.23.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-node@11.1.0" has unmet peer dependency "eslint@>=5.16.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-prettier@5.5.5" has unmet peer dependency "eslint@>=8.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-prettier@5.5.5" has unmet peer dependency "prettier@>=3.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-react@7.37.5" has unmet peer dependency "eslint@^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-react-hooks@5.2.0" has unmet peer dependency "eslint@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0".
+warning "expo-module-scripts > eslint-config-universe > @typescript-eslint/eslint-plugin > @typescript-eslint/type-utils@8.56.0" has unmet peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning "expo-module-scripts > eslint-config-universe > @typescript-eslint/eslint-plugin > @typescript-eslint/utils@8.56.0" has unmet peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-n > @eslint-community/eslint-utils@4.9.1" has unmet peer dependency "eslint@^6.0.0 || ^7.0.0 || >=8.0.0".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-n > eslint-plugin-es-x@7.8.0" has unmet peer dependency "eslint@>=8".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-node > eslint-plugin-es@3.0.1" has unmet peer dependency "eslint@>=4.19.1".
+warning "expo-module-scripts > eslint-config-universe > eslint-plugin-n > eslint-plugin-es-x > eslint-compat-utils@0.5.1" has unmet peer dependency "eslint@>=6.0.0".
+warning " > react-test-renderer@18.2.0" has incorrect peer dependency "react@^18.2.0".
+warning "react-test-renderer > react-shallow-renderer@16.15.0" has incorrect peer dependency "react@^16.0.0 || ^17.0.0 || ^18.0.0".
+warning Workspaces can only be enabled in private projects.
+[4/4] Building fresh packages...
+success Saved lockfile.
+warning Workspaces can only be enabled in private projects.
+success Saved 1 new dependency.
+info Direct dependencies
+└─ expo-doctor@1.17.14
+info All dependencies
+└─ expo-doctor@1.17.14
+Done in 9.30s.
+[2026-02-17 07:08:44]    • Executando: npx
+expo-doctor
+env: load .env
+env: export EXPO_PUBLIC_API_URL EXPO_PUBLIC_IMMICH_URL EXPO_PUBLIC_IMMICH_API_KEY
+Running 17 checks on your project...
+14/17 checks passed. 3 checks failed. Possible issues detected:
+Use the --verbose flag to see more details about passed checks.
+
+✖ Check Expo config for common issues
+It appears that expo.sdkVersion is defined in your app.json/ app.config.js. This can cause 'expo install' to install dependency versions for the wrong SDK. SDK version is determined by the version of the expo package installed in your project.
+Advice:
+Remove expo.sdkVersion from your app.json/ app.config.js.
+
+✖ Check dependencies for packages that should not be installed directly
+The package "npm" should not be installed directly in your project. It may conflict with the globally-installed version.
+The package  "@types/react-native" should not be installed directly in your project, as types are included with the "react-native" package.
+The package "expo-modules-core" should not be installed directly in your project. You should instead use the exported API from the expo package.
+Advice:
+Remove these packages from your package.json.
+
+✖ Check that native modules use compatible support package versions for installed Expo SDK
+Expected package expo-modules-autolinking@~2.1.0
+Found invalid:
+  expo-modules-autolinking@3.0.24
+  (for more info, run: npm why expo-modules-autolinking)
+Expected package @expo/config-plugins@~10.1.1
+Found invalid:
+  @expo/config-plugins@54.0.4
+  (for more info, run: npm why @expo/config-plugins)
+Expected package @expo/prebuild-config@~9.0.0
+Found invalid:
+  @expo/prebuild-config@54.0.8
+  (for more info, run: npm why @expo/prebuild-config)
+Expected package @expo/metro-config@~0.20.18
+Found invalid:
+  @expo/metro-config@54.0.14
+  (for more info, run: npm why @expo/metro-config)
+Expected package metro@^0.82.0
+Found invalid:
+  metro@0.83.3
+  metro@0.83.3
+  metro@0.83.3
+  metro@0.83.3
+  (for more info, run: npm why metro)
+Expected package metro-resolver@^0.82.0
+Found invalid:
+  metro-resolver@0.83.3
+  metro-resolver@0.83.3
+  metro-resolver@0.83.3
+  metro-resolver@0.83.3
+  metro-resolver@0.83.3
+  (for more info, run: npm why metro-resolver)
+Expected package metro-config@^0.82.0
+Found invalid:
+  metro-config@0.83.3
+  metro-config@0.83.3
+  metro-config@0.83.3
+  metro-config@0.83.3
+  (for more info, run: npm why metro-config)
+Advice:
+Upgrade dependencies that are using the invalid package versions.
+
+3 checks failed, indicating possible issues with the project.
+[2026-02-17 07:08:54] ❌ ERRO: ❌ expo-doctor encontrou problemas. Corrija antes de continuar.

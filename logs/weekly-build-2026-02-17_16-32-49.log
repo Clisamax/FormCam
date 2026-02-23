@@ -1,0 +1,34 @@
+[2026-02-17 16:32:49] 🚀 Iniciando script – 2026-02-17_16-32-49
+[2026-02-17 16:32:49] ✅ Node v24.13.1 OK
+[2026-02-17 16:32:49] ✅ Yarn 4.12.0 OK
+[2026-02-17 16:32:49] ✅ Xcode 26.2 OK
+[2026-02-17 16:32:50] ✅ CocoaPods 1.16.2 OK
+[2026-02-17 16:32:50] ✅ libimobiledevice (idevicepair) disponível
+[2026-02-17 16:32:50] ✅ DEVELOPMENT_TEAM definido: VW658NV936
+[2026-02-17 16:32:50] 🚀 Script iniciado – 2026-02-17_16-32-49
+[2026-02-17 16:32:50] 🧹 Iniciando limpeza rápida dos artefatos da build anterior…
+[2026-02-17 16:32:50]    • Jobs paralelos permitidos: 10
+[2026-02-17 16:32:50]    • /Users/clisamax/Documents/GITHUB/FormCam/ios/Podfile.lock → /var/folders/88/p03mzgs51pj3xpcnz_66wt_w0000gn/T//expo-clean-Podfile.lock-50180 (remoção async iniciada)
+[2026-02-17 16:32:50]    • /Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai → /var/folders/88/p03mzgs51pj3xpcnz_66wt_w0000gn/T//expo-clean-FormCam-bghffiesmchebqfenymgyejtnsai-50180 (remoção async iniciada)
+[2026-02-17 16:32:50]    • Aguardando finalização das remoções async…
+[2026-02-17 16:32:55]    • /Users/clisamax/Documents/GITHUB/FormCam/.expo → /var/folders/88/p03mzgs51pj3xpcnz_66wt_w0000gn/T//expo-clean-.expo-50180 (remoção async iniciada)
+[2026-02-17 16:32:55]    • /Users/clisamax/Documents/GITHUB/FormCam/ios/Pods → /var/folders/88/p03mzgs51pj3xpcnz_66wt_w0000gn/T//expo-clean-Pods-50180 (remoção async iniciada)
+[2026-02-17 16:32:55]    • /Users/clisamax/Documents/GITHUB/FormCam/ios/build → /var/folders/88/p03mzgs51pj3xpcnz_66wt_w0000gn/T//expo-clean-build-50180 (remoção async iniciada)
+[2026-02-17 16:32:55] ✅ Limpeza rápida concluída.
+[2026-02-17 16:32:55] 📦 Instalando dependências JavaScript (Yarn)…
+➤ YN0050: The --frozen-lockfile option is deprecated; use --immutable and/or --immutable-cache instead
+
+➤ YN0000: · Yarn 4.12.0
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed in 0s 210ms
+➤ YN0000: ┌ Post-resolution validation
+➤ YN0060: │ react is listed by your project with version 19.1.0 (pf5c6e9), which doesn't satisfy what react-test-renderer and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0086: │ Some peer dependencies are incorrectly met by your project; run yarn explain peer-requirements <hash> for details, where <hash> is the six-letter p-prefixed code.
+➤ YN0086: │ Some peer dependencies are incorrectly met by dependencies; run yarn explain peer-requirements for details.
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0000: └ Completed in 1s 38ms
+➤ YN0000: ┌ Link step
+➤ YN0001: │ Error: While cloning /Users/clisamax/Documents/GITHUB/FormCam/node_modules/babel-plugin-polyfill-corejs2/node_modules/semver -> /Users/clisamax/Documents/GITHUB/FormCam/node_modules/@babel/plugin-transform-runtime/node_modules/semver ENOENT: no such file or directory, scandir '/Users/clisamax/Documents/GITHUB/FormCam/node_modules/babel-plugin-polyfill-corejs2/node_modules/semver'
+➤ YN0000: └ Completed in 6s 459ms
+➤ YN0000: · Failed with errors in 7s 806ms

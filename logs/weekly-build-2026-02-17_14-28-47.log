@@ -1,0 +1,10 @@
+[2026-02-17 14:28:47] 🚀 Iniciando script – 2026-02-17_14-28-47
+[2026-02-17 14:28:47] ✅ Node v24.12.0 OK
+[2026-02-17 14:28:47] ✅ Yarn 4.12.0 OK
+[2026-02-17 14:28:47] ✅ Xcode 26.2 OK
+[2026-02-17 14:28:48] ✅ CocoaPods 1.16.2 OK
+[2026-02-17 14:28:48] ✅ libimobiledevice (idevicepair) disponível
+[2026-02-17 14:28:48] 🚀 Script iniciado – 2026-02-17_14-28-47
+[2026-02-17 14:28:48] 🧹 Iniciando limpeza rápida dos artefatos da build anterior…
+[2026-02-17 14:28:48]    • Jobs paralelos permitidos: 10
+[2026-02-17 14:28:48]    • Aguardando finalização das remoções async…

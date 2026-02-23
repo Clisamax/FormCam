@@ -1,0 +1,32 @@
+[2026-02-17 04:19:18] 🚀 Iniciando script – 2026-02-17_04-19-18
+[2026-02-17 04:19:18] ✅ Node v24.12.0 OK
+[2026-02-17 04:19:18] ✅ Yarn 1.22.22 OK
+[2026-02-17 04:19:18] ✅ Expo (SDK) local (54.0.23)
+[2026-02-17 04:19:18] ✅ Xcode 26.2 OK
+[2026-02-17 04:19:18] ✅ CocoaPods 1.16.2 OK
+[2026-02-17 04:19:18] ✅ watchman 2026.01.12.00 encontrado
+[2026-02-17 04:19:18] ⚠️ idevice_id não encontrado – usarei fallback via system_profiler.
+[2026-02-17 04:19:18] 📦 Instalando dependências com Yarn (frozen‑lockfile)…
+yarn install v1.22.22
+[1/4] Resolving packages...
+(node:76305) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+Done in 0.17s.
+[2026-02-17 04:19:19] 🧹 Limpando artefatos de build anteriores…
+[2026-02-17 04:19:19]    • DerivedData (/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai
+/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-dafqrjcqenjoxbfbwuupgqbhuhip) removida
+[2026-02-17 04:19:19] 🧹 Resetando o cache do Metro…
+[2026-02-17 04:19:19]    • Criando RAM‑disk de 2g (primeira tentativa)…
+[2026-02-17 04:19:19]    • -size não suportado – usando fallback baseado em setores
+[2026-02-17 04:19:19]    • RAM‑disk criado via setores (/dev/disk13         	                               	)
+[2026-02-17 04:19:19]    • Device limpo = /dev/disk13
+[2026-02-17 04:19:19]    • Formatando como APFS (nome: metro-ram)…
+[2026-02-17 04:19:21] ✅  RAM‑disk criado e montado em /Volumes/metro-ram
+[2026-02-17 04:19:21] ⚠️  /Volumes/metro-ram/metro-cache indisponível – usando /tmp/metro-cache como fallback.
+[2026-02-17 04:19:21]    • METRO_CACHE_DIR = /tmp/metro-cache
+[2026-02-17 04:19:21]    • Iniciando Metro em background (gera grafo)…
+[2026-02-17 04:19:21] ⏳ Metro ainda indexando (PID=76397) – cache   0B
+  --non-interactive is not supported, use $CI=1 instead
+unknown or unexpected option: --verbose
+[2026-02-17 04:19:36] ❌ ERRO: ❌ Metro terminou com erro – consulte /Users/clisamax/Documents/GITHUB/FormCam/logs/weekly-build-2026-02-17_04-19-18.log.

@@ -115,14 +115,14 @@ const Home = (data: homeFormData) => {
 						title="UUID"
 						onPress={handleSubmit(uuid)}
 						disabled={loading}
-						iconName="rightcircle"
+						iconName="right-circle"
 						size={22}
 					/>
 					<ButtonVariant
 						title="Camera"
 						onPress={() => router.push('/(auth)/camera/cameraScreen')}
 						disabled={loading}
-						iconName="rightcircle"
+						iconName="right-circle"
 						size={22}
 					/>
 				</View>

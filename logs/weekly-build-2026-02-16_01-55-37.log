@@ -21,3 +21,35 @@ Done in 0.31s.
   --non-interactive is not supported, use $CI=1 instead
 env: load .env
 env: export EXPO_PUBLIC_API_URL EXPO_PUBLIC_IMMICH_URL EXPO_PUBLIC_IMMICH_API_KEY
+The /ios project does not contain any URI schemes. Expo CLI will not be able to use links to launch the project. You can configure a custom URI scheme using the --scheme option.
+Starting project at /Users/clisamax/Documents/GITHUB/FormCam
+Using src/app as the root directory for Expo Router.
+Starting Metro Bundler
+warning: Bundler cache is empty, rebuilding (this may take a minute)
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+./expo-weekly-build.sh: line 159: --clear: command not found
+[2026-02-16 02:04:23] 🔧 Instalando/atualizando Pods…
+<internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `const_added': Interrupt
+	from <internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from <internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from /Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/openssl.rb:13:in `<top (required)>'
+	from <internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from <internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from /Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/activesupport-7.2.3/lib/active_support/core_ext/digest/uuid.rb:4:in `<top (required)>'
+	from <internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from <internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from /Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/activesupport-7.2.3/lib/active_support/core_ext/digest.rb:3:in `<top (required)>'
+	from <internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from <internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from /Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/activesupport-7.2.3/lib/active_support/core_ext.rb:4:in `block in <top (required)>'
+	from /Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/activesupport-7.2.3/lib/active_support/core_ext.rb:3:in `each'
+	from /Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/activesupport-7.2.3/lib/active_support/core_ext.rb:3:in `<top (required)>'
+	from <internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from <internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from /Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/cocoapods-1.16.2/lib/cocoapods.rb:8:in `<top (required)>'
+	from <internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from <internal:/Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from /Users/clisamax/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/cocoapods-1.16.2/bin/pod:36:in `<top (required)>'
+	from /Users/clisamax/.rbenv/versions/3.2.2/bin/pod:25:in `load'
+	from /Users/clisamax/.rbenv/versions/3.2.2/bin/pod:25:in `<main>'

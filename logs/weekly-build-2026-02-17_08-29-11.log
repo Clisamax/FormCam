@@ -1,0 +1,139 @@
+[2026-02-17 08:29:11] 🚀 Iniciando script – 2026-02-17_08-29-11
+[2026-02-17 08:29:11] ✅ Node v24.12.0 OK
+[2026-02-17 08:29:11] ✅ Yarn 4.12.0 OK
+[2026-02-17 08:29:11] ✅ Expo (local) 54.0.23
+[2026-02-17 08:29:11] ✅ Xcode 26.2 OK
+[2026-02-17 08:29:12] ✅ CocoaPods 1.16.2 OK
+[2026-02-17 08:29:12] ✅ libimobiledevice (idevicepair) disponível
+[2026-02-17 08:29:12] 🚀 Iniciando script – 2026-02-17_08-29-11
+[2026-02-17 08:29:12] 🧹 Limpando artefatos da build anterior…
+[2026-02-17 08:29:28]    • DerivedData removida (/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai
+/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-dafqrjcqenjoxbfbwuupgqbhuhip)
+[2026-02-17 08:29:28] ✅ Limpeza completa concluída.
+[2026-02-17 08:29:28] 📦 Instalando dependências JavaScript (Yarn – frozen‑lockfile)…
+➤ YN0050: The --frozen-lockfile option is deprecated; use --immutable and/or --immutable-cache instead
+
+➤ YN0000: · Yarn 4.12.0
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Post-resolution validation
+➤ YN0060: │ react is listed by your project with version 19.1.0 (pf5c6e9), which doesn't satisfy what react-test-renderer and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0086: │ Some peer dependencies are incorrectly met by your project; run yarn explain peer-requirements <hash> for details, where <hash> is the six-letter p-prefixed code.
+➤ YN0086: │ Some peer dependencies are incorrectly met by dependencies; run yarn explain peer-requirements for details.
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0000: └ Completed in 0s 432ms
+➤ YN0000: ┌ Link step
+➤ YN0007: │ @biomejs/biome@npm:1.9.2 must be built because it never has been before or the last one failed
+➤ YN0007: │ aws-sdk@npm:2.1693.0 must be built because it never has been before or the last one failed
+➤ YN0000: └ Completed in 5s 233ms
+➤ YN0000: · Done with warnings in 5s 854ms
+[2026-02-17 08:29:34] ✅ Yarn install concluído.
+[2026-02-17 08:29:34] 🩺 Executando npx expo-doctor…
+[2026-02-17 08:29:34] ⚡ expo-doctor não encontrado – instalando como dev‑dependency…
+[2026-02-17 08:29:34]    • Executando: yarn
+add
+-D
+expo-doctor
+➤ YN0000: · Yarn 4.12.0
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Post-resolution validation
+➤ YN0060: │ react is listed by your project with version 19.1.0 (pf5c6e9), which doesn't satisfy what react-test-renderer and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0086: │ Some peer dependencies are incorrectly met by your project; run yarn explain peer-requirements <hash> for details, where <hash> is the six-letter p-prefixed code.
+➤ YN0086: │ Some peer dependencies are incorrectly met by dependencies; run yarn explain peer-requirements for details.
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0000: └ Completed in 0s 446ms
+➤ YN0000: ┌ Link step
+➤ YN0000: └ Completed
+➤ YN0000: · Done with warnings in 0s 750ms
+[2026-02-17 08:29:35]    • Executando: npx
+expo-doctor
+env: load .env
+env: export EXPO_PUBLIC_API_URL EXPO_PUBLIC_IMMICH_URL EXPO_PUBLIC_IMMICH_API_KEY
+Running 17 checks on your project...
+17/17 checks passed. No issues detected!
+[2026-02-17 08:29:38] ✅ expo-doctor finalizado sem detectar problemas críticos.
+[2026-02-17 08:29:38] 🔎 Testando compilação com xcodebuild (Debug, iPhoneOS)…
+[2026-02-17 08:29:38]    • Executando: xcodebuild
+-workspace
+FormCam.xcworkspace
+-scheme
+FormCam
+-configuration
+Debug
+-sdk
+iphoneos
+-derivedDataPath
+build
+clean
+build
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -workspace FormCam.xcworkspace -scheme FormCam -configuration Debug -sdk iphoneos -derivedDataPath build clean build
+
+Build settings from command line:
+    SDKROOT = iphoneos26.2
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Any iOS Device }
+{ platform:macOS, arch:arm64, variant:Designed for [iPad,iPhone], id:00008132-000668692653801C, name:My Mac }
+{ platform:iOS Simulator, id:dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder, name:Any iOS Simulator Device }
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+** CLEAN SUCCEEDED **
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Any iOS Device }
+{ platform:macOS, arch:arm64, variant:Designed for [iPad,iPhone], id:00008132-000668692653801C, name:My Mac }
+{ platform:iOS Simulator, id:dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder, name:Any iOS Simulator Device }
+{ platform:iOS, arch:arm64, id:00008120-000A7C400A05A01E, name:Clisamax }
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'FormCam' in project 'FormCam' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.2.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.2.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/ibtool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/clisamax/Documents/GITHUB/FormCam/ios/FormCam/Images.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 4f6574da32b2a734caf2213733344be5
+Build description path: /Users/clisamax/Documents/GITHUB/FormCam/ios/build/Build/Intermediates.noindex/XCBuildData/4f6574da32b2a734caf2213733344be5.xcbuilddata
+/Users/clisamax/Documents/GITHUB/FormCam/ios/FormCam.xcodeproj:1:1: error: Unable to open base configuration reference file '/Users/clisamax/Documents/GITHUB/FormCam/ios/Pods/Target Support Files/Pods-FormCam/Pods-FormCam.debug.xcconfig'. (in target 'FormCam' from project 'FormCam')
+note: Run script build phase 'Bundle React Native code and images' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'FormCam' from project 'FormCam')
+note: Run script build phase '[Expo] Configure project' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'FormCam' from project 'FormCam')
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Building workspace FormCam with scheme FormCam and configuration Debug
+(1 failure)
+[2026-02-17 08:29:41] ❌ ERRO: ❌ xcodebuild falhou. Veja o log para detalhes.

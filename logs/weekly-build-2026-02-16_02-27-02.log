@@ -1,0 +1,40 @@
+[2026-02-16 02:27:02] 🚀 Iniciando script – 2026-02-16_02-27-02
+[2026-02-16 02:27:02] ✅ Node v24.12.0 OK
+[2026-02-16 02:27:02] ✅ Yarn 1.22.22 OK
+[2026-02-16 02:27:03] ✅ Expo CLI 6.3.10 OK
+[2026-02-16 02:27:03] ✅ Xcode 26.2 OK
+[2026-02-16 02:27:04] ✅ CocoaPods 1.16.2 OK
+[2026-02-16 02:27:04] ✅ watchman 2026.01.12.00 encontrado
+[2026-02-16 02:27:04] ⚠️ idevice_id não encontrado – usarei fallback via system_profiler.
+[2026-02-16 02:27:04] 📦 Instalando dependências com Yarn (frozen‑lockfile)…
+yarn install v1.22.22
+[1/4] Resolving packages...
+(node:17921) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+Done in 0.25s.
+[2026-02-16 02:27:04] 🧹 Limpando artefatos de build anteriores…
+[2026-02-16 02:27:04]    • DerivedData (/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-bghffiesmchebqfenymgyejtnsai
+/Users/clisamax/Library/Developer/Xcode/DerivedData/FormCam-dafqrjcqenjoxbfbwuupgqbhuhip) removida
+[2026-02-16 02:27:04] 🧹 Resetando o cache do Metro…
+[2026-02-16 02:27:04] ⚠️ /Volumes/metro-ram/metro-cache não está acessível – usando /tmp/metro-cache como fallback.
+[2026-02-16 02:27:04]    • METRO_CACHE_DIR = /tmp/metro-cache
+[2026-02-16 02:27:04]    • Iniciando Metro em background (gera grafo)…
+[2026-02-16 02:27:04] ⏳ Metro ainda indexando (PID=17954)…
+[33mWARNING: The legacy expo-cli does not support Node +17. Migrate to the new local Expo CLI: https://blog.expo.dev/the-new-expo-cli-f4250d8e3421.[39m
+[02:27:04] Starting project at /Users/clisamax/Documents/GITHUB/FormCam
+[02:27:05] Some dependencies are incompatible with the installed expo package version:
+[02:27:05]  - expo-constants - expected version: ~17.1.8 - actual version installed: 18.0.13
+[02:27:05]  - expo-image-manipulator - expected version: ~13.1.7 - actual version installed: 14.0.8
+[02:27:05]  - expo-media-library - expected version: ~17.1.7 - actual version installed: 18.2.1
+[02:27:05]  - expo-router - expected version: ~5.1.11 - actual version installed: 5.1.10
+[02:27:05]  - expo-updates - expected version: ~0.28.18 - actual version installed: 0.28.17
+[02:27:05] Your project may not work correctly until you install the correct versions of the packages.
+To install the correct versions of these packages, please run: expo doctor --fix-dependencies,
+or install individual packages by running expo install [package-name ...]
+[02:27:05] ExpoMetroConfig.loadAsync is not a function
+[02:27:05] TypeError: ExpoMetroConfig.loadAsync is not a function
+    at runMetroDevServerAsync (/Users/clisamax/.config/yarn/global/node_modules/@expo/dev-server/src/MetroDevServer.ts:86:45)
+    at startDevServerAsync (/Users/clisamax/.config/yarn/global/node_modules/xdl/src/start/startDevServerAsync.ts:75:77)
+    at startAsync (/Users/clisamax/.config/yarn/global/node_modules/xdl/src/start/startAsync.ts:84:41)
+[2026-02-16 02:27:34] ❌ ERRO: ❌ Metro terminou com erro – veja /Users/clisamax/Documents/GITHUB/FormCam/logs/weekly-build-2026-02-16_02-27-02.log.

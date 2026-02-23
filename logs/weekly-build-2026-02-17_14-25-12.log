@@ -1,0 +1,12 @@
+[2026-02-17 14:25:12] 🚀 Iniciando script – 2026-02-17_14-25-12
+[2026-02-17 14:25:12] ✅ Node v24.12.0 OK
+[2026-02-17 14:25:13] ✅ Yarn 4.12.0 OK
+[2026-02-17 14:25:13] ✅ Expo (local) 54.0.23
+[2026-02-17 14:25:13] ✅ Xcode 26.2 OK
+[2026-02-17 14:25:13] ✅ CocoaPods 1.16.2 OK
+[2026-02-17 14:25:13] ✅ libimobiledevice (idevicepair) disponível
+[2026-02-17 14:25:13] ⚠️ ionice não disponível (macOS normal) – usaremos nice como fallback.
+[2026-02-17 14:25:13] 🚀 Iniciando script – 2026-02-17_14-25-12
+[2026-02-17 14:25:13] 🧹 Iniciando limpeza rápida dos artefatos da build anterior…
+[2026-02-17 14:25:13]    • Número máximo de jobs paralelos: 10
+[2026-02-17 14:25:13]    • Aguardando finalização das remoções async…

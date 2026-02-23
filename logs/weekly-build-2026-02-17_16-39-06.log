@@ -1,0 +1,10 @@
+[2026-02-17 16:39:06] 🚀 Iniciando script – 2026-02-17_16-39-06
+[2026-02-17 16:39:06] ✅ Node v24.13.1 OK
+[2026-02-17 16:39:06] ✅ Yarn 4.12.0 OK
+[2026-02-17 16:39:06] ✅ Xcode 26.2 OK
+[2026-02-17 16:39:07] ✅ CocoaPods 1.16.2 OK
+[2026-02-17 16:39:07] ✅ libimobiledevice (idevicepair) disponível
+[2026-02-17 16:39:07] ✅ DEVELOPMENT_TEAM definido: VW658NV936
+[2026-02-17 16:39:12] ⚠️ Xcode precisa de migração do projeto. Abra a workspace manualmente e aceite a atualização.
+[2026-02-17 16:39:12]    👉 Execute: open "/Users/clisamax/Documents/GITHUB/FormCam/ios/FormCam.xcworkspace" e clique em “Use the version on disk”.
+[2026-02-17 16:39:12] ❌ ERRO: Projeto desatualizado – interrompendo para correção manual.
