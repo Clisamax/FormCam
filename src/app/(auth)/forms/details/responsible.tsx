@@ -34,7 +34,7 @@ const Responsible: React.FC<homeFormData> = (data) => {
 			<View style={styles.containerTop}>
 				<View style={[styles.containerTopLefth, { padding: 10 }]}>
 					<ButtonVariant
-						iconName="arrowleft"
+						iconName="arrow-left"
 						title="return"
 						onPress={() => router.back()}
 						variant="outline"
@@ -85,7 +85,7 @@ const Responsible: React.FC<homeFormData> = (data) => {
 
 			<ScrollView style={styles.containerFoot}>
 				<RadioTaskButton
-					name="options_4"
+					name="options4"
 					control={control as unknown as Control}
 					options={[
 						{

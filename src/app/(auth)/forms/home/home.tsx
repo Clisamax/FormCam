@@ -31,7 +31,6 @@ const Home = (data: homeFormData) => {
 			router.push('/(auth)/forms/operation/reception');
 		} else if (data.options_2 === 'Mov. Interna') {
 			router.push('/(auth)/forms/operation/internalMovement');
-			8;
 		}
 		console.log(data);
 	}
@@ -68,7 +67,7 @@ const Home = (data: homeFormData) => {
 				}}
 			>
 				<RadioField
-					name="options_1"
+					name="options1"
 					control={control as unknown as Control}
 					options={[
 						{ label: 'Depósito', value: 'Depósito' },
@@ -100,7 +99,7 @@ const Home = (data: homeFormData) => {
 						}}
 					/>
 					<RadioField
-						name="options_2"
+						name="options2"
 						control={control as unknown as Control}
 						options={[
 							{ label: 'Recepção', value: 'Recepção' },

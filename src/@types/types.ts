@@ -48,9 +48,9 @@ export interface produtosFormData {
 	uuid: string;
 	product: string;
 	quantity: string;
-	occurrenceDate: string;
+	occurrence_date: string;
 	annotation: string;
-	nameOfResponsible: string;
+	name_of_responsible: string;
 	unit: string;
 }
 

@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios, { AxiosError, AxiosInstance } from "axios";
+import { toCamel, toSnake } from "../utils/case";
 
 // Criar instância da API
 const api: AxiosInstance = axios.create({
@@ -17,7 +18,7 @@ if (!api) {
 
 console.log('API criada com sucesso:', api.defaults.baseURL);
 
-// Interceptor para renovar o timestamp de sessão a cada requisição
+// Interceptor para converter snake_case (frontend) para camelCase (backend)
 api.interceptors.request.use(
 	async (config) => {
 		try {
@@ -26,8 +27,16 @@ api.interceptors.request.use(
 				const now = Date.now();
 				await AsyncStorage.setItem('@auth:timestamp', now.toString());
 			}
+
+			// Converter dados e parâmetros para camelCase
+			if (config.data && !(config.data instanceof FormData)) {
+				config.data = toCamel(config.data);
+			}
+			if (config.params) {
+				config.params = toCamel(config.params);
+			}
 		} catch (error) {
-			console.error('Erro ao atualizar timestamp de sessão:', error);
+			console.error('Erro no interceptor de requisição:', error);
 		}
 		return config;
 	},
@@ -36,9 +45,12 @@ api.interceptors.request.use(
 	}
 );
 
-// Interceptor para tratamento de erros de resposta
+// Interceptor para converter camelCase (backend) para snake_case (frontend)
 api.interceptors.response.use(
 	(response) => {
+		if (response.data && response.headers['content-type']?.includes('application/json')) {
+			response.data = toSnake(response.data);
+		}
 		return response;
 	},
 	async (error: AxiosError) => {

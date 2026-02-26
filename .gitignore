@@ -79,9 +79,7 @@ yarn-error.*
 *.tsbuildinfo
 
 # ios
-ios/*
-ios/logs
-
+ios/
 # android
 android/*
 # scripts

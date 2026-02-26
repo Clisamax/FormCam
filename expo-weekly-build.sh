@@ -1,316 +1,308 @@
 #!/usr/bin/env bash
+
 # --------------------------------------------------------------
-#  expo‑weekly‑build.sh – versão “pronta‑para‑uso” em macOS Apple Silicon
-#  • Limpeza paralela ultra‑rápida (mv → staging + rm em background)
-#  • Usa o Development Team (DEVELOPMENT_TEAM) que você informa abaixo
-#  • Compila usando todos os núcleos da M‑series
-#  • Cache inteligente de Yarn + Pods (re‑instala só se lock‑files mudarem)
+#  expo-weekly-build.sh  (versão Yarn‑Only – verificação de versão robusta)
+#  Automatiza a build semanal de um app Expo (React Native) para iOS
+#  (sem conta paga da Apple Developer)
+#
+#  REQUISITOS:
+#    • Node >= 18
+#    • Yarn  >= 1.22.0    (ou Yarn 2‑4 – o script lida com ambos)
+#    • expo-cli (global ou via npx) >= 6
+#    • Xcode >= 14
+#    • CocoaPods (pod) >= 1.12
+#    • watchman (opcional)
+#    • libimobiledevice (idevice_id) – para detectar iPhone via USB
+#
+#  Como usar:
+#    ./expo-weekly-build.sh          # modo interativo (padrão)
+#    ./expo-weekly-build.sh silent   # modo silencioso (falha se precisar de input)
+#
+#  Agendamento (cron) – exemplo: segunda‑feira, 02:00h
+#    0 2 * * 1 /caminho/para/expo-weekly-build.sh \
+#        >> /caminho/para/cron.log 2>&1
 # --------------------------------------------------------------
 
-set -euo pipefail
-IFS=$'\n\t'
+set -euo pipefail      # aborta ao primeiro erro
+IFS=$'\n\t'           # evita split inesperado
 
-# -------------------------- VARIÁVEIS GLOBAIS -------------------------
+# --------------------------- CONFIGURAÇÕES ---------------------------
+
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_DIR="${PROJECT_ROOT}/logs"
 TIMESTAMP="$(date +%F_%H-%M-%S)"
 LOG_FILE="${LOG_DIR}/weekly-build-${TIMESTAMP}.log"
 
-# <<<---- 1️⃣ INFORME seu Team ID aqui (10 caracteres) -----------------
-# Exemplo obtido no Xcode > Preferences > Accounts ou no portal
-DEVELOPMENT_TEAM="VW658NV936"
-# --------------------------------------------------------------------
-DEVICE_ID="${DEVICE_ID:-00008120-000A7C400A05A01E}"   # UDID do iPhone conectado
-SKIP_METRO_RESET="${SKIP_METRO_RESET:-0}"
+# Versões mínimas (use sempre o formato completo, ex.: 1.22.0)
+REQ_NODE="18.0.0"
+REQ_YARN="1.22.0"
+REQ_EXPO="6.0.0"
+REQ_XCODE="14.0.0"
+REQ_POD="1.12.0"
 
-# -------------------------- LOG & ERRO ------------------------------
+# Notificações (deixe vazios para desativar)
+EMAIL_NOTIF=""        # ex.: seu@email.com
+SLACK_WEBHOOK=""      # ex.: https://hooks.slack.com/services/...
+
+# --------------------------------------------------------------
+
+# ---------- Funções auxiliares ----------
 log() {
-  [[ -d "${LOG_DIR}" ]] || mkdir -p "${LOG_DIR}"
-  local now
-  now=$(date '+%Y-%m-%d %H:%M:%S')
-  printf "[%s] %s\n" "$now" "$*" | tee -a "${LOG_FILE}"
-}
-die() { log "❌ ERRO: $*" && exit 1; }
-
-run_and_log() {
-  local cmd=("$@")
-  log "   • Executando: ${cmd[*]}"
-  "${cmd[@]}" 2>&1 | tee -a "${LOG_FILE}"
+    [[ -d "${LOG_DIR}" ]] || mkdir -p "${LOG_DIR}"
+    echo -e "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "${LOG_FILE}"
 }
 
-# -------------------------- PRE‑CHECKS ----------------------------
-log "🚀 Iniciando script – ${TIMESTAMP}"
+die() {
+    log "❌ ERRO: $*"
+    if [[ -f "${LOG_FILE}" ]]; then
+        echo "----- últimas linhas do log (${LOG_FILE}) -----"
+        tail -n 20 "${LOG_FILE}"
+        echo "-----------------------------------------------"
+    fi
+    [[ -n "${EMAIL_NOTIF}" ]] && {
+        echo -e "Subject: [Expo Build] Falha\n\n${LOG_FILE}" | /usr/sbin/sendmail "${EMAIL_NOTIF}"
+    }
+    [[ -n "${SLACK_WEBHOOK}" ]] && {
+        payload=$(printf '{"text":"⚠️ *Expo Build* falhou: %s"}' "$*")
+        curl -s -X POST -H 'Content-type: application/json' \
+            --data "${payload}" "${SLACK_WEBHOOK}" >/dev/null
+    }
+    exit 1
+}
 
-# Node
-command -v node >/dev/null || die "Node.js não encontrado."
+# Comparação semântica de versões: retorna 0 se $1 >= $2
+verificaVersao() {
+    local instal="$1"
+    local requerida="$2"
+    if [[ "$(printf '%s\n%s\n' "${requerida}" "${instal}" | sort -V | head -n1)" = "${requerida}" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# --------------------------------------------------------------
+# 5.5 FUNÇÃO DE MIGRAÇÃO AUTOMÁTICA (executada somente se necessário)
+# --------------------------------------------------------------
+migrar_projeto_xcode() {
+    local workspace="${PROJECT_ROOT}/ios/FormCam.xcworkspace"
+    local project="${PROJECT_ROOT}/ios/FormCam.xcodeproj"
+
+    if [[ -d "${workspace}" ]]; then
+        log "🔧 Tentando migração automática (workspace)…"
+        xcodebuild -workspace "${workspace}" -scheme "FormCam" -runFirstLaunch \
+            >> "${LOG_FILE}" 2>&1 || true
+    elif [[ -d "${project}" ]]; then
+        log "🔧 Tentando migração automática (project)…"
+        xcodebuild -project "${project}" -scheme "FormCam" -runFirstLaunch \
+            >> "${LOG_FILE}" 2>&1 || true
+    else
+        log "⚠️ Nenhum .xcworkspace nem .xcodeproj encontrado – nada para migrar."
+        return 1
+    fi
+
+    # Verifica se ainda ficou a flag antiga “LastUpgradeCheck”
+    if [[ -f "${project}/project.pbxproj" ]] && grep -q "LastUpgradeCheck" "${project}/project.pbxproj"; then
+        log "⚠️ Migração pode não ter sido concluída (flag ainda presente)."
+        return 1
+    fi
+
+    log "✅ Migração automática concluída."
+    return 0
+}
+
+# --------------------------------------------------------------
+# 2️⃣ INSTALAR DEPENDÊNCIAS (YARN) – escolha da flag correta
+# --------------------------------------------------------------
+instalar_dependencias() {
+    log "📦 Instalando dependências com Yarn…"
+    cd "${PROJECT_ROOT}"
+
+    [[ -f yarn.lock ]] || die "yarn.lock não encontrado…"
+
+    # Remove o prefixo “v” caso venha (ex.: “v4.12.0”)
+    YARN_MAJOR=$(yarn -v | tr -d 'v' | cut -d. -f1)
+
+    if (( YARN_MAJOR >= 2 )); then
+        log "   → Yarn ${YARN_MAJOR} detectado – usando '--immutable --no-progress --non-interactive'"
+        yarn install --immutable --no-progress --non-interactive 2>&1 | tee -a "${LOG_FILE}"
+    else
+        log "   → Yarn ${YARN_MAJOR} detectado – usando '--frozen-lockfile --no-progress --non-interactive'"
+        yarn install --frozen-lockfile --no-progress --non-interactive 2>&1 | tee -a "${LOG_FILE}"
+    fi
+}
+
+# --------------------------- 1️⃣ PRE‑CHECKS ---------------------------
+
+log "🚀 Iniciando script de build – ${TIMESTAMP}"
+
+# ---- Node ----
+command -v node >/dev/null 2>&1 || die "Node.js não encontrado."
+INSTALLED_NODE=$(node -v | tr -d 'v')
+verificaVersao "${INSTALLED_NODE}" "${REQ_NODE}" || die "Node ${REQ_NODE}+ requerida (encontrado: ${INSTALLED_NODE})."
 log "✅ Node $(node -v) OK"
 
-# Yarn
-command -v yarn >/dev/null || die "Yarn não encontrado."
-log "✅ Yarn $(yarn -v) OK"
+# ---- Yarn ----
+command -v yarn >/dev/null 2>&1 || die "Yarn não encontrado. Instale com npm ou Homebrew."
+INSTALLED_YARN=$(yarn -v)
+verificaVersao "${INSTALLED_YARN}" "${REQ_YARN}" || die "Yarn ${REQ_YARN}+ requerida (encontrado: ${INSTALLED_YARN})."
+log "✅ Yarn ${INSTALLED_YARN} OK"
 
-# Xcode
-command -v xcodebuild >/dev/null || die "Xcode não encontrado."
-log "✅ Xcode $(xcodebuild -version | awk 'NR==1{print $2}') OK"
-
-# CocoaPods
-command -v pod >/dev/null || die "CocoaPods não encontrado."
-log "✅ CocoaPods $(pod --version) OK"
-
-# libimobiledevice (idevicepair)
-if command -v idevicepair >/dev/null; then
-  log "✅ libimobiledevice (idevicepair) disponível"
-  HAVE_IDEVICE=1
+# ---- Expo CLI ----
+if command -v expo >/dev/null 2>&1; then
+    INSTALLED_EXPO=$(expo --version)
+    verificaVersao "${INSTALLED_EXPO}" "${REQ_EXPO}" || die "Expo CLI ${REQ_EXPO}+ requerida (encontrado: ${INSTALLED_EXPO})."
+    log "✅ Expo CLI $(expo --version) OK"
 else
-  log "⚠️ libimobiledevice ausente – algumas verificações poderão ser limitadas."
-  HAVE_IDEVICE=0
+    log "⚠️ Expo CLI não está instalado globalmente – será usado via npx."
 fi
 
-# -------------------------- DETECÇÃO DO EXPPO --------------------
-if [[ -x "${PROJECT_ROOT}/node_modules/.bin/expo" ]]; then
-  EXPO_CMD="${PROJECT_ROOT}/node_modules/.bin/expo"
+# ---- Xcode ----
+command -v xcodebuild >/dev/null 2>&1 || die "Xcode não encontrado."
+XCODE_FULL=$(xcodebuild -version | head -1 | awk '{print $2}')
+verificaVersao "${XCODE_FULL}" "${REQ_XCODE}" || die "Xcode ${REQ_XCODE}+ requerida (encontrado: ${XCODE_FULL})."
+log "✅ Xcode ${XCODE_FULL} OK"
+
+# ---- CocoaPods ----
+command -v pod >/dev/null 2>&1 || die "CocoaPods (pod) não encontrado."
+INSTALLED_POD=$(pod --version)
+verificaVersao "${INSTALLED_POD}" "${REQ_POD}" || die "CocoaPods ${REQ_POD}+ requerida (encontrado: ${INSTALLED_POD})."
+log "✅ CocoaPods ${INSTALLED_POD} OK"
+
+# ---- watchman (opcional) ----
+if command -v watchman >/dev/null 2>&1; then
+    log "✅ watchman $(watchman -v) encontrado"
 else
-  EXPO_CMD="npx expo"
+    log "⚠️ watchman não encontrado – recomendável instalar (brew install watchman)."
 fi
 
-# -------------------------- VERIFICAÇÃO DO TEAM ----------------
-[[ -n "${DEVELOPMENT_TEAM}" ]] || die "⚠️ DEVELOPMENT_TEAM está vazio. Preencha a variável no script."
-log "✅ DEVELOPMENT_TEAM definido: $DEVELOPMENT_TEAM"
+# ---- libimobiledevice (idevice_id) ----
+if command -v idevice_id >/dev/null 2>&1; then
+    log "✅ libimobiledevice (idevice_id) disponível"
+    HAVE_IDEVICE=1
+else
+    log "⚠️ idevice_id não encontrado – usarei fallback via system_profiler."
+    HAVE_IDEVICE=0
+fi
 
-# ---------------------------------------------------------
-#  Garantir que o .pbxproj está na versão corrente do Xcode
-# ---------------------------------------------------------
-ensure_project_upgraded() {
-  local ws_path="${PROJECT_ROOT}/ios/FormCam.xcworkspace"
-  local scheme="FormCam"
+# --------------------------- 2️⃣ ATUALIZAR DEPENDÊNCIAS ---------------------------
 
-  # Tenta forçar a leitura do projeto com xcodebuild.
-  # -dry-run não compila, mas faz o Xcode atualizar o formato se precisar.
-  if ! xcodebuild -workspace "$ws_path" \
-                   -scheme "$scheme" \
-                   -allowProvisioningUpdates \
-                   -quiet \
-                   -dry-run \
-      >/dev/null 2>&1; then
-    log "⚠️ Xcode precisa de migração do projeto. Abra a workspace manualmente e aceite a atualização."
-    log "   👉 Execute: open \"$ws_path\" e clique em “Use the version on disk”."
-    die "Projeto desatualizado – interrompendo para correção manual."
-  else
-    log "✅ Projeto já está na versão correta do Xcode."
-  fi
-}
+instalar_dependencias   # <- agora captura stderr e não pede interação
 
-# Chame isso antes de qualquer coisa que invoque xcodebuild:
-ensure_project_upgraded
+# --------------------------- 3️⃣ LIMPAR BUILD ANTERIOR ---------------------------
 
+log "🧹 Limpando artefatos de build anteriores…"
 
-# -------------------------- FUNÇÃO LIMPA TUDO (rápida) -----------------
-clean_all_fast() {
-  log "🧹 Iniciando limpeza rápida dos artefatos da build anterior…"
+[[ -d ios/build ]] && { rm -rf ios/build && log "   • ios/build removida"; }
+[[ -d .expo ]] && { rm -rf .expo && log "   • .expo removida"; }
 
-  # ----- remoção assíncrona com prioridade baixa (nice) -----
-  rm_async() {
-    local target="$1"
-    [[ -e "$target" ]] || return 0
+DERIVED=$(find ~/Library/Developer/Xcode/DerivedData -maxdepth 1 -type d -name "$(basename "$(pwd)")*")
+[[ -n "${DERIVED}" ]] && { rm -rf "${DERIVED}" && log "   • DerivedData (${DERIVED}) removida"; }
 
-    # 1️⃣ Move para um diretório temporário (rename O(1) no APFS)
-    local staging="${TMPDIR:-/tmp}/expo-clean-$(basename "$target")-$$"
-    mv "$target" "$staging" 2>/dev/null || {
-      nice -n 20 rm -rf "$target" &
-      return 0
-    }
+# ----- RESET DO CACHE DO METRO (fire‑and‑forget) -----
+log "   • Resetando cache do Metro (modo background)"
+npx expo start --clear --non-interactive >> "${LOG_FILE}" 2>&1 &
+METRO_PID=$!
+sleep 5   # geralmente suficiente
+kill "$METRO_PID" 2>/dev/null || true
+wait "$METRO_PID" 2>/dev/null || true
+log "   • Cache do Metro limpo (processo $METRO_PID finalizado)"
 
-    # 2️⃣ Apaga o staging em background, também com nice
-    nice -n 20 rm -rf "$staging" &
-    log "   • $target → $staging (remoção async iniciada)"
-  }
+# --------------------------- 4️⃣ PODS ---------------------------
 
-  # ----- diretórios que realmente precisam ser apagados -----
-  to_clean=(
-    "${PROJECT_ROOT}/node_modules"
-    "${PROJECT_ROOT}/ios/Pods"
-    "${PROJECT_ROOT}/ios/Podfile.lock"
-    "${PROJECT_ROOT}/ios/build"
-    "${PROJECT_ROOT}/.expo"
-  )
+log "🔧 Instalando/atualizando Pods…"
+cd ios
+pod install --repo-update >> "${LOG_FILE}" 2>&1
+cd "${PROJECT_ROOT}"
+log "✅ Pods instalados"
 
-  # DerivedData apenas do projeto (evita varredura desnecessária)
-  derived_path=$(find ~/Library/Developer/Xcode/DerivedData -maxdepth 1 \
-                 -type d -name "$(basename "$PROJECT_ROOT")*" -print -quit 2>/dev/null || true)
-  [[ -n "$derived_path" ]] && to_clean+=("$derived_path")
+# --------------------------- 5️⃣ DETECTAR DISPOSITIVO ---------------------------
 
-  # ----- paralelismo: usa todos os núcleos da M‑series -----
-  max_jobs=$(sysctl -n hw.ncpu)   # ex.: 8, 10, 12 …
-  log "   • Jobs paralelos permitidos: $max_jobs"
+log "📱 Detectando iPhone conectado…"
 
-  for dir in "${to_clean[@]}"; do
-    rm_async "$dir" &
-    while (( $(jobs -r | wc -l) >= max_jobs )); do sleep 0.1; done
-  done
+get_device_id_idevice() { idevice_id -l | head -n1; }
+get_device_name_system_profiler() { system_profiler SPUSBDataType | awk -F': +' '/iPhone/ {print $2; exit}'; }
 
-  log "   • Aguardando finalização das remoções async…"
-  wait   # espera todos os rm -rf em background
-  log "✅ Limpeza rápida concluída."
-}
+DEVICE_ID=""
+if (( HAVE_IDEVICE )); then
+    DEVICE_ID=$(get_device_id_idevice) || true
+fi
 
-# -------------------------- FUNÇÃO INSTALA DEPENDÊNCIAS (Yarn) ----------
-install_deps() {
-  log "📦 Instalando dependências JavaScript (Yarn)…"
-  if [[ -f "${PROJECT_ROOT}/yarn.lock" && -f "${PROJECT_ROOT}/.last-yarn.lock" && \
-        "$(shasum -a 256 "${PROJECT_ROOT}/yarn.lock")" == "$(cat "${PROJECT_ROOT}/.last-yarn.lock")" ]]; then
-    log "🔄 yarn.lock inalterado – pulando yarn install."
-  else
-    cd "$PROJECT_ROOT"
-    yarn install --frozen-lockfile >> "$LOG_FILE" 2>&1
-    shasum -a 256 yarn.lock > "${PROJECT_ROOT}/.last-yarn.lock"
-    log "✅ Yarn install concluído."
-  fi
-}
+if [[ -z "${DEVICE_ID}" ]]; then
+    DEVICE_ID=$(get_device_name_system_profiler) || true
+fi
 
-# -------------------------- FUNÇÃO expo‑doctor ----------
-run_expo_doctor() {
-  log "🩺 Executando expo‑doctor..."
-  if ! command -v expo-doctor >/dev/null; then
-    log "⚡ expo‑doctor ausente – instalando como dev‑dependency"
-    run_and_log yarn add -D expo-doctor
-  fi
-  run_and_log npx expo-doctor
-  log "✅ expo‑doctor finalizado sem erros críticos."
-}
-
-# -------------------------- FUNÇÃO INSTALA PODS (cache de lock‑file) ----------
-install_pods() {
-  log "📦 Instalando pods iOS…"
-
-  if [[ -f "${PROJECT_ROOT}/ios/Podfile.lock" && -f "${PROJECT_ROOT}/.last-Podfile.lock" && \
-        "$(shasum -a 256 "${PROJECT_ROOT}/ios/Podfile.lock")" == "$(cat "${PROJECT_ROOT}/.last-Podfile.lock")" ]]; then
-    log "🔄 Podfile.lock inalterado – pulando pod install."
-  else
-    # Se houver app config, gera o Podfile via prebuild (necessário para expo‑bare)
-    if [[ -f "${PROJECT_ROOT}/app.json" || -f "${PROJECT_ROOT}/app.config.js" || \
-          -f "${PROJECT_ROOT}/app.config.ts" ]]; then
-      cd "$PROJECT_ROOT"
-      log "   • Rodando expo prebuild --clean…"
-      run_and_log npx expo prebuild --clean
+if [[ -z "${DEVICE_ID}" ]]; then
+    if [[ "${1:-}" == "silent" ]]; then
+        die "Nenhum iPhone conectado detectado em modo silencioso."
     else
-      log "⚠️ Nenhum app config encontrado – pulando expo prebuild."
+        read -rp $'⚠️ Não foi possível detectar o iPhone automaticamente.\nDigite o nome (ex.: "John’s iPhone") ou UUID do dispositivo: ' DEVICE_ID
+        [[ -z "${DEVICE_ID}" ]] && die "Nenhum dispositivo informado."
     fi
-
-    cd "${PROJECT_ROOT}/ios"
-    run_and_log pod install --repo-update
-    cd "$PROJECT_ROOT"
-    shasum -a 256 ios/Podfile.lock > "${PROJECT_ROOT}/.last-Podfile.lock"
-    log "✅ Pods instalados."
-  fi
-}
-# -------------------------------------------------------------
-#  FUNÇÃO: TESTA COMPILAÇÃO COM xcodebuild (full‑featured)
-# -------------------------------------------------------------
-test_xcodebuild() {
-  log "🔎 Testando compilação com xcodebuild (Debug)…"
-  cd "${PROJECT_ROOT}/ios"
-
-  # 1️⃣ Exporta as configurações de build (útil para debug)
-  run_and_log xcodebuild \
-        -workspace FormCam.xcworkspace \
-        -scheme FormCam \
-        -configuration Debug \
-        -sdk iphoneos \
-        -showBuildSettings -json \
-        > "${LOG_DIR}/build-settings.json"
-
-  # 2️⃣ Build real – paralelismo + provisionamento automático
-  #    *NÃO* usamos -teamID aqui – o Xcode já tem o DEVELOPMENT_TEAM no pbxproj
-  run_and_log xcodebuild \
-        -workspace FormCam.xcworkspace \
-        -scheme FormCam \
-        -configuration Debug \
-        -sdk iphoneos \
-        -derivedDataPath "${PROJECT_ROOT}/ios/build" \
-        -jobs "$(sysctl -n hw.ncpu)" \
-        -allowProvisioningUpdates \
-        -quiet \
-        -showBuildTimingSummary \
-        clean build
-
-  cd "$PROJECT_ROOT"
-  log "✅ xcodebuild terminou sem erros."
-}
-
-
-# -------------------------- FUNÇÃO Garante que o dispositivo está visível -----------------
-ensure_device_visible() {
-  local udid="$1"
-  local timeout=45 step=5 elapsed=0
-
-  if xcrun xctrace list devices | grep -q "$udid"; then
-    log "✅ UDID $udid já está visível para o Xcode."
-    return 0
-  fi
-
-  if (( HAVE_IDEVICE )); then
-    log "🔗 Pareando dispositivo via idevicepair..."
-    idevicepair pair || log "⚠️ Falha ao parear – continuando."
-  else
-    log "⚠️ idevicepair indisponível – pulando pareamento."
-  fi
-
-  log "🔄 Reiniciando daemon usbmuxd…"
-  launchctl kickstart -k system/com.apple.usbmuxd 2>/dev/null || {
-    log "⚠️ launchctl falhou – usando sudo killall"
-    sudo killall -9 usbmuxd 2>/dev/null || true
-  }
-  sleep 3
-
-  while (( elapsed < timeout )); do
-    if xcrun xctrace list devices | grep -q "$udid"; then
-      log "✅ UDID $udid agora visível (após ${elapsed}s)."
-      return 0
-    fi
-    (( elapsed += step ))
-    log "⏳ Aguardando Xcode reconhecer o UDID… (${elapsed}s)"
-    sleep "$step"
-  done
-
-  die "❌ UDID $udid não apareceu no Xcode após ${timeout}s."
-}
-
-# -------------------------- FUNÇÃO BUILD FINAL COM expo run:ios ----------
-run_expo_build() {
-  log "🛠️ Iniciando build iOS com Expo…"
-  ensure_device_visible "$DEVICE_ID"
-
-  # Passa a Development Team para o expo run (ele a repassa ao xcodebuild interno)
-  run_and_log "$EXPO_CMD" run:ios --device "$DEVICE_ID" --non-interactive \
-                --team-id "$DEVELOPMENT_TEAM"
-  log "✅ Build concluída! O app foi instalado no dispositivo ${DEVICE_ID}."
-}
-
-# -------------------------- FLUXO PRINCIPAL -------------------------
-log "🚀 Script iniciado – ${TIMESTAMP}"
-
-if [[ "${1:-}" == "fast" ]]; then
-  log "⚡ MODO FAST – pulando limpeza/re‑install, usando artefatos existentes."
-else
-	ensure_project_upgraded 
-  clean_all_fast
-  install_deps
-  run_expo_doctor
-  install_pods
-  test_xcodebuild
 fi
 
-# Build final (sempre executado)
-run_expo_build
+log "✅ Dispositivo selecionado: ${DEVICE_ID}"
 
-# -------------------------- NOTIFICAÇÕES (opcional) -----------------
-if [[ -n "${EMAIL_NOTIF:-}" ]]; then
-  echo -e "Subject: [Expo Build] Sucesso\n\nBuild concluída em $(date).\nLog: ${LOG_FILE}" \
-    | /usr/sbin/sendmail "${EMAIL_NOTIF}"
+# --------------------------- 6️⃣ BUILD (COM RETRY AUTOMÁTICO) ---------------------------
+
+run_build() {
+    local attempt="${1}"
+    log "🛠️ Iniciando build (tentativa ${attempt}) com Expo (Yarn)…"
+    local BUILD_CMD="npx expo run:ios --device \"${DEVICE_ID}\" --non-interactive"
+
+    log "   • Executando: ${BUILD_CMD}"
+    eval "${BUILD_CMD}" >> "${LOG_FILE}" 2>&1
+    local exit_code=$?
+
+    if (( exit_code == 0 )); then
+        log "✅ Build concluída na tentativa ${attempt}."
+        return 0
+    fi
+
+    # Detecta se o erro foi por migração do projeto
+    if grep -qi "Xcode precisa de migração do projeto" "${LOG_FILE}" \
+        || grep -qi "Projeto desatualizado" "${LOG_FILE}"; then
+        log "⚠️ Detectado erro de migração do projeto."
+
+        if (( attempt == 1 )); then
+            log "🔁 Tentando migrar o projeto antes de refazer a build..."
+            migrar_projeto_xcode || {
+                die "Falha ao migrar o projeto automaticamente. Abra o Xcode manualmente."
+            }
+            return 2   # sinaliza que precisamos refazer a build
+        else
+            die "Mesmo após migração automática a build falhou. Verifique o log."
+        fi
+    else
+        die "Build falhou (código ${exit_code}). Consulte o log."
+    fi
+}
+
+# Executor (máximo de duas tentativas)
+retry=1
+while (( retry <= 2 )); do
+    run_build "${retry}"
+    status=$?
+    if (( status == 0 )); then
+        break               # sucesso
+    elif (( status == 2 )); then
+        ((retry++))        # migrou, tenta novamente
+        continue
+    else
+        exit 1              # run_build já chamou die()
+    fi
+done
+
+# --------------------------- 7️⃣ NOTIFICAÇÃO DE SUCESSO ---------------------------
+
+if [[ -n "${EMAIL_NOTIF}" ]]; then
+    echo -e "Subject: [Expo Build] Sucesso\n\nBuild concluída com sucesso em $(date).\nLog: ${LOG_FILE}" \
+        | /usr/sbin/sendmail "${EMAIL_NOTIF}"
 fi
-if [[ -n "${SLACK_WEBHOOK:-}" ]]; then
-  payload=$(printf '{"text":"✅ *Expo Build* concluída em %s"}' "$(date '+%Y-%m-%d %H:%M')")
-  curl -s -X POST -H 'Content-type: application/json' --data "${payload}" "${SLACK_WEBHOOK}" >/dev/null
+
+if [[ -n "${SLACK_WEBHOOK}" ]]; then
+    payload=$(printf '{"text":"✅ *Expo Build* concluída com sucesso em %s"}' "$(date '+%Y-%m-%d %H:%M')")
+    curl -s -X POST -H 'Content-type: application/json' --data "${payload}" "${SLACK_WEBHOOK}" >/dev/null
 fi
 
 log "🏁 Script finalizado."

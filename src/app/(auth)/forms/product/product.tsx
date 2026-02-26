@@ -52,18 +52,15 @@ const Product: React.FC = () => {
 
 	async function handleEnviar(data: produtosFormData) {
 		try {
-			const formData = {
-				uuid: String(uuid), // <-- ADICIONADO
-				occurrenceDate: data.occurrenceDate,
-				product: data.product.trim(),
+			console.log('Dados enviados:', data);
+
+			const response = await api.post('/api/v1/products', {
+				...data,
+				uuid: String(uuid),
 				quantity: Number(data.quantity),
-				nameOfResponsible: data.nameOfResponsible.trim(),
-				unit: data.unit,
-			};
-
-			console.log('Dados enviados:', formData);
-
-			const response = await api.post('/api/v1/products', formData);
+				product: data.product.trim(),
+				name_of_responsible: data.name_of_responsible.trim(),
+			});
 
 			if (response.status === 201) {
 				Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
@@ -147,7 +144,7 @@ const Product: React.FC = () => {
 					/>
 					<DateInput
 						control={control as unknown as Control}
-						name="occurrenceDate"
+						name="occurrence_date"
 						label="Dia da ocorrencia"
 						icon="calendar"
 					/>
@@ -155,9 +152,9 @@ const Product: React.FC = () => {
 
 				<Input
 					icon={'user'}
-					error={errors.nameOfResponsible?.message || ''}
+					error={errors.name_of_responsible?.message || ''}
 					formProps={{
-						name: 'nameOfResponsible',
+						name: 'name_of_responsible',
 						control: control as unknown as Control,
 						rules: {
 							required: 'nome é obrigatório',
