@@ -5,6 +5,7 @@ import {
 	useCameraPermissions,
 } from 'expo-camera';
 import * as FileSystem from 'expo-file-system';
+import { Paths } from 'expo-file-system';
 import * as MediaLibrary from 'expo-media-library';
 import React, { useCallback, useRef, useState } from 'react';
 import { Alert, Button, StatusBar, Text, View } from 'react-native';
@@ -46,7 +47,11 @@ const Camera: React.FC = () => {
 				}
 				if (photo) {
 					//save photo locally
-					const folderPath: string = `${FileSystem.documentDirectory}/.photos`;
+					const documentDirectory = Paths.document.uri;
+					if (!documentDirectory) {
+						throw new Error('Não foi possível obter o diretório de documentos');
+					}
+					const folderPath: string = `${documentDirectory}/.photos`;
 					const filePath: string = `${folderPath}/photo_${Date.now()}.jpg`;
 					const dirInfo = await FileSystem.getInfoAsync(folderPath);
 					if (!dirInfo.exists) {

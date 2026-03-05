@@ -15,7 +15,6 @@ import { COLORS } from '@/styles/global/color';
 import { FONTES } from '@/styles/global/fonts';
 import { makeTextStyle } from '@/styles/global/theme';
 
-
 export function retorn() {
 	router.back();
 }
@@ -85,7 +84,7 @@ const Responsible: React.FC<homeFormData> = (data) => {
 
 			<ScrollView style={styles.containerFoot}>
 				<RadioTaskButton
-					name="options4"
+					name="options_4"
 					control={control as unknown as Control}
 					options={[
 						{

@@ -67,7 +67,7 @@ const Home = (data: homeFormData) => {
 				}}
 			>
 				<RadioField
-					name="options1"
+					name="options_1"
 					control={control as unknown as Control}
 					options={[
 						{ label: 'Depósito', value: 'Depósito' },
@@ -99,7 +99,7 @@ const Home = (data: homeFormData) => {
 						}}
 					/>
 					<RadioField
-						name="options2"
+						name="options_2"
 						control={control as unknown as Control}
 						options={[
 							{ label: 'Recepção', value: 'Recepção' },

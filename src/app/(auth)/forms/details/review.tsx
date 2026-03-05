@@ -28,13 +28,13 @@ const Review: React.FC<homeFormData> = () => {
 	async function handleEnviar(data: homeFormData) {
 		try {
 			const formData = {
-				uuid: data.uuid.trim(), // revizar aqui
+				uuid: data.uuid.trim(),
 				origin: data.options_1,
 				process: data.options_2,
 				procedure: data.options_3,
 				responsible: data.options_4,
-				description: data.options_5, // description
-				note: data.annotation, // note
+				description: data.options_5,
+				note: data.annotation,
 			};
 
 			const response = await api.post('/api/v1/occurrences', formData);
